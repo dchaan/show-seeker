@@ -36,6 +36,7 @@
   text-decoration: none;
   height: 60px;
   font-weight: 600;
+  color: rgb(255, 255, 255);
 }
 
 .headerLinksContainer {
@@ -58,6 +59,7 @@
   text-decoration: none;
   outline: 0px;
   border: 0px;
+  color: rgb(255, 255, 255);
 }
 
 .headerRightContainer {
@@ -77,7 +79,6 @@
   margin-left: 16px; 
   margin-right: 8px;
   position: relative;
-  color: black;
 }
 
 .searchBar {
@@ -116,15 +117,12 @@
 .searchInput {
   text-overflow: ellipsis;
   display: inline-block;
-  height: 100%;
   width: 100%;
-  padding: 5px;
-  padding-top: 8px;
-  padding-left: 30px;
+  padding: 9px 12px 8px calc(34px);
   background-color: transparent;
   color: rgb(255, 255, 255);
   border: 0px;
-  font-size: 12px;
+  font-size: 14px;
   -webkit-appearance: textfield;
   outline-offset: -2px;
   flex-grow: 1;

@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  max-width: 100vw;
+  min-height: 100vh;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: Averta,Helvetica Neue,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.4;
+  letter-spacing: .3px;
+  background-color: #fff;
+  color: #353c42;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
