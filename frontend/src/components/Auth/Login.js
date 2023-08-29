@@ -15,7 +15,6 @@ const Login = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
-    debugger
     const data = await dispatch(login(email, password));
     if (data) setErrors(data);
     navigate('/');
