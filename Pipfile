@@ -17,6 +17,7 @@ flask-login = "*"
 alembic = "*"
 jinja2 = "*"
 psycopg2-binary = "*"
+requests = "*"
 
 [dev-packages]
 
