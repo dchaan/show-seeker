@@ -1,5 +1,5 @@
 import requests
-from .data_formatter import format_event, format_artist
+from .data_formatter import format_event, format_artist, format_classification
 
 TICKETMASTER_API_KEY = 'Ozt84Egp8jUR5jrMtj8Uo5S9FnN37ATE'
 BASE_URL = 'https://app.ticketmaster.com/discovery/v2/'
@@ -63,3 +63,33 @@ def get_artist_by_id_from_api(artist_id):
   data = response.json()
   formatted_artist = format_artist(data)
   return formatted_artist
+
+def get_classifications_from_api(query=None):
+  endpoint = f'{BASE_URL}classifications.json'
+  params = {
+    'apikey': TICKETMASTER_API_KEY,
+    'keyword': query
+  }
+
+  response = requests.get(endpoint, params=params)
+  data = response.json()
+  classifications = data.get('_embedded', {}).get('classifications', [])
+
+  formatted_classifications = []
+  
+  for classification in classifications:
+    formatted_classification = format_classification(classification)
+    formatted_classifications.append(formatted_classification)
+
+  return formatted_classifications
+
+def get_classifications_by_id_from_api(classification_id):
+  endpoint = f'{BASE_URL}classifications/{classification_id}.json'
+  params = {
+    'apikey': TICKETMASTER_API_KEY
+  }
+
+  response = requests.get(endpoint, params=params)
+  data = response.json()
+  formatted_classification = format_classification(data)
+  return formatted_classification
