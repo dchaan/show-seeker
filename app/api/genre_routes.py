@@ -6,7 +6,6 @@ genre_routes = Blueprint('genres', __name__)
 @genre_routes.route('/', methods=['GET'])
 def get_genres():
   classifications = get_classifications_from_api()
-  print(classifications)
   genres = get_genres_from_classifications(classifications)
   return jsonify(genres)
 

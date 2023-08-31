@@ -6,7 +6,8 @@ venue_routes = Blueprint('venues', __name__)
 
 @venue_routes.route('/', methods=['GET'])
 def get_venues():
-  venues = get_venues_from_api()
+  query = request.args.get('query')
+  venues = get_venues_from_api(query)
   formatted_venues = []
 
   for venue in venues:
