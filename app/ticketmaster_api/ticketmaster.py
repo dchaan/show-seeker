@@ -1,5 +1,5 @@
 import requests
-from .data_formatter import format_event, format_artist, format_classification
+from .data_formatter import format_event, format_artist, format_classification, format_venue
 
 TICKETMASTER_API_KEY = 'Ozt84Egp8jUR5jrMtj8Uo5S9FnN37ATE'
 BASE_URL = 'https://app.ticketmaster.com/discovery/v2/'
@@ -119,3 +119,26 @@ def get_genre_by_id_from_classifications(genre_id, classifications):
         }
       
   return None
+
+def get_venues_from_api(query=None):
+  endpoint = f'{BASE_URL}venues.json'
+  params = {
+    'apikey': TICKETMASTER_API_KEY,
+    'keyword': query
+  }
+  
+  response = requests.get(endpoint, params=params)
+  data = response.json()
+  venues = data.get('_embedded', {}).get('venues', [])
+  return venues
+
+def get_venues_by_id_from_api(venue_id):
+  endpoint = f'{BASE_URL}venues/{venue_id}.json'
+  params = {
+    'apikey': TICKETMASTER_API_KEY
+  }
+
+  response = requests.get(endpoint, params=params)
+  data = response.json()
+  formatted_venue = format_venue(data)
+  return formatted_venue

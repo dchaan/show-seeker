@@ -65,3 +65,22 @@ def format_classification(classification):
         classification_data["genres"].append(genre)
 
   return classification_data
+
+def format_venue(venue):
+  address = [
+    venue.get('address', {}).get('line1', ''),
+    venue.get('city', {}).get('name', ''),
+    venue.get('state', {}).get('stateCode', ''),
+    venue.get('postalCode', ''),
+    venue.get('country', {}).get('countryCode', '')
+  ]
+
+  venue_data = {
+      'name': venue.get('name', ''),
+      'address': ', '.join(filter(None, address)),
+      'box_office_info': venue['boxOfficeInfo']['openHoursDetail'] if 'boxOfficeInfo' in venue and 'openHoursDetail' in venue['boxOfficeInfo'] else '',
+      'general_info': venue['generalInfo']['generalRule'] if 'generalInfo' in venue and 'generalRule' in venue['generalInfo'] else '',
+      'images': [image['url'] for image in venue['images']] if 'images' in venue else [],
+  }
+  
+  return venue_data
