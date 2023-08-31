@@ -9,8 +9,8 @@ class Artist(db.Model):
   genre_id = db.Column(db.Integer, db.ForeignKey('genres.id'), nullable=False)
   external_links = db.Column(db.Text)
 
-  events = db.relationship('Event', backref='artist', lazy=True)
-  genre = db.relationship('Genre', backref='artists')
+  events = db.relationship('Event', backref='artist_events', lazy=True)
+  genre = db.relationship('Genre', backref='artist_genre')
   favorited_by = db.relationship('User', secondary=user_favorites, backref='users_favorited', lazy=True)
 
   def to_dict(self):

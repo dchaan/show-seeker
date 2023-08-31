@@ -18,10 +18,10 @@ class Event(db.Model):
   url = db.Column(db.String(255))
   images = db.Column(db.Text)
   
-  artist = db.relationship('Artist', backref='events')
-  classification = db.relationship('Classification', backref='events')
-  genre = db.relationship('Genre', backref='events')
-  venue = db.relationship('Venue', backref='events')
+  artist = db.relationship('Artist', backref='event_artist')
+  classification = db.relationship('Classification', backref='event_classification')
+  genre = db.relationship('Genre', backref='event_genre')
+  venue = db.relationship('Venue', backref='event_venue')
 
   def to_dict(self):
     return {
