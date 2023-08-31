@@ -44,24 +44,24 @@ def format_artist(artist):
   return artist_data
 
 def format_classification(classification):
-    classification_data = {
-        "id": None,
-        "name": None,
-        "genres": []
-    }
+  classification_data = {
+    "id": None,
+    "name": None,
+    "genres": []
+  }
 
-    if "segment" in classification:
-        segment_data = classification["segment"]
-        classification_data["id"] = segment_data.get("id")
-        classification_data["name"] = segment_data.get("name")
+  if "segment" in classification:
+    segment_data = classification["segment"]
+    classification_data["id"] = segment_data.get("id")
+    classification_data["name"] = segment_data.get("name")
 
-        if "_embedded" in segment_data and "genres" in segment_data["_embedded"]:
-            genres = segment_data["_embedded"]["genres"]
-            for genre_data in genres:
-                genre = {
-                    "id": genre_data.get("id"),
-                    "name": genre_data.get("name")
-                }
-                classification_data["genres"].append(genre)
+    if "_embedded" in segment_data and "genres" in segment_data["_embedded"]:
+      genres = segment_data["_embedded"]["genres"]
+      for genre_data in genres:
+        genre = {
+          "id": genre_data.get("id"),
+          "name": genre_data.get("name")
+        }
+        classification_data["genres"].append(genre)
 
-    return classification_data
+  return classification_data

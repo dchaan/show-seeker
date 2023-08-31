@@ -93,3 +93,29 @@ def get_classifications_by_id_from_api(classification_id):
   data = response.json()
   formatted_classification = format_classification(data)
   return formatted_classification
+
+def get_genres_from_classifications(classifications):
+  genres = []
+
+  for classification in classifications:
+    classification_id = classification.get("id")
+    classification_genres = classification.get("genres", [])
+    
+    for genre in classification_genres:
+      genre["classification_id"] = classification_id
+        
+    genres.extend(classification_genres)
+  
+  return genres
+
+def get_genre_by_id_from_classifications(genre_id, classifications):
+  for classification in classifications:
+    for genre in classification["genres"]:
+      if genre["id"] == genre_id:
+        return {
+          "id": genre['id'],
+          "name": genre["name"],
+          "classification_id": classification["id"],
+        }
+      
+  return None
