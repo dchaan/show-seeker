@@ -6,7 +6,7 @@ class Classification(db.Model):
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String, nullable=False)
 
-  genres = db.relationship('Genre', backref='classification', lazy=True)
+  genres = db.relationship('Genre', backref='classification_genre', lazy=True)
 
   def to_dict(self):
     return {

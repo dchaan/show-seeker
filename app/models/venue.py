@@ -10,7 +10,7 @@ class Venue(db.Model):
   general_info = db.Column(db.Text)
   images = db.Column(db.Text)
   
-  events = db.relationship('Event', backref='venue', lazy=True)
+  events = db.relationship('Event', backref='venue_events', lazy=True)
 
   def to_dict(self):
     return {
