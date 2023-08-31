@@ -33,7 +33,26 @@ def get_event_by_id_from_api(event_id):
   data = response.json()
   formatted_event = format_event(data)
   return formatted_event
+
+def get_events_by_venue_id_from_api(venue_id):
+  endpoint = f'{BASE_URL}events.json'
+  params = {
+    'apikey': TICKETMASTER_API_KEY,
+    'venueId': venue_id
+  }
+
+  response = requests.get(endpoint, params=params)
+  data = response.json()
+  events = data.get('_embedded', {}).get('events', [])
+
+  formatted_events = []
   
+  for event in events:
+    formatted_event = format_event(event)
+    formatted_events.append(formatted_event)
+  
+  return formatted_events
+
 def get_artists_from_api(query=None):
   endpoint = f'{BASE_URL}attractions.json'
   params = {
@@ -132,7 +151,7 @@ def get_venues_from_api(query=None):
   venues = data.get('_embedded', {}).get('venues', [])
   return venues
 
-def get_venues_by_id_from_api(venue_id):
+def get_venue_by_id_from_api(venue_id):
   endpoint = f'{BASE_URL}venues/{venue_id}.json'
   params = {
     'apikey': TICKETMASTER_API_KEY
@@ -140,5 +159,4 @@ def get_venues_by_id_from_api(venue_id):
 
   response = requests.get(endpoint, params=params)
   data = response.json()
-  formatted_venue = format_venue(data)
-  return formatted_venue
+  return data

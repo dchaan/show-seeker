@@ -7,9 +7,9 @@ def format_event(event):
   event_data = {
     'id': event['id'],
     'name': event['name'],
-    'start_time': event['dates']['start']['dateTime'],
+    'start_time': event['dates']['start'].get('dateTime', None),
     'promoter': event.get('promoter', {}).get('description', None),
-    'price_range': event.get('priceRanges', [])[0],
+    'price_range': event.get('priceRanges', []),
     'seatmap': event.get('seatmap', {}).get('staticUrl', None),
     'accessibility': event.get('accessibility', {}).get('info', None),
     'ticket_limit': event.get('ticketLimit', {}).get('info', None),
@@ -66,7 +66,7 @@ def format_classification(classification):
 
   return classification_data
 
-def format_venue(venue):
+def format_venue(venue, events):
   address = [
     venue.get('address', {}).get('line1', ''),
     venue.get('city', {}).get('name', ''),
@@ -76,11 +76,13 @@ def format_venue(venue):
   ]
 
   venue_data = {
-      'name': venue.get('name', ''),
-      'address': ', '.join(filter(None, address)),
-      'box_office_info': venue['boxOfficeInfo']['openHoursDetail'] if 'boxOfficeInfo' in venue and 'openHoursDetail' in venue['boxOfficeInfo'] else '',
-      'general_info': venue['generalInfo']['generalRule'] if 'generalInfo' in venue and 'generalRule' in venue['generalInfo'] else '',
-      'images': [image['url'] for image in venue['images']] if 'images' in venue else [],
+    'id': venue['id'],
+    'name': venue['name'],
+    'address': ', '.join(filter(None, address)),
+    'box_office_info': venue['boxOfficeInfo']['openHoursDetail'] if 'boxOfficeInfo' in venue and 'openHoursDetail' in venue['boxOfficeInfo'] else '',
+    'general_info': venue['generalInfo']['generalRule'] if 'generalInfo' in venue and 'generalRule' in venue['generalInfo'] else '',
+    'images': [image['url'] for image in venue['images']] if 'images' in venue else [],
+    'events': events
   }
   
   return venue_data
