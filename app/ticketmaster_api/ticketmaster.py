@@ -10,29 +10,19 @@ def get_events_from_api(query=None):
     'apikey': TICKETMASTER_API_KEY,
     'keyword': query
   }
-
   response = requests.get(endpoint, params=params)
   data = response.json()
   events = data.get('_embedded', {}).get('events', [])
-
-  formatted_events = []
-
-  for event in events:
-    formatted_event = format_event(event)
-    formatted_events.append(formatted_event)
-
-  return formatted_events
+  return events
 
 def get_event_by_id_from_api(event_id):
   endpoint = f'{BASE_URL}events/{event_id}.json'
   params = {
     'apikey': TICKETMASTER_API_KEY
   }
-  
   response = requests.get(endpoint, params=params)
   data = response.json()
-  formatted_event = format_event(data)
-  return formatted_event
+  return data
 
 def get_events_by_venue_id_from_api(venue_id):
   endpoint = f'{BASE_URL}events.json'
@@ -40,18 +30,10 @@ def get_events_by_venue_id_from_api(venue_id):
     'apikey': TICKETMASTER_API_KEY,
     'venueId': venue_id
   }
-
   response = requests.get(endpoint, params=params)
   data = response.json()
   events = data.get('_embedded', {}).get('events', [])
-
-  formatted_events = []
-  
-  for event in events:
-    formatted_event = format_event(event)
-    formatted_events.append(formatted_event)
-  
-  return formatted_events
+  return events
 
 def get_artists_from_api(query=None):
   endpoint = f'{BASE_URL}attractions.json'
@@ -59,29 +41,19 @@ def get_artists_from_api(query=None):
     'apikey': TICKETMASTER_API_KEY,
     'keyword': query
   }
-
   response = requests.get(endpoint, params=params)
   data = response.json()
   artists = data.get('_embedded', {}).get('attractions', [])
-
-  formatted_artists = []
-
-  for artist in artists:
-    formatted_artist = format_artist(artist)
-    formatted_artists.append(formatted_artist)
-
-  return formatted_artists
+  return artists
 
 def get_artist_by_id_from_api(artist_id):
   endpoint = f'{BASE_URL}attractions/{artist_id}.json'
   params = {
     'apikey': TICKETMASTER_API_KEY
   }
-
   response = requests.get(endpoint, params=params)
   data = response.json()
-  formatted_artist = format_artist(data)
-  return formatted_artist
+  return data
 
 def get_classifications_from_api(query=None):
   endpoint = f'{BASE_URL}classifications.json'
@@ -89,29 +61,19 @@ def get_classifications_from_api(query=None):
     'apikey': TICKETMASTER_API_KEY,
     'keyword': query
   }
-
   response = requests.get(endpoint, params=params)
   data = response.json()
   classifications = data.get('_embedded', {}).get('classifications', [])
-
-  formatted_classifications = []
-  
-  for classification in classifications:
-    formatted_classification = format_classification(classification)
-    formatted_classifications.append(formatted_classification)
-
-  return formatted_classifications
+  return classifications
 
 def get_classifications_by_id_from_api(classification_id):
   endpoint = f'{BASE_URL}classifications/{classification_id}.json'
   params = {
     'apikey': TICKETMASTER_API_KEY
   }
-
   response = requests.get(endpoint, params=params)
   data = response.json()
-  formatted_classification = format_classification(data)
-  return formatted_classification
+  return data
 
 def get_genres_from_classifications(classifications):
   genres = []
@@ -145,7 +107,6 @@ def get_venues_from_api(query=None):
     'apikey': TICKETMASTER_API_KEY,
     'keyword': query
   }
-  
   response = requests.get(endpoint, params=params)
   data = response.json()
   venues = data.get('_embedded', {}).get('venues', [])
@@ -156,7 +117,6 @@ def get_venue_by_id_from_api(venue_id):
   params = {
     'apikey': TICKETMASTER_API_KEY
   }
-
   response = requests.get(endpoint, params=params)
   data = response.json()
   return data
