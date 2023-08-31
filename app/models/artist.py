@@ -11,7 +11,7 @@ class Artist(db.Model):
 
   events = db.relationship('Event', backref='artist', lazy=True)
   genre = db.relationship('Genre', backref='artists')
-  favorited_by = db.relationship('User', secondary=user_favorites, backref='user_favorites', lazy=True)
+  favorited_by = db.relationship('User', secondary=user_favorites, backref='users_favorited', lazy=True)
 
   def to_dict(self):
     return {

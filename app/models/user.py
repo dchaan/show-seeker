@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
   email = db.Column(db.String(120), unique=True, nullable=False)
   hashed_password = db.Column(db.String(120), nullable=False)
 
-  favorites = db.relationship('Artist', secondary=user_favorites, backref='favorited_by', lazy=True)
+  favorites = db.relationship('Artist', secondary=user_favorites, backref='artists_favorited', lazy=True)
   purchases = db.relationship('Purchase', backref='user', lazy=True)
 
   @property

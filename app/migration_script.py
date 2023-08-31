@@ -1,9 +1,10 @@
-from app.ticketmaster_api import (
+from ticketmaster_api import (
   get_events_from_api,
   get_artists_from_api,
   get_classifications_from_api,
   get_genres_from_classifications,
   get_venues_from_api,
+  get_events_by_venue_id_from_api,
   format_event,
   format_artist,
   format_classification,
@@ -30,7 +31,7 @@ def migrate_events():
     events = get_events_from_api(total_to_fetch=200)
     formatted_events = [format_event(event) for event in events]
 
-    with db_session.being():
+    with db_session.begin():
       db_session.bulk_insert_mappings(Event, formatted_events)
       db_session.commit()
     print('Events migration successful')
@@ -54,7 +55,12 @@ def migrate_artists():
 def migrate_venues():
   try:
     venues = get_venues_from_api(total_to_fetch=200)
-    formatted_venues = [format_venue(venue) for venue in venues]
+    formatted_venues = []
+
+    for venue in venues:
+      events = get_events_by_venue_id_from_api(venue['id'])
+      formatted_venue = format_venue(venue, events)
+      formatted_venues.append(formatted_venue)
     
     with db_session.begin():
       db_session.bulk_insert_mappings(Venue, formatted_venues)
