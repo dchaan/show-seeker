@@ -23,11 +23,11 @@ def get_classifications():
 
 @classification_routes.route('/<classification_id>', methods=['GET'])
 def get_classification_by_id(classification_id):
-  classification = Classification.query.get(classification_id)  # Query the database
+  classification = Classification.query.filter_by(id=classification_id).first()
 
   if classification:
     formatted_classification = {
-      'id': classification.id,
+      'id': classification_id,
       'name': classification.name,
     }
     return jsonify(formatted_classification)
