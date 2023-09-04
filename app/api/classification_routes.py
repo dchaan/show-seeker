@@ -12,13 +12,7 @@ def get_classifications():
   else:
     classifications = Classification.query.all()
   
-  formatted_classifications = [
-    {
-      'id': classification.id,
-      'name': classification.name,
-    }
-    for classification in classifications
-  ]
+  formatted_classifications = [classification.to_dict() for classification in classifications]
   return jsonify(formatted_classifications)
 
 @classification_routes.route('/<classification_id>', methods=['GET'])
@@ -26,10 +20,7 @@ def get_classification_by_id(classification_id):
   classification = Classification.query.filter_by(id=classification_id).first()
 
   if classification:
-    formatted_classification = {
-      'id': classification_id,
-      'name': classification.name,
-    }
+    formatted_classification = classification.to_dict()
     return jsonify(formatted_classification)
   else:
     return jsonify({'message': 'Classification not found'}), 404

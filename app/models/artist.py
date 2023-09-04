@@ -18,7 +18,7 @@ class Artist(db.Model):
       'id': self.id,
       'name': self.name,
       'genre_id': self.genre_id,
-      'genre': self.genre.to_obj(),
+      'genre': self.genre.to_obj() if self.genre else [],
       'events': [event.to_obj() for event in self.events] if self.events else [],
       'favorited_by': [user.to_obj() for user in self.favorited_by] if self.favorited_by else [],
       'external_links': self.external_links if self.external_links else []
