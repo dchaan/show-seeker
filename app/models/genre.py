@@ -14,3 +14,4 @@ class Genre(db.Model):
       'name': self.name,
       'classification_id': self.classification_id
     }
+  

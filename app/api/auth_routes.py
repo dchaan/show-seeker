@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, session, request
+from flask import Blueprint, request
 from app.models import User, db
 from app.forms import LoginForm
 from app.forms import SignUpForm
@@ -15,7 +15,6 @@ def validation_errors_to_error_messages(validation_errors):
     for error in validation_errors[field]:
       errorMessages.append(f'{field} : {error}')
   return errorMessages
-
 
 @auth_routes.route('/')
 def authenticate():
@@ -43,7 +42,6 @@ def login():
     return user.to_dict()
   return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-
 @auth_routes.route('/logout')
 def logout():
   """
@@ -51,7 +49,6 @@ def logout():
   """
   logout_user()
   return {'message': 'User logged out'}
-
 
 @auth_routes.route('/signup', methods=['POST'])
 def sign_up():

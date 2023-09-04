@@ -16,5 +16,6 @@ from .data_formatter import (
   format_venue, 
   format_artist, 
   format_classification, 
-  format_venue
+  format_venue,
+  format_genre
 )

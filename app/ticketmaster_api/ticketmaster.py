@@ -1,5 +1,4 @@
 import requests
-from .data_formatter import format_event, format_artist, format_classification, format_venue
 
 TICKETMASTER_API_KEY = 'Ozt84Egp8jUR5jrMtj8Uo5S9FnN37ATE'
 BASE_URL = 'https://app.ticketmaster.com/discovery/v2/'
@@ -94,7 +93,12 @@ def get_classifications_from_api(query=None):
   response = requests.get(endpoint, params=params)
   data = response.json()
   classifications = data.get('_embedded', {}).get('classifications', [])
-  return classifications
+  filtered_classifications = [
+    classification for classification in classifications
+    if classification.get('segment') is not None and classification.get('type') is None
+  ]
+
+  return filtered_classifications
 
 def get_classifications_by_id_from_api(classification_id):
   endpoint = f'{BASE_URL}classifications/{classification_id}.json'
@@ -106,25 +110,24 @@ def get_classifications_by_id_from_api(classification_id):
   return data
 
 def get_genres_from_classifications(classifications):
-  genres = []
+  genre_objects = []
 
   for classification in classifications:
-    classification_id = classification.get("id")
-    classification_genres = classification.get("genres", [])
+    genres = classification['segment']['_embedded'].get("genres", [])
+    classification_name = (classification['segment'].get("name"))
     
-    for genre in classification_genres:
-      genre["classification_id"] = classification_id
-        
-    genres.extend(classification_genres)
-  
-  return genres
+    for genre in genres:
+      genre_name = genre.get("name")
+      if genre_name:
+        genre_objects.append({"name": genre_name, "classification_name": classification_name})
+
+  return genre_objects
 
 def get_genre_by_id_from_classifications(genre_id, classifications):
   for classification in classifications:
     for genre in classification["genres"]:
       if genre["id"] == genre_id:
         return {
-          "id": genre['id'],
           "name": genre["name"],
           "classification_id": classification["id"],
         }

@@ -1,5 +1,9 @@
 from flask import Blueprint, jsonify
-from app.ticketmaster_api import get_genres_from_classifications, get_classifications_from_api, get_genre_by_id_from_classifications
+from app.ticketmaster_api import (
+  get_genres_from_classifications, 
+  get_classifications_from_api, 
+  get_genre_by_id_from_classifications
+)
 
 genre_routes = Blueprint('genres', __name__)
 

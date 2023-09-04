@@ -1,27 +1,35 @@
 from flask import Blueprint, jsonify, request
-from app.ticketmaster_api import get_classifications_from_api, get_classifications_by_id_from_api
-from app.ticketmaster_api import format_classification
+from app.models import Classification
 
 classification_routes = Blueprint('classifications', __name__)
 
 @classification_routes.route('/', methods=['GET'])
 def get_classifications():
   query = request.args.get('query')
-  classifications = get_classifications_from_api(query)
-  formatted_classifications = []
-
-  for classification in classifications:
-    formatted_classification = format_classification(classification)
-    formatted_classifications.append(formatted_classification)
   
+  if query:
+    classifications = Classification.query.filter(Classification.name.ilike(f"%{query}%")).all()
+  else:
+    classifications = Classification.query.all()
+  
+  formatted_classifications = [
+    {
+      'id': classification.id,
+      'name': classification.name,
+    }
+    for classification in classifications
+  ]
   return jsonify(formatted_classifications)
 
 @classification_routes.route('/<classification_id>', methods=['GET'])
 def get_classification_by_id(classification_id):
-  classification = get_classifications_by_id_from_api(classification_id)
+  classification = Classification.query.get(classification_id)  # Query the database
 
   if classification:
-    formatted_classification = format_classification(classification)
+    formatted_classification = {
+      'id': classification.id,
+      'name': classification.name,
+    }
     return jsonify(formatted_classification)
   else:
     return jsonify({'message': 'Classification not found'}), 404

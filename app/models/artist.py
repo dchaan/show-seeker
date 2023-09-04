@@ -6,7 +6,7 @@ class Artist(db.Model):
 
   id = db.Column(db.Integer, primary_key=True)
   name = db.Column(db.String(255), nullable=False)
-  genre_id = db.Column(db.Integer, db.ForeignKey('genres.id'), nullable=False)
+  genre_id = db.Column(db.Integer, db.ForeignKey('genres.id'))
   external_links = db.Column(db.Text)
 
   events = db.relationship('Event', backref='artist_events', lazy=True)

@@ -1,6 +1,9 @@
 from flask import Blueprint, jsonify, request
-from app.ticketmaster_api import get_artists_from_api, get_artist_by_id_from_api
-from app.ticketmaster_api import format_artist
+from app.ticketmaster_api import (
+  get_artists_from_api, 
+  get_artist_by_id_from_api,
+  format_artist
+)
 
 artist_routes = Blueprint('artists', __name__)
 

@@ -1,6 +1,9 @@
 from flask import Blueprint, jsonify, request
-from app.ticketmaster_api import get_venues_from_api, get_venue_by_id_from_api, get_events_by_venue_id_from_api
-from app.ticketmaster_api import format_venue, format_event
+from app.ticketmaster_api import (
+  get_venues_from_api, 
+  get_venue_by_id_from_api,
+  format_venue
+)
 
 venue_routes = Blueprint('venues', __name__)
 
