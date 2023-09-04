@@ -19,6 +19,6 @@ class Venue(db.Model):
       'address': self.address,
       'box_office_info': self.box_office_info,
       'general_info': self.general_info,
-      'images': [image.to_obj() for image in self.images] if self.images else [],
+      'images': self.images,
       'events': [event.to_obj() for event in self.events] if self.events else []
     }
