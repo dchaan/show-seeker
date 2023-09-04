@@ -24,6 +24,8 @@ class Event(db.Model):
   venue = db.relationship('Venue', backref='event_venue')
 
   def to_dict(self):
+    images = self.images.strip('{}').split(',') if self.images else []
+
     return {
       'id': self.id,
       'name': self.name,
@@ -38,7 +40,7 @@ class Event(db.Model):
       'accessibility': self.accessibility,
       'ticket_limit': self.ticket_limit,
       'url': self.url,
-      'images': [image.to_obj() for image in self.images] if self.images else []
+      'images': images
     }
 
 

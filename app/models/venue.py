@@ -13,12 +13,14 @@ class Venue(db.Model):
   events = db.relationship('Event', backref='venue_events', lazy=True)
 
   def to_dict(self):
+    images = self.images.strip('{}').split(',') if self.images else []
+
     return {
       'id': self.id,
       'name': self.name,
       'address': self.address,
       'box_office_info': self.box_office_info,
       'general_info': self.general_info,
-      'images': self.images,
+      'images': images,
       'events': [event.to_obj() for event in self.events] if self.events else []
     }
