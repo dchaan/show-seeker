@@ -1,0 +1,142 @@
+.eventsInfoContainer {
+  display: flex;
+  flex: 1 1 0%;
+  flex-flow: column;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+.eventInfo {
+  display: flex;
+  flex-flow: row;
+}
+
+.eventLink {
+  padding: 16px 0px;
+  margin: 0px 16px 0px 0px;
+  height: auto;
+  max-height: 300px;
+  border-left: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+}
+
+.eventLinkContainer {
+  display: flex;
+  flex: 1 1 0%;
+  flex-flow: row;
+}
+
+.imageContainer {
+  overflow: hidden;
+  width: 82px;
+  height: 46px;
+  margin-right: 16px;
+  padding-left: 10px;
+}
+
+.image {
+  border-radius: 2px;
+  margin-right: 16px;
+  width: 82px;
+  aspect-ratio: auto 82 / 46;
+  height: 46px;
+}
+
+.dateContainer {
+  flex-flow: column;
+  margin-bottom: 0px;
+  margin-right: 60px;
+  width: 14ch;
+  display: flex;
+}
+
+.date {
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: rgb(144, 78, 186);
+}
+
+.time {
+  line-height: 1.25;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(38, 38, 38, 0.65);
+}
+
+.nameContainer {
+  flex: 1 1 0%;
+  flex-flow: row;
+  display: grid;
+  grid-template: "header" 1fr / 1fr;
+  width: 100%;
+}
+
+.nameSubContainer {
+  max-height: 600px;
+  align-items: flex-start;
+  display: flex;
+  flex: 1 1 0%;
+  flex-flow: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.nameText {
+  line-height: 1.25;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(38, 38, 38);
+}
+
+.venueText {
+  line-height: 1.25;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(38, 38, 38, 0.65);
+}
+
+.buttonContainer {
+  padding-top: 16px;
+  padding-right: 16px;
+  flex-shrink: 0;
+  display: flex;
+  flex-flow: column;
+}
+
+.button {
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 600;
+  line-height: 36px;
+  margin-bottom: 4px;
+  max-height: 36px;
+  min-width: 106px;
+  display: block;
+  width: 100%;
+  padding: 0px 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  background-color: rgb(2, 108, 223);
+  border: 1px solid transparent;
+}

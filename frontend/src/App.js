@@ -5,8 +5,8 @@ import ProtectedRoute from './components/Auth/ProtectedRoute';
 import Navbar from './components/Navbar/Navbar';
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/SignUp';
-import User from './components/User';
 import Homepage from './components/Homepage/Homepage'
+import EventsIndex from './components/Events/EventsIndex';
 import Profile from './components/Profile/Profile';
 import { authenticate } from './store/session';
 
@@ -29,6 +29,7 @@ function App() {
       <Routes>
         <Route path='/login' exact={true} element={<Login />} />
         <Route path='/signup' exact={true} element={<Signup />} />
+        <Route path='/events' exact={true} element={<EventsIndex />} />
         <Route path='/users/:userId/profile' exact={true} element={<Profile />} />
         <Route path='/' exact={true} element={<Homepage />} />
       </Routes>
