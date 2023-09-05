@@ -3,10 +3,12 @@ import { legacy_createStore as createStore} from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
 import classificationReducer from './classification';
+import eventsReducer from './event';
 
 const rootReducer = combineReducers({
   session,
-  classification: classificationReducer
+  classification: classificationReducer,
+  event: eventsReducer
 });
 
 let enhancer;

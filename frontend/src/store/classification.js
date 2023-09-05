@@ -1,5 +1,5 @@
-const GET_CLASSIFICATION = "event/GET_CLASSIFICATION";
-const GET_CLASSIFICATIONS = "event/GET_CLASSIFICATIONS";
+const GET_CLASSIFICATION = "classification/GET_CLASSIFICATION";
+const GET_CLASSIFICATIONS = "classification/GET_CLASSIFICATIONS";
 
 const _getClassification = classification => ({
   type: GET_CLASSIFICATION,
@@ -12,17 +12,15 @@ const _getClassifications = classifications => ({
 });
 
 export const getClassification = classificationId => async (dispatch) => {
-  try {
     const response = await fetch(`/api/classifications/${classificationId}`);
-    if (!response.ok) throw new Error("An error occurred");
-  
-    const { classification } = await response.json();
+    
+    if (!response.ok) {
+      console.error("An error occurred");
+      throw new Error("An error occurred");
+    }
+    const  classification = await response.json();
     dispatch(_getClassification(classification));
     return classification;
-  } catch (error) {
-    console.error("Error:", error);
-    throw error;
-  }
 };
 
 export const getClassifications = () => async (dispatch) => {
@@ -32,8 +30,7 @@ export const getClassifications = () => async (dispatch) => {
     console.error("An error occurred");
     throw new Error("An error occurred");
   }
-  const data = await response.json();
-  const classifications = data;
+  const classifications = await response.json();
   dispatch(_getClassifications(classifications));
   return classifications;
 };
