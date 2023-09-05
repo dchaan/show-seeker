@@ -4,7 +4,7 @@
 
 .subHeader {
   padding-top: 120px;
-  padding-left: 24px;
+  padding-left: 60px;
   padding-right: 24px;
   margin: 0px auto;
   width: 100%;
@@ -98,6 +98,34 @@
 .allConcertsText {
   font-size: 20px;
   font-weight: 600;
+}
+
+.filterContainer {
+  flex-wrap: wrap;
+  -webkit-box-pack: start;
+  justify-content: flex-end;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.filterBox {
+  border: none;
+  text-align: right;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+  height: 100%;
+  white-space: nowrap;
+  width: 85%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0px 14px;
+  font-size: 16px;
+  padding: 12px;
+}
+
+.filterBox:hover {
+  cursor: pointer;
+  border: 2px solid rgb(2, 108, 223);
 }
 
 .eventsInfoContainer {

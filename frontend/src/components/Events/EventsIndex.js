@@ -10,10 +10,42 @@ const EventsIndex = () => {
   const dispatch = useDispatch();
   const [displayedEvents, setDisplayedEvents] = useState(10);
   const batchSize = 10;
+  const [sortOption, setSortOption] = useState("date");
 
   useEffect(() => {
     dispatch(getEvents());
   }, [dispatch]);
+
+  const sortEvents = () => {
+    const sortedEvents = [...events];
+
+    if (sortOption === "date") {
+      sortedEvents.sort((a, b) => {
+        const dateA = new Date(a.start_time);
+        const dateB = new Date(b.start_time);
+
+        if (isNaN(dateA) && !isNaN(dateB)) {
+          return 1;
+        } else if (!isNaN(dateA) && isNaN(dateB)) {
+          return -1;
+        } else if (isNaN(dateA) && isNaN(dateB)) {
+          return 0; 
+        }
+        return dateA - dateB;
+      });
+    } else if (sortOption === "nameAZ") {
+      sortedEvents.sort((a, b) => {
+        return a.name.localeCompare(b.name);
+      });
+    } else if (sortOption === "nameZA") {
+      sortedEvents.sort((a, b) => {
+        return b.name.localeCompare(a.name);
+      });
+    }
+    return sortedEvents;
+  };
+
+  const sortedEvents = sortEvents();
 
   return (
     <div className={styles.mainContainer}>
@@ -40,7 +72,16 @@ const EventsIndex = () => {
         <div className={styles.eventsTitleContainer}>
           <div className={styles.allConcertsText}>All Concert Events ({events.length})</div>
         </div>
-        {events.slice(0, displayedEvents).map(event => (
+        <div className={styles.filterContainer}>
+          <div className={styles.filterSubContainer}>
+            <select className={styles.filterBox} value={sortOption} onChange={e => setSortOption(e.target.value)}>
+              <option value="date">Sort By Date</option>
+              <option value="nameAZ">Sort By Name A-Z</option>
+              <option value="nameZA">Sort By Name Z-A</option>
+            </select>
+          </div>
+        </div>
+        {sortedEvents.slice(0, displayedEvents).map(event => (
           <EventCard event={event} />
         ))}
       </div>
