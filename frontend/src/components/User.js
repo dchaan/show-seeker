@@ -22,11 +22,12 @@ function User() {
 
   return (
     <ul>
+      {console.log(userId)}
       <li>
         <strong>User Id</strong> {userId}
       </li>
       <li>
-        <strong>Username</strong> {user.username}
+        <strong>Username</strong> {user.first_name}
       </li>
       <li>
         <strong>Email</strong> {user.email}

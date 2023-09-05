@@ -2,9 +2,11 @@ import { combineReducers, applyMiddleware, compose } from 'redux';
 import { legacy_createStore as createStore} from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
+import classificationReducer from './classification';
 
 const rootReducer = combineReducers({
   session,
+  classification: classificationReducer
 });
 
 let enhancer;

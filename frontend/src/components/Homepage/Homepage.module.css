@@ -1,0 +1,134 @@
+.indexContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 0px;
+}
+
+.subHeaderContainer {
+  position: relative;
+  padding: 24px;
+  padding-top: 60px;
+  margin: 0px auto;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgb(2, 108, 223);
+}
+
+.subHeaderSubContainer {
+  margin-left: -12px;
+  margin-right: -12px;
+  display: flex;
+  flex-flow: wrap;
+  box-sizing: border-box;
+}
+
+.subHeaderContentContainer {
+  padding-right: 12px;
+  padding-left: 12px;
+  max-width: 100%;
+  display: block;
+  flex: 0 0 100%;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255)
+}
+
+.subHeaderTextContainer {
+  margin-bottom: 24px;
+  margin-top: 24px;
+  padding-bottom: 0px;
+  text-align: center;
+  margin: 16px auto;
+}
+
+.subHeaderTitle {
+  text-align: center;
+  font-size: 32px;
+  display: inline;
+}
+
+.subHeaderSubText {
+  text-align: center;
+  font-size: 20px;
+}
+
+.searchContainer {
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  margin: 0px auto;
+  max-width: 1040px;
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 2px 0px;
+  height: 50px;
+}
+
+.searchBar {
+  height: 100%;
+  position: relative;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 0px;
+}
+
+.searchIconContainer {
+  height: 100%;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 0px;
+  background: transparent;
+}
+
+.searchIcon {
+  width: 24px;
+  height: 24px;
+  margin: 0px 16px;
+}
+
+.searchInput {
+  border: 0px;
+  height: 100%;
+  width: 100%;
+  min-width: auto;
+  background-color: transparent;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  max-width: 100%;
+  min-width: 320px;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  color: rgb(38, 38, 38);
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
+.searchButtonContainer {
+  margin: 4px;
+  padding: 0px;
+  border: 0px;
+}
+
+.searchButton {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 2.63;
+  width: 100%;
+  padding: 0px 14px;
+  min-width: 60px;
+  text-align: center;
+  border-radius: 2px;
+  cursor: pointer;
+  background-color: rgb(2, 108, 223);
+  border: 1px solid transparent;
+  transition: background-color 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s;
+}
