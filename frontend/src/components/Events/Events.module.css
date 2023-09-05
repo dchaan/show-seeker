@@ -1,3 +1,101 @@
+.subHeader {
+  padding-top: 120px;
+  padding-left: 24px;
+  padding-right: 24px;
+  margin: 0px auto;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: rgb(2, 108, 223);
+  color: rgb(255, 255, 255);
+}
+
+.subHeaderContainer {
+  padding-right: 12px;
+  padding-left: 12px;
+  max-width: 100%;
+  display: block;
+  flex: 0 0 100%;
+  box-sizing: border-box;
+}
+
+.homeContainer {
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.homeTextContainer {
+  display: flex;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  font-weight: 600;
+}
+
+.homeLink {
+  padding-right: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.slash {
+  font-size: 24px;
+  font-weight: 300;
+  margin-top: -12px;
+}
+
+.subTitle {
+  min-width: 0px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.subHeaderTitle {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  width: 100%;
+}
+
+.subHeaderTitleText {
+  font-size: 32px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-bottom: 8px;
+  line-height: 1.25;
+  color: rgb(255, 255, 255);
+  font-weight: 400;
+}
+
+.ticketsText {
+  font-weight: 300;
+}
+
+.eventsContainer {
+  padding-left: 24px;
+  padding-right: 24px;
+  padding-top: 32px;
+  margin: 0px auto;
+  max-width: 1296px;
+  width: 100%;
+}
+
+.eventsTitleContainer {
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  -webkit-box-align: baseline;
+  align-items: baseline;
+  padding-top: 0px;
+  padding-bottom: 24px;
+}
+
+.allConcertsText {
+  font-size: 20px;
+  font-weight: 600;
+}
+
 .eventsInfoContainer {
   display: flex;
   flex: 1 1 0%;
@@ -139,4 +237,41 @@
   color: rgb(255, 255, 255);
   background-color: rgb(2, 108, 223);
   border: 1px solid transparent;
+}
+
+.loadMoreContainer {
+  padding-top: 24px;
+  padding-bottom: 0px;
+  width: 100%;
+}
+
+.loadMoreSubContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.loadMoreButton {
+  max-width: 200px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 2.43;
+  width: 100%;
+  padding: 0px 12px;
+  min-width: 60px;
+  text-align: center;
+  border-radius: 2px;
+  cursor: pointer;
+  color: rgb(2, 108, 223);
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(2, 108, 223);
+}
+
+.loadMoreButton:hover {
+  background-color: rgb(211, 227, 246)
 }
