@@ -1,0 +1,196 @@
+.profileContainer {
+  margin: 0px auto 24px;
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 60px;
+  box-sizing: border-box;
+  flex: 1 0 auto;
+  max-width: 1296px;
+  height: 100%;
+}
+
+.titleContainer {
+  display: flex;
+  flex: 0 1 auto;
+  flex-flow: wrap;
+  box-sizing: border-box;
+  margin-left: -8px;
+  margin-right: -8px;
+  box-sizing: border-box;
+  padding-right: 8px;
+  padding-left: 8px;
+  max-width: 100%;
+  flex: 0 0 100%;
+}
+
+.titleTextContainer {
+  padding-top: 32px;
+  padding-bottom: 16px;
+  width: 100%;
+}
+
+.titleText {
+  font-size: 46px;
+  font-weight: 700;
+}
+
+.contentContainer {
+  flex-direction: row-reverse;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  max-width: 1440px;
+  display: flex;
+}
+
+.mainContainer {
+  position: relative;
+  display: block;
+  flex: 1 0 0%;
+  margin-left: 100px;
+  min-width: 374px;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: inherit;
+}
+
+.myInfo {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.userInfoContainer {
+  padding-bottom: 32px;
+  display: block;
+}
+
+.subTitleText {
+  margin-top: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.subInfoText {
+  font-size: 16px;
+}
+
+.sideContainer {
+  min-width: 300px;
+  max-width: 400px;
+  display: block;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: inherit;
+}
+
+.sideUserContainer {
+  margin: 0px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 4px 0px, rgba(0, 0, 0, 0.12) 0px 0px 4px 0px;
+  padding: 0px;
+}
+
+.sideNameContainer {
+  padding-top: 32px;
+  padding-bottom: 24px;
+  display: block;
+  padding: 16px 24px;
+  text-align: center;
+  -webkit-box-pack: justify;
+  border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+.sideNameText {
+  text-align: center;
+}
+
+.sideName {
+  font-size: 32px;
+  font-weight: 700;
+  display: block;
+  overflow-wrap: break-word;
+}
+
+.fanTextContainer {
+  padding-top: 8px;
+  padding-bottom: 0px;
+  text-align: center;
+}
+
+.fanText {
+  color: rgb(150, 45, 148);
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.sideInfoContainer {
+  display: block;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding: 16px 24px;
+}
+
+.sideInfoTitle {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(38, 38, 38, 0.65);
+}
+
+.sideInfoText {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.sideLinksContainer {
+  margin: 0px;
+  margin-bottom: 20px;
+  border-color: initial;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 4px 4px 0px, rgba(0, 0, 0, 0.12) 0px 0px 4px 0px;
+  border: none;
+  padding: 0px;
+}
+
+.sideListContainer {
+  padding: 0px;
+  margin: 0px;
+}
+
+.sideListItem {
+  list-style-image: initial;
+  border-bottom-color: rgb(81, 87, 90);
+  list-style: none;
+  padding: 16px;
+  padding-left: 32px;
+  border-bottom: 1px solid rgb(235, 235, 235);
+}
+
+.sideListLink {
+  color: rgb(2, 108, 223);
+  text-align: right;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+
+
+

@@ -7,6 +7,7 @@ import Login from './components/Auth/Login';
 import Signup from './components/Auth/SignUp';
 import User from './components/User';
 import Homepage from './components/Homepage/Homepage'
+import Profile from './components/Profile/Profile';
 import { authenticate } from './store/session';
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
       <Routes>
         <Route path='/login' exact={true} element={<Login />} />
         <Route path='/signup' exact={true} element={<Signup />} />
-        <Route path='/users/:userId' exact={true} element={<User />} />
+        <Route path='/users/:userId/profile' exact={true} element={<Profile />} />
         <Route path='/' exact={true} element={<Homepage />} />
       </Routes>
     </BrowserRouter>

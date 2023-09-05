@@ -108,18 +108,6 @@ const Navbar = () => {
         </div>
         <div className={styles.headerRightContainer}>
           <div className={styles.headerUser}>
-            {/* {user ? ( // Show logout button if user is logged in
-              <button className={styles.logoutButton} onClick={handleLogout}>Logout</button>
-            ) : (
-              <>
-                <span className={styles.headerLinkSpan}>
-                  <Link className={styles.headerLink} href="/login">Sign In</Link>
-                </span>
-              </>
-            )} */}
-            {/* <span className={styles.headerLinkSpan}>
-              <NavLink className={styles.headerLink} to="/login">Sign In</NavLink>
-            </span> */}
             {myAccount()}
             <span className={styles.headerLinkSpan}>
               <a className={styles.headerLink} target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/david-chan-4b1929185/">LinkedIn</a>
