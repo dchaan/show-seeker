@@ -16,7 +16,7 @@ const EventsIndex = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={styles.mainContainer}>
       <div className={styles.subHeader}>
         <div className={styles.subHeaderContainer}>
           <div className={styles.homeContainer}>

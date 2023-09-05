@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import ProtectedRoute from './components/Auth/ProtectedRoute';
 import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/SignUp';
 import Homepage from './components/Homepage/Homepage'
@@ -33,6 +34,7 @@ function App() {
         <Route path='/users/:userId/profile' exact={true} element={<Profile />} />
         <Route path='/' exact={true} element={<Homepage />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 };

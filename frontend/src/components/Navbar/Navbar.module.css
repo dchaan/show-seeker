@@ -9,7 +9,7 @@
   font-weight: 600;
   z-index: 3;
   overflow: visible;
-  position: absolute;
+  position: fixed;
 }
 
 .headerSubContainer {
