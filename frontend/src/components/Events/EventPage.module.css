@@ -1,0 +1,77 @@
+.eventHeaderContainer {
+  background-color: #0256b2;
+  position: relative;
+  overflow: hidden;
+  padding: 80px 30px 20px 30px;
+}
+
+.eventHeaderContentContainer {
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  width: 100%;
+}
+
+.eventImageContainer {
+  padding-left: 0;
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: 7rem;
+  overflow: hidden;
+}
+
+.eventImage {
+  height: 7rem;
+  max-width: 100%;
+}
+
+.eventInfoContainer {
+  padding-left: 15px;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  overflow: hidden;
+  white-space: nowrap;
+  flex: 1 1 100%;
+}
+
+.eventName {  
+  font-size: 1.2rem;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  margin-bottom: 10px;
+  overflow: hidden;
+  font-weight: normal;
+  padding-bottom: 12px;
+}
+
+.eventDate, .eventVenue {
+  font-size: 1rem;
+}
+
+.importantInfoContainer {
+  -webkit-box-flex: 0;
+  flex: 0 0 350px;
+}
+
+.importantInfo {
+  background-color: rgba(36, 39, 41, 0.2);
+  display: block;
+  max-width: 350px;
+  padding: 10px 20px;
+  white-space: normal;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.importantInfoText {
+  display: inline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 0 1em;
+}

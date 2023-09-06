@@ -13,7 +13,6 @@ const _getEvents = events => ({
 
 export const getEvent = eventId => async (dispatch) => {
   const response = await fetch(`/api/events/${eventId}`);
-  
   if (!response.ok) {
     console.log("An error occurred");
     throw new Error("An error occurred");
