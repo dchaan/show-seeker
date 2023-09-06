@@ -3,7 +3,7 @@ import requests
 TICKETMASTER_API_KEY = 'Ozt84Egp8jUR5jrMtj8Uo5S9FnN37ATE'
 BASE_URL = 'https://app.ticketmaster.com/discovery/v2/'
 
-def get_events_from_api(query=None, total_to_fetch=100, per_page=20):
+def get_events_from_api(query=None, total_to_fetch=20, per_page=20):
   endpoint = f'{BASE_URL}events.json'
   params = {
     'apikey': TICKETMASTER_API_KEY,
@@ -49,7 +49,7 @@ def get_events_by_venue_id_from_api(venue_id):
   events = data.get('_embedded', {}).get('events', [])
   return events
 
-def get_artists_from_api(query=None, total_to_fetch=100, per_page=20):
+def get_artists_from_api(query=None, total_to_fetch=20, per_page=20):
   endpoint = f'{BASE_URL}attractions.json'
   params = {
     'apikey': TICKETMASTER_API_KEY,
@@ -134,7 +134,7 @@ def get_genre_by_id_from_classifications(genre_id, classifications):
       
   return None
 
-def get_venues_from_api(query=None, total_to_fetch=100, per_page=20):
+def get_venues_from_api(query=None, total_to_fetch=20, per_page=20):
   endpoint = f'{BASE_URL}venues.json'
   params = {
     'apikey': TICKETMASTER_API_KEY,

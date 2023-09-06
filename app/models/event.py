@@ -18,10 +18,11 @@ class Event(db.Model):
   url = db.Column(db.String(255))
   images = db.Column(db.Text)
   
-  artist = db.relationship('Artist', backref='event_artist')
-  classification = db.relationship('Classification', backref='event_classification')
-  genre = db.relationship('Genre', backref='event_genre')
-  venue = db.relationship('Venue', backref='event_venue')
+  artist = db.relationship('Artist', back_populates='events')
+  classification = db.relationship('Classification', back_populates='events')
+  genre = db.relationship('Genre', back_populates='events')
+  venue = db.relationship('Venue', back_populates='events')
+  purchases = db.relationship('Purchase', back_populates='event')
 
   def to_dict(self):
     images = self.images.strip('{}').split(',') if self.images else []
@@ -29,10 +30,10 @@ class Event(db.Model):
     return {
       'id': self.id,
       'name': self.name,
-      'classification': self.classification,
-      'genre': self.genre,
-      'artist': self.artist,
-      'venue': self.venue,
+      'classification': self.classification.to_dict() if self.classification else {},
+      'genre': self.genre.to_dict() if self.genre else {},
+      'artist': self.artist.to_dict() if self.artist else {},
+      'venue': self.venue.to_dict() if self.venue else {},
       'start_time': self.start_time,
       'promoter': self.promoter,
       'price_range': self.price_range,
@@ -40,7 +41,8 @@ class Event(db.Model):
       'accessibility': self.accessibility,
       'ticket_limit': self.ticket_limit,
       'url': self.url,
-      'images': images
+      'images': images,
+      'purchases': [purchase.to_dict() for purchase in self.purchases] if self.purchases else []
     }
 
 

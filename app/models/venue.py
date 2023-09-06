@@ -10,7 +10,7 @@ class Venue(db.Model):
   general_info = db.Column(db.Text)
   images = db.Column(db.Text)
   
-  events = db.relationship('Event', backref='venue_events', lazy=True)
+  events = db.relationship('Event', back_populates='venue')
 
   def to_dict(self):
     images = self.images.strip('{}').split(',') if self.images else []
@@ -22,5 +22,5 @@ class Venue(db.Model):
       'box_office_info': self.box_office_info,
       'general_info': self.general_info,
       'images': images,
-      'events': [event.to_obj() for event in self.events] if self.events else []
+      'events': [event.to_dict() for event in self.events] if self.events else []
     }
