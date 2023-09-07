@@ -1,8 +1,8 @@
 import json
-from app.models.artist import Artist
-from app.models.classification import Classification
-from app.models.genre import Genre
-from app.models.venue import Venue
+from models.artist import Artist
+from models.classification import Classification
+from models.genre import Genre
+from models.venue import Venue
 
 def format_event(event):
   attractions = event['_embedded'].get('attractions', [])

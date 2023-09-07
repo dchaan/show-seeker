@@ -4,53 +4,56 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
-from app.config import Config
+from config import Config
 
-from app.models import db, User
-from app.api import api
+from models import db, User
+from api import api
 
-app = Flask(__name__)
+def create_app():
+  app = Flask(__name__)
 
-login = LoginManager(app)
-login.login_view = 'auth.unauthorized'
+  login = LoginManager(app)
+  login.login_view = 'auth.unauthorized'
 
-@login.user_loader
-def load_user(id):
-  return User.query.get(int(id))
+  @login.user_loader
+  def load_user(id):
+    return User.query.get(int(id))
 
-app.config.from_object(Config)
+  app.config.from_object(Config)
 
-app.register_blueprint(api, url_prefix='/api')
+  app.register_blueprint(api, url_prefix='/api')
 
-db.init_app(app)
-Migrate(app, db)
+  db.init_app(app)
+  Migrate(app, db)
 
-CORS(app)
+  CORS(app)
 
-@app.before_request
-def https_redirect():
-  if os.environ.get('FLASK_ENV') == 'production':
-    if request.headers.get('X-Forwarded-Proto') == 'http':
-      url = request.url.replace('http://', 'https://', 1)
-      code = 301
-      return redirect(url, code=code)
+  @app.before_request
+  def https_redirect():
+    if os.environ.get('FLASK_ENV') == 'production':
+      if request.headers.get('X-Forwarded-Proto') == 'http':
+        url = request.url.replace('http://', 'https://', 1)
+        code = 301
+        return redirect(url, code=code)
 
-# comment out to test in postman
-@app.after_request
-def inject_csrf_token(response):
-  response.set_cookie(
-    'csrf_token',
-    generate_csrf(),
-    secure=True if os.environ.get('FLASK_ENV') == 'production' else False,
-    samesite='Strict' if os.environ.get(
-        'FLASK_ENV') == 'production' else None,
-    httponly=True)
-  return response
+  # comment out to test in postman
+  @app.after_request
+  def inject_csrf_token(response):
+    response.set_cookie(
+      'csrf_token',
+      generate_csrf(),
+      secure=True if os.environ.get('FLASK_ENV') == 'production' else False,
+      samesite='Strict' if os.environ.get(
+          'FLASK_ENV') == 'production' else None,
+      httponly=True)
+    return response
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def react_root(path):
-  if path == 'favicon.ico':
-    return app.send_static_file('favicon.ico')
-  return app.send_static_file('index.html')
+  @app.route('/', defaults={'path': ''})
+  @app.route('/<path:path>')
+  def react_root(path):
+    if path == 'favicon.ico':
+      return app.send_static_file('favicon.ico')
+    return app.send_static_file('index.html')
+  
+  return app
 

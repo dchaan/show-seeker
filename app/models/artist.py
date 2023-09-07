@@ -8,9 +8,9 @@ class Artist(db.Model):
   api_id = db.Column(db.String(255), nullable=False)
   name = db.Column(db.String(255), nullable=False)
   genre_id = db.Column(db.Integer, db.ForeignKey('genres.id'))
-  genre_api_id = db.Column(db.String(255), nullable=False)
+  genre_api_id = db.Column(db.String(255))
   classification_id = db.Column(db.Integer, db.ForeignKey('classifications.id'))
-  classification_api_id= db.Column(db.String(255), nullable=False)
+  classification_api_id= db.Column(db.String(255))
   external_links = db.Column(db.Text)
   images = db.Column(db.Text)
 

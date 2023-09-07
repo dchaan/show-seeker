@@ -8,7 +8,7 @@ class Purchase(db.Model):
   event_id = db.Column(db.Integer, db.ForeignKey('events.id'), nullable=False)
   purchase_date = db.Column(db.DateTime, nullable=False)
 
-  user = db.relationship('User', back_populates='purchaseds')
+  user = db.relationship('User', back_populates='purchases')
   event = db.relationship('Event', back_populates='purchases')
 
   def to_dict(self):

@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
-from app.models import Genre
-from app.ticketmaster_api import (
+from models import Genre
+from ticketmaster_api import (
   get_genres_from_classifications, 
   get_classifications_from_api, 
   get_genre_by_id_from_classifications

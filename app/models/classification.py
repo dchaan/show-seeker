@@ -7,9 +7,9 @@ class Classification(db.Model):
   api_id = db.Column(db.String(255), nullable=False)
   name = db.Column(db.String, nullable=False)
 
-  artists = db.relationship('Classification', back_populates='classification')
+  artists = db.relationship('Artist', back_populates='classification')
   events = db.relationship('Event', back_populates='classification')
-  genres = db.relationship('Genre', back_populates='clasification')
+  genres = db.relationship('Genre', back_populates='classification')
 
   def to_dict(self):
     return {
