@@ -5,12 +5,14 @@ import session from './session'
 import classificationReducer from './classification';
 import genresReducer from './genre';
 import eventsReducer from './event';
+import artistsReducer from './artist';
 
 const rootReducer = combineReducers({
   session,
+  events: eventsReducer,
+  artists: artistsReducer,
   classifications: classificationReducer,
   genres: genresReducer,
-  events: eventsReducer,
 });
 
 let enhancer;

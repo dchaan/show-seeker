@@ -7,6 +7,7 @@ import { getGenres } from "../../store/genre";
 const GenresIndex = () => {
   let genres = useSelector(state => state.genres.genres);
   genres = Object.values(genres);
+
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -14,7 +15,7 @@ const GenresIndex = () => {
     dispatch(getGenres()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  if (!isLoaded) return <div>Loading...</div>
+  if (!isLoaded) return <div>Loading...</div>;
 
   return (
     <div className={styles.genresIndexContainer}>

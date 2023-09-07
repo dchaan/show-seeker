@@ -1,10 +1,5 @@
 from flask import Blueprint, jsonify, request
 from app.models import Classification
-from app.ticketmaster_api import (
-  get_classifications_from_api, 
-  get_classifications_by_id_from_api, 
-  format_classification
-)
 
 classification_routes = Blueprint('classifications', __name__)
 

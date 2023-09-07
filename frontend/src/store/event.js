@@ -13,21 +13,25 @@ const _getEvents = events => ({
 
 export const getEvent = eventId => async (dispatch) => {
   const response = await fetch(`/api/events/${eventId}`);
+
   if (!response.ok) {
     console.log("An error occurred");
     throw new Error("An error occurred");
   };
-  const event =  await response.json();
+
+  const event = await response.json();
   dispatch(_getEvent(event));
   return event;
 };
 
 export const getEvents = (query = null) => async (dispatch) => {
   const response = await fetch(`/api/events${query ? "?query=" + query : ""}`);
+
   if (!response.ok) {
     console.log("An error occurred");
     throw new Error("An error occurred");
   }
+  
   const events = await response.json();
   dispatch(_getEvents(events));
   return events

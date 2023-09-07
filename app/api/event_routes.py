@@ -1,10 +1,6 @@
 from flask import Blueprint, jsonify, request
-from app.ticketmaster_api import (
-  get_events_from_api,
-  get_event_by_id_from_api,
-  format_event
-)
 from app.models import Event
+
 event_routes = Blueprint('events', __name__)
 
 @event_routes.route('/', methods=['GET'])
