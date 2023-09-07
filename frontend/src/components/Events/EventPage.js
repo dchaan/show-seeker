@@ -1,17 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getEvent } from "../../store/event";
 import styles from "./EventPage.module.css";
 
 const EventPage = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { eventId } = useParams();
-  const event = useSelector((state) => ( state.event.events[eventId] ));
+  const event = useSelector((state) => ( state.events.event ));
+  const [isLoaded, setIsLoaded] = useState(false);
   
   useEffect(() => {
-    dispatch(getEvent(eventId));
-  }, [dispatch, eventId]);
+    dispatch(getEvent(eventId)).then(res => {
+      res.errors ? navigate('/') : setIsLoaded(true);
+    });
+  }, [dispatch, eventId, navigate]);
+
+  if (!isLoaded) return <div>Loading...</div>
 
   const image = event['images'].find(image => image.includes('EVENT_DETAIL_PAGE'));
   const date = new Date(event.start_time);
@@ -26,7 +32,6 @@ const EventPage = () => {
 
   return (
     <div className={styles.eventHeaderContainer}>
-      {console.log(event)}
       <div className={styles.eventHeaderContentContainer}>
         <div className={styles.eventImageContainer}>
           <img className={styles.eventImage} src={image} alt="" />

@@ -7,8 +7,8 @@ import eventsReducer from './event';
 
 const rootReducer = combineReducers({
   session,
-  classification: classificationReducer,
-  event: eventsReducer,
+  classifications: classificationReducer,
+  events: eventsReducer,
   
 });
 

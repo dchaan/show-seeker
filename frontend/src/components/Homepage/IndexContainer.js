@@ -1,12 +1,14 @@
 import styles from "./IndexContainer.module.css"
 
 const IndexContainer = ({ items }) => {
+  const entries = Object.values(items)
+
   return (
     <div>
       <ul>
-        {items.map((item, index) => (
+        {entries.map((entry, index) => (
           <li key={index}>
-            {item.id} - {item.name}
+            {entry.id} - {entry.name}
           </li>
         ))}
       </ul>

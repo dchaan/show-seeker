@@ -7,8 +7,8 @@ import { getClassifications } from "../../store/classification";
 import { getEvents } from "../../store/event";
 
 const Homepage = () => {
-  const classifications = useSelector(state => state.classification.classifications);
-  const events = useSelector(state => state.event.events);
+  const classifications = useSelector(state => state.classifications.classifications);
+  const events = useSelector(state => state.events.events);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,7 +18,7 @@ const Homepage = () => {
 
   return (
     <div className={styles.indexContainer}>
-      {/* {console.log(events)} */}
+      {/* {console.log(Object.fromEntries(Object.entries(events).slice(0, 6)))} */}
       <div className={styles.subHeaderContainer}>
         <div className={styles.subHeaderSubContainer}>
           <div className={styles.subHeaderContentContainer}>
@@ -51,7 +51,7 @@ const Homepage = () => {
       <h1>Top Selling</h1>
       <div>
         <h2>Concerts</h2>
-        <IndexContainer items={events.slice(0,6)} />
+        <IndexContainer items={Object.fromEntries(Object.entries(events).slice(0, 6))} />
       </div>
       <h2>Sports</h2>
       <h2>Arts & Theater</h2>
