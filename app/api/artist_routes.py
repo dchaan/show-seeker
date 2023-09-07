@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request
-from models import Artist
-from ticketmaster_api import (
+from app.models import Artist
+from app.ticketmaster_api import (
   get_artists_from_api, 
   get_artist_by_id_from_api,
   format_artist
