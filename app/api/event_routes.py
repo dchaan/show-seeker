@@ -16,7 +16,7 @@ def get_events():
   else:
     events = Event.query.all()
 
-  formatted_events = [event.to_dict() for event in events]
+  formatted_events = {event.id: event.to_dict() for event in events}
   return jsonify(formatted_events)
 
 @event_routes.route('/<event_id>', methods=['GET'])

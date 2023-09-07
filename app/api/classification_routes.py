@@ -17,7 +17,7 @@ def get_classifications():
   else:
     classifications = Classification.query.all()
 
-  formatted_classifications = [classification.to_dict() for classification in classifications]
+  formatted_classifications = {classification.id: classification.to_dict() for classification in classifications}
   return jsonify(formatted_classifications)
 
 @classification_routes.route('/<classification_id>', methods=['GET'])

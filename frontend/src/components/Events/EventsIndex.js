@@ -6,7 +6,8 @@ import { getEvents } from "../../store/event";
 import EventCard from "./EventCard";
 
 const EventsIndex = () => {
-  const events = useSelector(state => state.event.events);
+  const eventsObj = useSelector(state => state.event.events);
+  const events = Object.values(eventsObj)
   const dispatch = useDispatch();
   const [displayedEvents, setDisplayedEvents] = useState(10);
   const batchSize = 10;

@@ -7,7 +7,7 @@ import styles from "./EventPage.module.css";
 const EventPage = () => {
   const dispatch = useDispatch();
   const { eventId } = useParams();
-  const event = useSelector((state) => state.event.event);
+  const event = useSelector((state) => ( state.event.events[eventId] ));
   
   useEffect(() => {
     dispatch(getEvent(eventId));

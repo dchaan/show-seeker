@@ -33,10 +33,7 @@ export const getEvents = (query = null) => async (dispatch) => {
   return events
 };
 
-const initialState = {
-  event: null,
-  events: []
-}
+const initialState = { events: {} };
 
 const eventsReducer = (state = initialState, action) => {
   switch(action.type) {
