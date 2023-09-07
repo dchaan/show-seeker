@@ -8,6 +8,11 @@ const EventPage = () => {
   const dispatch = useDispatch();
   const { eventId } = useParams();
   const event = useSelector((state) => state.event.event);
+  
+  useEffect(() => {
+    dispatch(getEvent(eventId));
+  }, [dispatch, eventId]);
+
   const image = event['images'].find(image => image.includes('EVENT_DETAIL_PAGE'));
   const date = new Date(event.start_time);
   const formattedDate = date.toLocaleDateString('en-US', {
@@ -18,10 +23,6 @@ const EventPage = () => {
     minute: '2-digit',
     timeZoneName: 'short'
   });
-
-  useEffect(() => {
-    dispatch(getEvent(eventId));
-  }, [dispatch, eventId]);
 
   return (
     <div className={styles.eventHeaderContainer}>

@@ -41,6 +41,7 @@ const EventCard = ({ event }) => {
           </div>
         </div>
         <div className={styles.buttonContainer}>
+          {console.log(event)}
           <NavLink to={`/events/${event.id}`}>
             <button className={styles.button}>See Tickets</button>
           </NavLink>
