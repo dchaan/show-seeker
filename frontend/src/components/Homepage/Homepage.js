@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./Homepage.module.css";
 import searchIcon from "../../assets/search-icon.png";
 import IndexContainer from "./IndexContainer";
@@ -10,15 +11,17 @@ const Homepage = () => {
   const classifications = useSelector(state => state.classifications.classifications);
   const events = useSelector(state => state.events.events);
   const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     dispatch(getClassifications());
-    dispatch(getEvents());
-}, [dispatch]);
+    dispatch(getEvents()).then(() => setIsLoaded(true));
+  }, [dispatch]);
+
+  if (!isLoaded) return <div>Loading...</div>
 
   return (
     <div className={styles.indexContainer}>
-      {/* {console.log(Object.fromEntries(Object.entries(events).slice(0, 6)))} */}
       <div className={styles.subHeaderContainer}>
         <div className={styles.subHeaderSubContainer}>
           <div className={styles.subHeaderContentContainer}>

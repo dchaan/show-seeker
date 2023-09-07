@@ -17,8 +17,9 @@ export const getClassification = classificationId => async (dispatch) => {
     if (!response.ok) {
       console.error("An error occurred");
       throw new Error("An error occurred");
-    }
-    const  classification = await response.json();
+    };
+    
+    const classification = await response.json();
     dispatch(_getClassification(classification));
     return classification;
 };
@@ -29,32 +30,28 @@ export const getClassifications = () => async (dispatch) => {
   if (!response.ok) {
     console.error("An error occurred");
     throw new Error("An error occurred");
-  }
+  };
+
   const classifications = await response.json();
   dispatch(_getClassifications(classifications));
   return classifications;
 };
 
-const initialState = {
-  classification: null,
-  classifications: [],
-};
-
-const classificationReducer = (state = initialState, action) => {
+const classificationReducer = (state = { classification: {}, classifications: {} }, action) => {
   switch (action.type) {
     case GET_CLASSIFICATION:
       return {
         ...state,
-        classification: action.classification,
+        classification: action.classification
       };
     case GET_CLASSIFICATIONS:
       return {
         ...state,
-        classifications: action.classifications,
+        classifications: action.classifications
       };
     default:
       return state;
-  }
+  };
 };
 
 export default classificationReducer;

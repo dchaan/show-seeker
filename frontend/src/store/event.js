@@ -9,14 +9,14 @@ const _getEvent = event => ({
 const _getEvents = events => ({
   type: GET_EVENTS,
   events
-})
+});
 
 export const getEvent = eventId => async (dispatch) => {
   const response = await fetch(`/api/events/${eventId}`);
   if (!response.ok) {
     console.log("An error occurred");
     throw new Error("An error occurred");
-  }
+  };
   const event =  await response.json();
   dispatch(_getEvent(event));
   return event;

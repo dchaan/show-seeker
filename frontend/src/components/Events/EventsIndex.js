@@ -6,8 +6,8 @@ import { getEvents } from "../../store/event";
 import EventCard from "./EventCard";
 
 const EventsIndex = () => {
-  const eventsObj = useSelector(state => state.events.events);
-  const events = Object.values(eventsObj)
+  let events = useSelector(state => state.events.events);
+  events = Object.values(events);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -15,14 +15,12 @@ const EventsIndex = () => {
   const batchSize = 10;
   const [sortOption, setSortOption] = useState("date");
 
-
+  console.log(isLoaded)
   useEffect(() => {
-    dispatch(getEvents()).then(res => {
-      res.errors ? navigate('/') : setIsLoaded(true);
-    }); 
-  }, [dispatch, navigate]);
+    dispatch(getEvents()).then(() => setIsLoaded(true));
+  }, [dispatch]);
 
-  if (!isLoaded) return <div>Loading...</div>
+  if (!isLoaded) return <div>Loading...</div>;
 
   const sortEvents = () => {
     const sortedEvents = [...events];
