@@ -4,11 +4,16 @@ class Event(db.Model):
   __tablename__ = 'events'
 
   id = db.Column(db.Integer, primary_key=True)
+  api_id = db.Column(db.String(255), nullable=False)
   name = db.Column(db.String(255), nullable=False)
   classification_id = db.Column(db.Integer, db.ForeignKey('classifications.id'))
+  classification_api_id = db.Column(db.String(255), nullable=False)
   genre_id = db.Column(db.Integer, db.ForeignKey('genres.id'))
+  genre_api_id = db.Column(db.String(255), nullable=False)
   artist_id = db.Column(db.Integer, db.ForeignKey('artists.id'))
+  artist_api_id = db.Column(db.String(255), nullable=False)
   venue_id = db.Column(db.Integer, db.ForeignKey('venues.id'))
+  venue_api_id = db.Column(db.String(255), nullable=False)
   start_time = db.Column(db.DateTime)
   promoter = db.Column(db.String(255))
   price_range = db.Column(db.String(255))
@@ -29,10 +34,15 @@ class Event(db.Model):
 
     return {
       'id': self.id,
+      'api_id': self.api_id,
       'name': self.name,
+      'classification_api_id': self.classification_api_id,
       'classification': self.classification.to_dict() if self.classification else {},
+      'genre_api_id': self.genre_api_id,
       'genre': self.genre.to_dict() if self.genre else {},
+      'artist_api_id': self.artist_api_id,
       'artist': self.artist.to_dict() if self.artist else {},
+      'venue_api_id': self.venue_api_id,
       'venue': self.venue.to_dict() if self.venue else {},
       'start_time': self.start_time,
       'promoter': self.promoter,

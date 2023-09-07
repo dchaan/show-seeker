@@ -4,6 +4,7 @@ class Classification(db.Model):
   __tablename__ = 'classifications'
 
   id = db.Column(db.Integer, primary_key=True)
+  api_id = db.Column(db.String(255), nullable=False)
   name = db.Column(db.String, nullable=False)
 
   artists = db.relationship('Classification', back_populates='classification')
@@ -13,6 +14,7 @@ class Classification(db.Model):
   def to_dict(self):
     return {
       'id': self.id,
+      'api_id': self.api_id,
       'name': self.name,
       'artists': [artist.to_dict() for artist in self.artists] if self.artists else [],
       'events': [event.to_dict() for event in self.events] if self.events else [],

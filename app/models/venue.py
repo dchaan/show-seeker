@@ -4,6 +4,7 @@ class Venue(db.Model):
   __tablename__ = 'venues'
 
   id = db.Column(db.Integer, primary_key=True)
+  api_id = db.Column(db.String(255), nullable=False)
   name = db.Column(db.String(255), nullable=False)
   address = db.Column(db.String(255), nullable=False)
   box_office_info = db.Column(db.Text)
@@ -17,10 +18,10 @@ class Venue(db.Model):
 
     return {
       'id': self.id,
+      'api_id': self.api_id,
       'name': self.name,
       'address': self.address,
       'box_office_info': self.box_office_info,
       'general_info': self.general_info,
-      'images': images,
-      'events': [event.to_dict() for event in self.events] if self.events else []
+      'images': images
     }

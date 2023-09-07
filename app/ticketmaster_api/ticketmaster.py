@@ -114,22 +114,27 @@ def get_genres_from_classifications(classifications):
 
   for classification in classifications:
     genres = classification['segment']['_embedded'].get("genres", [])
-    classification_name = (classification['segment'].get("name"))
     
     for genre in genres:
-      genre_name = genre.get("name")
-      if genre_name:
-        genre_objects.append({"name": genre_name, "classification_name": classification_name})
+      name = genre.get("name")
+      api_id = genre.get("id")
+      if name:
+        genre_objects.append({
+          "name": name, 
+          "api_id": api_id,
+          'classification_id': classification['segment']['id']
+        })
 
   return genre_objects
 
 def get_genre_by_id_from_classifications(genre_id, classifications):
   for classification in classifications:
-    for genre in classification["genres"]:
+    for genre in classification["segment"]["_embedded"]["genres"]:
       if genre["id"] == genre_id:
         return {
           "name": genre["name"],
-          "classification_id": classification["id"],
+          "api_id": genre["id"],
+          "classification_id": classification['segment']['id']
         }
       
   return None
