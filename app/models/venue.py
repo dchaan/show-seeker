@@ -18,7 +18,6 @@ class Venue(db.Model):
 
     return {
       'id': self.id,
-      'api_id': self.api_id,
       'name': self.name,
       'address': self.address,
       'box_office_info': self.box_office_info,

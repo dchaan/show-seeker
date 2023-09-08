@@ -14,6 +14,5 @@ class Classification(db.Model):
   def to_dict(self):
     return {
       'id': self.id,
-      'api_id': self.api_id,
       'name': self.name,
     }

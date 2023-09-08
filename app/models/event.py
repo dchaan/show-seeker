@@ -34,12 +34,7 @@ class Event(db.Model):
 
     return {
       'id': self.id,
-      'api_id': self.api_id,
       'name': self.name,
-      'classification_api_id': self.classification_api_id,
-      'genre_api_id': self.genre_api_id,
-      'artist_api_id': self.artist_api_id,
-      'venue_api_id': self.venue_api_id,
       'start_time': self.start_time,
       'promoter': self.promoter,
       'price_range': self.price_range,

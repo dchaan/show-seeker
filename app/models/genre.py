@@ -16,7 +16,5 @@ class Genre(db.Model):
   def to_dict(self):
     return {
       'id': self.id,
-      'api_id': self.api_id,
       'name': self.name,
-      'classification_api_id': self.classification_api_id,
     }

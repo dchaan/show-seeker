@@ -24,10 +24,7 @@ class Artist(db.Model):
 
     return {
       'id': self.id,
-      'api_id': self.api_id,
       'name': self.name,
-      'genre_api_id': self.genre_api_id,
-      'classification_api_id': self.classification_api_id,
       'favorited_by': [user.to_dict() for user in self.favorited_by] if self.favorited_by else [],
       'external_links': self.external_links if self.external_links else [],
       'images': images
