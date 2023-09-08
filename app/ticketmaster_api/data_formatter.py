@@ -40,6 +40,7 @@ def format_event(event):
 def format_artist(artist):
   artist_data = {
     'name': artist['name'],
+    'genre': artist.genre,
     'api_id': artist['id'],
     'genre_api_id': artist['classifications'][0]['genre']['id'],
     'classification_api_id': artist['classifications'][0]['segment']['id'],

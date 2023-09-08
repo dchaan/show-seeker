@@ -19,7 +19,4 @@ class Genre(db.Model):
       'api_id': self.api_id,
       'name': self.name,
       'classification_api_id': self.classification_api_id,
-      'classification': self.classification.to_dict() if self.classification else {},
-      'events': [event.to_dict() for event in self.events] if self.events else [],
-      'artists': [artist.to_dict() for artist in self.artists] if self.artists else []
     }

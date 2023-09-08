@@ -27,10 +27,7 @@ class Artist(db.Model):
       'api_id': self.api_id,
       'name': self.name,
       'genre_api_id': self.genre_api_id,
-      'genre': self.genre.to_dict() if self.genre else {},
       'classification_api_id': self.classification_api_id,
-      'classification': self.classification.to_dict() if self.classification else {},
-      'events': [event.to_dict() for event in self.events] if self.events else [],
       'favorited_by': [user.to_dict() for user in self.favorited_by] if self.favorited_by else [],
       'external_links': self.external_links if self.external_links else [],
       'images': images

@@ -16,7 +16,4 @@ class Classification(db.Model):
       'id': self.id,
       'api_id': self.api_id,
       'name': self.name,
-      'artists': [artist.to_dict() for artist in self.artists] if self.artists else [],
-      'events': [event.to_dict() for event in self.events] if self.events else [],
-      'genres': [genre.to_dict() for genre in self.genres] if self.genres else []
     }
