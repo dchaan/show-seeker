@@ -9,7 +9,8 @@ import Signup from './components/Auth/SignUp';
 import Homepage from './components/Homepage/Homepage'
 import EventsIndex from './components/Events/EventsIndex';
 import EventPage from './components/Events/EventPage';
-import ArtistIndex from './components/Artists/ArtistIndex';
+import ArtistsIndex from './components/Artists/ArtistsIndex';
+import VenuesIndex from './components/Venues/VenuesIndex';
 import Profile from './components/Profile/Profile';
 import GenresIndex from './components/Genres/GenresIndex';
 import { authenticate } from './store/session';
@@ -35,7 +36,8 @@ function App() {
         <Route path='/signup' exact={true} element={<Signup />} />
         <Route path='/events' exact={true} element={<EventsIndex />} />
         <Route path='/events/:eventId' exact={true} element={<EventPage />} />
-        <Route path='/artists' exact={true} element={<ArtistIndex />} />
+        <Route path='/artists' exact={true} element={<ArtistsIndex />} />
+        <Route path='/venues' exact={true} element={<VenuesIndex />} />
         <Route path='/genres' exact={true} element={<GenresIndex />} />
         <Route path='/users/:userId/profile' exact={true} element={<Profile />} />
         <Route path='/' exact={true} element={<Homepage />} />

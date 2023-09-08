@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import styles from "./Artist.module.css";
 import { getArtists } from "../../store/artist";
 
-const ArtistIndex = () => {
+const ArtistsIndex = () => {
   let artists = useSelector(state => state.artists.artists);
   artists = Object.values(artists);
 
@@ -18,10 +18,10 @@ const ArtistIndex = () => {
   if (!isLoaded) return <div>Loading...</div>;
 
   return (
-    <div className={styles.artistIndexContainer}>
+    <div className={styles.artistsIndexContainer}>
       {console.log(artists)}
     </div>
   );
 };
 
-export default ArtistIndex;
+export default ArtistsIndex;

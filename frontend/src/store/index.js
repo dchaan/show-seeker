@@ -6,11 +6,13 @@ import classificationReducer from './classification';
 import genresReducer from './genre';
 import eventsReducer from './event';
 import artistsReducer from './artist';
+import venuesReducer from './venue';
 
 const rootReducer = combineReducers({
   session,
   events: eventsReducer,
   artists: artistsReducer,
+  venues: venuesReducer,
   classifications: classificationReducer,
   genres: genresReducer,
 });
