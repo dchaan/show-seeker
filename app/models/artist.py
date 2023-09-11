@@ -27,5 +27,7 @@ class Artist(db.Model):
       'name': self.name,
       'favorited_by': [user.to_dict() for user in self.favorited_by] if self.favorited_by else [],
       'external_links': self.external_links if self.external_links else [],
-      'images': images
+      'images': images,
+      'classification': self.classification.to_dict() if self.classification else {},
+      'genre': self.genre.to_dict() if self.genre else {}
     }

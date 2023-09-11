@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import styles from "./Events.module.css";
+import styles from "./EventCard.module.css";
 
 const EventCard = ({ event }) => {
 
@@ -48,7 +48,7 @@ const EventCard = ({ event }) => {
           </div>
         </div>
         <div className={styles.buttonContainer}>
-          <NavLink to={`/events/${event.id}`}>
+          <NavLink className={styles.navlink} to={`/events/${event.id}`}>
             <button className={styles.button}>See Tickets</button>
           </NavLink>
         </div>

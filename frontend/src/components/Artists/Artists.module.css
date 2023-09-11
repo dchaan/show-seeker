@@ -72,11 +72,7 @@
   font-weight: 400;
 }
 
-.ticketsText {
-  font-weight: 300;
-}
-
-.eventsContainer {
+.artistsContainer {
   padding-left: 24px;
   padding-right: 24px;
   padding-top: 32px;
@@ -85,7 +81,7 @@
   width: 100%;
 }
 
-.eventsTitleContainer {
+.artistTitleContainer {
   display: flex;
   position: relative;
   flex-wrap: wrap;
@@ -95,7 +91,7 @@
   padding-bottom: 24px;
 }
 
-.allConcertsText {
+.allArtistsText {
   font-size: 20px;
   font-weight: 600;
 }
