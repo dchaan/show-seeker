@@ -11,6 +11,7 @@ const EventPage = () => {
   const event = useSelector((state) => ( state.events.event ));
   const [isLoaded, setIsLoaded] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
   
   useEffect(() => {
     dispatch(getEvent(eventId)).then(res => {
@@ -28,6 +29,9 @@ const EventPage = () => {
     setIsModalOpen(false);
   };
 
+  const handleQuantityChange = e => {
+    setSelectedQuantity(parseInt(e.target.value));
+  }
 
   const image = event['images'].find(image => image.includes('EVENT_DETAIL_PAGE'));
   const date = new Date(event.start_time);
@@ -47,6 +51,13 @@ const EventPage = () => {
     location = `${event.venue.name}, ${cityAndState}`
   };
 
+  let seatmap = event.seatmap;
+  seatmap = seatmap.replace('https', 'http').replace(/"/g, '');
+
+  const priceArray = JSON.parse(event.price_range);
+  const minPrice = priceArray[0].min;
+  const maxPrice = priceArray[0].max;
+
   const renderImportantInfo = () => {
     if (event.venue && event.venue.general_info) {
       return event.venue.general_info;
@@ -59,44 +70,121 @@ const EventPage = () => {
   const importantInfoText = renderImportantInfo();
 
   return (
-    <div className={styles.eventHeaderContainer}>
-      <div className={styles.eventHeaderContentContainer}>
-        <div className={styles.eventImageContainer}>
-          <img className={styles.eventImage} src={image} alt="" />
-        </div>
-        <div className={styles.eventInfoContainer}>
-          <div className={styles.eventInfo}>
-            <div className={styles.eventName}>{event.name}</div>
-            <div className={styles.eventDetailsContainer}>
-              <div className={styles.eventDate}>{formattedDate}</div>
-              <div className={styles.eventVenue}>{location}</div>
-            </div>
+    <div className={styles.eventPageContainer}>
+      <div className={styles.eventHeaderContainer}>
+        <div className={styles.eventHeaderContentContainer}>
+          <div className={styles.eventImageContainer}>
+            <img className={styles.eventImage} src={image} alt="" />
           </div>
-          {importantInfoText && (
-          <div className={styles.importantInfoContainer}>
-            <div className={styles.importantInfo}>
-              <p className={styles.importantInfoText}>
-                <strong>Important Event Info: </strong>
-                <span>{importantInfoText.slice(0, 100)} ...</span>
-                <button className={styles.moreButton} onClick={openModal}>more</button>
-                {isModalOpen && (
-                  <div className={styles.modalContainer}>
-                    <div className={styles.modalContent}>
-                      <div className={styles.modalTitleContainer}>
-                        <h2 className={styles.modalTitle}>Important Event Info</h2>
-                        <span className={styles.close} onClick={closeModal}>&times;</span>
+          <div className={styles.eventInfoContainer}>
+            <div className={styles.eventInfo}>
+              <div className={styles.eventName}>{event.name}</div>
+              <div className={styles.eventDetailsContainer}>
+                <div className={styles.eventDate}>{formattedDate}</div>
+                <div className={styles.eventVenue}>{location}</div>
+              </div>
+            </div>
+            {importantInfoText && (
+            <div className={styles.importantInfoContainer}>
+              <div className={styles.importantInfo}>
+                <p className={styles.importantInfoText}>
+                  <strong>Important Event Info: </strong>
+                  <span>{importantInfoText.slice(0, 100)} ...</span>
+                  <button className={styles.moreButton} onClick={openModal}>more</button>
+                  {isModalOpen && (
+                    <div className={styles.modalContainer}>
+                      <div className={styles.modalContent}>
+                        <div className={styles.modalTitleContainer}>
+                          <h2 className={styles.modalTitle}>Important Event Info</h2>
+                          <span className={styles.close} onClick={closeModal}>&times;</span>
+                        </div>
+                        <div className={styles.modalInfoContainer}>
+                          <p>{importantInfoText}</p>
+                        </div>
                       </div>
-                      <div className={styles.modalInfoContainer}>
-                        <p>{importantInfoText}</p>
+                    </div>
+                  )}
+                </p>
+              </div>
+            </div>
+            )}
+          </div>
+        </div>
+      </div>
+      <div className={styles.eventTicketContainer}>
+        <section className={styles.sectionContainer}>
+          <div className={styles.pricesContainer}>
+            <div className={styles.priceFilterContainer}>
+              <div className={styles.ticketQtyContainer}>
+                <select className={styles.ticketDropdown }value={selectedQuantity} onChange={handleQuantityChange}>
+                  {[1, 2, 3, 4, 5, 6].map((quantity) => (
+                    <option key={quantity} value={quantity}>
+                      {quantity} Ticket{quantity !== 1 ? 's' : ''}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className={styles.priceSliderContainer}>
+                <div className={styles.priceContainer}>
+                  <p className={styles.price}>${minPrice}</p>
+                </div>
+                <div className={styles.sliderContainer}>
+                  <div className={styles.slider}></div>
+                </div>
+                <div className={styles.priceContainer}>
+                  <p className={styles.price}>${maxPrice}+</p>
+                </div>
+              </div>
+            </div>
+            <div className={styles.priceTicketSubContainer}>
+              <ul className={styles.ticketListContainer}>
+                <li className={styles.ticketContainer}>
+                  <div className={styles.ticketContent}>
+                    <div className={styles.ticketSplit}>
+                      <div className={styles.ticketSplitLeft}>
+                        <span className={styles.ticketType}>
+                          General Admission Tickets
+                        </span>
+                        <span className={styles.ticketSub}>
+                          General Admission
+                        </span>
+                      </div>
+                      <div className={styles.ticketSplitRight}>
+                        <button className={styles.priceButton}>
+                          ${minPrice}
+                        </button>
                       </div>
                     </div>
                   </div>
-                )}
-              </p>
+                </li>
+                <li className={styles.ticketContainer}>
+                  <div className={styles.ticketContent}>
+                    <div className={styles.ticketSplit}>
+                      <div className={styles.ticketSplitLeft}>
+                        <span className={styles.ticketType}>
+                          Premium VIP Tickets
+                        </span>
+                        <span className={styles.ticketSub}>
+                          VIP Admission
+                        </span>
+                      </div>
+                      <div className={styles.ticketSplitRight}>
+                        <button className={styles.priceButton}>
+                          ${maxPrice}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
             </div>
           </div>
-          )}
-        </div>
+          <div className={styles.mapContainer}>
+            <div className={styles.mapImgContainer}>
+              <img className={styles.mapImage} src={seatmap} alt="" />
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );
