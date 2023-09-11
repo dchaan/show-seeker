@@ -17,7 +17,6 @@ const EventsIndex = () => {
   const batchSize = 10;
   const [sortOption, setSortOption] = useState("date");
 
-  console.log(isLoaded)
   useEffect(() => {
     dispatch(getEvents()).then(() => setIsLoaded(true));
   }, [dispatch]);

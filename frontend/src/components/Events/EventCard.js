@@ -15,6 +15,13 @@ const EventCard = ({ event }) => {
 
   const image = event['images'].find(image => image.includes('TABLET_LANDSCAPE_LARGE'));
   const altImage = event['images'].find(image => image.includes('SOURCE'));
+  
+  let location = 'Venue'
+  if (event.venue && event.venue.address) {
+    const splitAddress = event.venue.address.split(',')
+    const cityAndState = `${splitAddress[1].trim()}, ${splitAddress[2].trim()}`;
+    location = `${event.venue.name} - ${cityAndState}`
+  };
 
   return (
     <div className={styles.eventsInfoContainer}>
@@ -34,7 +41,7 @@ const EventCard = ({ event }) => {
                   <span>{event.name}</span>
                 </div>
                 <div className={styles.venueText}>
-                  <span>Venue</span>
+                  <span>{location}</span>
                 </div>
               </div>
             </div>

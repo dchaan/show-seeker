@@ -21,7 +21,6 @@ def format_event(event):
 
   event_data = {
     'name': event['name'],
-    'api_id': event['id'],
     'start_time': event['dates']['start'].get('dateTime', None),
     'promoter': event.get('promoter', {}).get('description', None),
     'price_range': serialized_price_range,
@@ -30,10 +29,6 @@ def format_event(event):
     'ticket_limit': event.get('ticketLimit', {}).get('info', None),
     'url': event['url'],
     'images': [image['url'] for image in event.get('images', [])],
-    'artist_api_id': artist_api_id,
-    'venue_api_id': venue_api_id,
-    'classification_api_id': classification_api_id,
-    'genre_api_id': genre_api_id
   }
   return event_data
 

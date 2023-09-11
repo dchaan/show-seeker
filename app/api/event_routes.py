@@ -18,7 +18,7 @@ def get_events():
 @event_routes.route('/<event_id>', methods=['GET'])
 def get_event_by_id(event_id):
   event = Event.query.filter_by(id=event_id).first()
-  print(event)
+
   if event:
     formatted_event = event.to_dict()
     return jsonify(formatted_event)

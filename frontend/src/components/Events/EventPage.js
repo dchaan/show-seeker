@@ -10,6 +10,7 @@ const EventPage = () => {
   const { eventId } = useParams();
   const event = useSelector((state) => ( state.events.event ));
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   useEffect(() => {
     dispatch(getEvent(eventId)).then(res => {
@@ -17,7 +18,16 @@ const EventPage = () => {
     });
   }, [dispatch, eventId, navigate]);
 
-  if (!isLoaded) return <div>Loading...</div>
+  if (!isLoaded) return <div>Loading...</div>;
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
 
   const image = event['images'].find(image => image.includes('EVENT_DETAIL_PAGE'));
   const date = new Date(event.start_time);
@@ -30,6 +40,13 @@ const EventPage = () => {
     timeZoneName: 'short'
   });
 
+  let location = 'Venue'
+  if (event.venue && event.venue.address) {
+    const splitAddress = event.venue.address.split(',')
+    const cityAndState = `${splitAddress[1].trim()}, ${splitAddress[2].trim()}`;
+    location = `${event.venue.name}, ${cityAndState}`
+  };
+
   return (
     <div className={styles.eventHeaderContainer}>
       <div className={styles.eventHeaderContentContainer}>
@@ -41,14 +58,28 @@ const EventPage = () => {
             <div className={styles.eventName}>{event.name}</div>
             <div className={styles.eventDetailsContainer}>
               <div className={styles.eventDate}>{formattedDate}</div>
-              <div className={styles.eventVenue}>Venue</div>
+              <div className={styles.eventVenue}>{location}</div>
             </div>
           </div>
           <div className={styles.importantInfoContainer}>
             <div className={styles.importantInfo}>
               <p className={styles.importantInfoText}>
                 <strong>Important Event Info: </strong>
-                <span>Bag Policy: Backpacks and bags larger than 12" x 6" x 12" are not permitted in t...</span>
+                <span>{event.venue.general_info.slice(0, 100)} ...</span>
+                <button className={styles.moreButton} onClick={openModal}>more</button>
+                {isModalOpen && (
+                  <div className={styles.modalContainer}>
+                    <div className={styles.modalContent}>
+                      <div className={styles.modalTitleContainer}>
+                        <h2 className={styles.modalTitle}>Important Event Info</h2>
+                        <span className={styles.close} onClick={closeModal}>&times;</span>
+                      </div>
+                      <div className={styles.modalInfoContainer}>
+                        <p>{event.venue.general_info}</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </p>
             </div>
           </div>
