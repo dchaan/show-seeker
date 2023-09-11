@@ -47,6 +47,17 @@ const EventPage = () => {
     location = `${event.venue.name}, ${cityAndState}`
   };
 
+  const renderImportantInfo = () => {
+    if (event.venue && event.venue.general_info) {
+      return event.venue.general_info;
+    } else if (event.accessibility) {
+      return event.accessibility;
+    }
+    return '';
+  };
+
+  const importantInfoText = renderImportantInfo();
+
   return (
     <div className={styles.eventHeaderContainer}>
       <div className={styles.eventHeaderContentContainer}>
@@ -61,11 +72,12 @@ const EventPage = () => {
               <div className={styles.eventVenue}>{location}</div>
             </div>
           </div>
+          {importantInfoText && (
           <div className={styles.importantInfoContainer}>
             <div className={styles.importantInfo}>
               <p className={styles.importantInfoText}>
                 <strong>Important Event Info: </strong>
-                <span>{event.venue.general_info.slice(0, 100)} ...</span>
+                <span>{importantInfoText.slice(0, 100)} ...</span>
                 <button className={styles.moreButton} onClick={openModal}>more</button>
                 {isModalOpen && (
                   <div className={styles.modalContainer}>
@@ -75,7 +87,7 @@ const EventPage = () => {
                         <span className={styles.close} onClick={closeModal}>&times;</span>
                       </div>
                       <div className={styles.modalInfoContainer}>
-                        <p>{event.venue.general_info}</p>
+                        <p>{importantInfoText}</p>
                       </div>
                     </div>
                   </div>
@@ -83,6 +95,7 @@ const EventPage = () => {
               </p>
             </div>
           </div>
+          )}
         </div>
       </div>
     </div>
