@@ -47,15 +47,32 @@
   flex: 1 1 100%;
 }
 
-.eventName {  
-  font-size: 1.2rem;
+.eventNameContainer {
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
   margin-bottom: 10px;
   overflow: hidden;
   font-weight: normal;
+}
+
+.eventName {  
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
   padding-bottom: 12px;
+}
+
+.eventNameMoreInfo {
+  padding: 0 16px;
+  margin-left: 10px;
+  margin-bottom: 12px;
+  font-size: 0.8rem;
+  line-height: 1.2rem;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 1.8rem;
+  color: rgb(255, 255, 255);
 }
 
 .eventDate, .eventVenue {

@@ -10,7 +10,8 @@ const EventPage = () => {
   const { eventId } = useParams();
   const event = useSelector((state) => ( state.events.event ));
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [importantInfoModal, setImportantInfoModal] = useState(false);
+  const [eventInfoModal, setEventInfoModal] = useState(false);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   
   useEffect(() => {
@@ -21,13 +22,21 @@ const EventPage = () => {
 
   if (!isLoaded) return <div>Loading...</div>;
 
-  const openModal = () => {
-    setIsModalOpen(true);
+  const openImportantInfoModal = () => {
+    setImportantInfoModal(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
+  const closeImportantInfoModal = () => {
+    setImportantInfoModal(false);
   };
+
+  const openEventInfoModal = () => {
+    setEventInfoModal(true);
+  }
+
+  const closeEventInfoModal = () => {
+    setEventInfoModal(false);
+  }
 
   const handleQuantityChange = e => {
     setSelectedQuantity(parseInt(e.target.value));
@@ -78,7 +87,12 @@ const EventPage = () => {
           </div>
           <div className={styles.eventInfoContainer}>
             <div className={styles.eventInfo}>
-              <div className={styles.eventName}>{event.name}</div>
+              <div className={styles.eventNameContainer}>
+                <div className={styles.eventName}>{event.name}</div>
+                <button className={styles.eventNameMoreInfo} onClick={openEventInfoModal}>
+                  More Info
+                </button>
+              </div>
               <div className={styles.eventDetailsContainer}>
                 <div className={styles.eventDate}>{formattedDate}</div>
                 <div className={styles.eventVenue}>{location}</div>
@@ -90,13 +104,13 @@ const EventPage = () => {
                 <p className={styles.importantInfoText}>
                   <strong>Important Event Info: </strong>
                   <span>{importantInfoText.slice(0, 100)} ...</span>
-                  <button className={styles.moreButton} onClick={openModal}>more</button>
-                  {isModalOpen && (
+                  <button className={styles.moreButton} onClick={openImportantInfoModal}>more</button>
+                  {importantInfoModal && (
                     <div className={styles.modalContainer}>
                       <div className={styles.modalContent}>
                         <div className={styles.modalTitleContainer}>
                           <h2 className={styles.modalTitle}>Important Event Info</h2>
-                          <span className={styles.close} onClick={closeModal}>&times;</span>
+                          <span className={styles.close} onClick={closeImportantInfoModal}>&times;</span>
                         </div>
                         <div className={styles.modalInfoContainer}>
                           <p>{importantInfoText}</p>
