@@ -1,0 +1,197 @@
+.artistPageContainer {
+
+}
+
+.artistHeaderContainer {
+  padding: 80px 96px 48px 96px;
+  position: relative;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 260px;
+  overflow: hidden;
+  color: rgb(255, 255, 255);
+  text-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;
+}
+
+.artistHeaderContent {
+  height: 100%;
+  width: 100%;
+  max-width: 1248px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  background-color: black;
+}
+
+.navOL {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  align-items: center;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.navLI {
+  position: relative;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  display: inline-block;
+  padding: 4px 0px;
+  color: inherit;
+}
+
+.navlink {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.navlink:hover {
+  text-decoration: underline;
+}
+
+.slash {
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+.artistTitleContainer {
+  flex-direction: row;
+  align-items: flex-end;
+  display: flex;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.artistImage {
+  width: 235px;
+  margin-right: 24px;
+  margin-bottom: 0px;
+  position: relative;
+  border-radius: 4px;
+}
+
+.artistTitleContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.genre {
+  font-size: 18px;
+  margin: 0px;
+}
+
+.artistName {
+  font-size: 48px;
+  display: inline;
+  margin: 0px 12px 0px 0px;
+  font-weight: 900;
+}
+
+.barContainer {
+  padding-right: 96px;
+  padding-left: 96px;
+  position: sticky;
+  top: 0px;
+  z-index: 2;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 20px 0px;
+}
+
+.barSubContainer {
+  width: 100%;
+  max-width: 1248px;
+}
+
+.navbarBarContainer {
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  display: flex;
+}
+
+.barContentContainer {
+  margin-right: 0px;
+  margin-left: 0px;
+  position: relative;
+}
+
+.barUL {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+
+.barLI {
+  position: relative;
+  display: block;
+  padding: 20px 20px 16px;
+  border-bottom: 4px solid rgb(18, 18, 18);
+  color: rgb(18, 18, 18);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.artistEventsContainer {
+  padding: 40px 96px 80px 96px;
+}
+
+.artistEventsSubContainer {
+  width: 100%;
+  max-width: 1248px;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  display: flex;
+  height: 100%;
+}
+
+.pageInfo {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.eventsTitleContainer {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.eventsTitle {
+  position: relative;
+  margin: 0px;
+  padding-bottom: 8px;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+

@@ -64,8 +64,12 @@ const EventPage = () => {
   seatmap = seatmap.replace('https', 'http').replace(/"/g, '');
 
   const priceArray = JSON.parse(event.price_range);
-  const minPrice = priceArray[0].min;
-  const maxPrice = priceArray[0].max;
+  let minPrice = 0;
+  let maxPrice = 300;
+  if (priceArray.length) {
+    minPrice = priceArray[0].min
+    maxPrice = priceArray[0].max
+  };
 
   const renderImportantInfo = () => {
     if (event.venue && event.venue.general_info) {

@@ -212,12 +212,12 @@
   width: auto;
   height: 100%;
   text-align: center;
-  
+  background: rgb(232, 236, 242);
 }
 
 .mapImgContainer {
-  background: rgb(232, 236, 242);
-  padding: 15px 0 54px 0;
+  /* background: rgb(232, 236, 242); */
+  padding: 100px 0 100px 0;
   height: 100%;
   overflow: hidden;
   position: relative;

@@ -10,6 +10,7 @@ import Homepage from './components/Homepage/Homepage'
 import EventsIndex from './components/Events/EventsIndex';
 import EventPage from './components/Events/EventPage';
 import ArtistsIndex from './components/Artists/ArtistsIndex';
+import ArtistPage from './components/Artists/ArtistPage';
 import VenuesIndex from './components/Venues/VenuesIndex';
 import Profile from './components/Profile/Profile';
 import GenresIndex from './components/Genres/GenresIndex';
@@ -37,6 +38,7 @@ function App() {
         <Route path='/events' exact={true} element={<EventsIndex />} />
         <Route path='/events/:eventId' exact={true} element={<EventPage />} />
         <Route path='/artists' exact={true} element={<ArtistsIndex />} />
+        <Route path='artists/:artistId' exact={true} element={<ArtistPage />} />
         <Route path='/venues' exact={true} element={<VenuesIndex />} />
         <Route path='/genres' exact={true} element={<GenresIndex />} />
         <Route path='/users/:userId/profile' exact={true} element={<Profile />} />
