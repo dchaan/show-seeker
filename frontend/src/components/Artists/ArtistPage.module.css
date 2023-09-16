@@ -3,16 +3,25 @@
 }
 
 .artistHeaderContainer {
-  padding: 80px 96px 48px 96px;
+  padding: 80px 96px 26px 96px;
   position: relative;
-  display: flex;
-  -webkit-box-pack: center;
   justify-content: center;
-  width: 100%;
   min-height: 260px;
   overflow: hidden;
   color: rgb(255, 255, 255);
   text-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;
+}
+
+.backgroundImg {
+  position: absolute;
+  inset: 0px;
+  display: block;
+  width: calc(100% + 100px);
+  height: calc(100% + 100px);
+  background-color: transparent;
+  background-position: center center;
+  background-size: cover;
+  filter: blur(12px);
 }
 
 .artistHeaderContent {
@@ -24,7 +33,6 @@
   align-items: flex-start;
   -webkit-box-pack: justify;
   justify-content: space-between;
-  background-color: black;
 }
 
 .navOL {
@@ -47,7 +55,6 @@
   align-items: center;
   display: inline-block;
   padding: 4px 0px;
-  color: inherit;
 }
 
 .navlink {
@@ -109,8 +116,6 @@
   position: sticky;
   top: 0px;
   z-index: 2;
-  display: flex;
-  -webkit-box-pack: center;
   justify-content: center;
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.3) 0px 5px 20px 0px;
@@ -193,5 +198,45 @@
   font-size: 20px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
+}
+
+.resultsCount {
+  font-weight: 200;
+}
+
+.eventsContainer {
+  margin-top: 40px;
+  margin-right: 0px;
+  margin-left: 0px;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  padding-bottom: 24px;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px 3px;
+  width: 1000px;
+}
+
+.eventsSubContainer {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+}
+
+.eventsContent {
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.eventsList {
+  margin: 0px;
+  padding: 0px 16px;
 }
 

@@ -2,8 +2,7 @@ import { NavLink } from "react-router-dom";
 import styles from "./EventCard.module.css";
 
 const EventCard = ({ event }) => {
-
-  const date = new Date(event.start_time)
+  const date = new Date(event.start_time);
   const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
   const formattedDayAndTime = date.toLocaleString('en-US', {
     weekday: 'short',
@@ -16,11 +15,11 @@ const EventCard = ({ event }) => {
   const image = event['images'].find(image => image.includes('TABLET_LANDSCAPE_LARGE'));
   const altImage = event['images'].find(image => image.includes('SOURCE'));
   
-  let location = 'Venue'
+  let location = 'Venue';
   if (event.venue && event.venue.address) {
-    const splitAddress = event.venue.address.split(',')
+    const splitAddress = event.venue.address.split(',');
     const cityAndState = `${splitAddress[1].trim()}, ${splitAddress[2].trim()}`;
-    location = `${event.venue.name} - ${cityAndState}`
+    location = `${event.venue.name} - ${cityAndState}`;
   };
 
   return (

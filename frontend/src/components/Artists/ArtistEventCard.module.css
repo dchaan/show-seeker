@@ -1,0 +1,94 @@
+.artistEventCardContainer {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgb(235, 235, 235);
+  display: flex;
+  justify-content: space-between;
+}
+
+.eventContent {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 4px;
+}
+
+.dateContainer {
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 4.2em;
+  color: rgb(18, 18, 18);
+  text-align: center;
+}
+
+.month {
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.date {
+  font-size: 23px;
+  line-height: 1;
+}
+
+.dayAndTimeContainer {
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+}
+
+.dayAndTime {
+  color: rgb(100, 100, 100);
+}
+
+.venueContainer {
+  display: block;
+  color: rgb(18, 18, 18);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.eventName {
+  display: block;
+  margin-top: 4px;
+  color: rgb(100, 100, 100);
+  line-height: 1.2;
+}
+
+.buttonContainer {
+  min-width: 12em;
+  align-self: center;
+  margin-left: 16px;
+  text-align: right;
+}
+
+.navlink {
+  text-decoration: none;
+}
+
+.button {
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 4px;
+  position: relative;
+  border: 1px solid transparent;
+  padding: 8px 24px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(2, 77, 223);
+  display: inline-block;
+  width: auto;
+  min-height: 44px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+}
+
+
+
+
+
+
+
