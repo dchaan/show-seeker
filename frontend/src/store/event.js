@@ -26,7 +26,6 @@ export const getEvent = eventId => async (dispatch) => {
 
 export const getEvents = (query = null) => async (dispatch) => {
   const response = await fetch(`/api/events${query ? "?query=" + query : ""}`);
-
   if (!response.ok) {
     console.log("An error occurred");
     throw new Error("An error occurred");

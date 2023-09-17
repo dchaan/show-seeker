@@ -67,8 +67,8 @@ const EventPage = () => {
   let minPrice = 0;
   let maxPrice = 300;
   if (priceArray.length) {
-    minPrice = priceArray[0].min
-    maxPrice = priceArray[0].max
+    minPrice = Math.floor(priceArray[0].min);
+    maxPrice = Math.floor(priceArray[0].max);
   };
 
   const renderImportantInfo = () => {

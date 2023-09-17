@@ -7,11 +7,9 @@ const ArtistEventCard = ({ event }) => {
   const day = date.getDate();
   const weekday = date.toLocaleString('en-US', { weekday: 'short' });
   const time = date.toLocaleTimeString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit' });
-  const timeZone = date.toTimeString().split(' ')[5];
 
-  console.log(event)
   let location = 'Venue'
-  if (event.venue) {
+  if (event.venue && event.venue.address) {
     const splitAddress = event.venue.address.split(',');
     const cityAndState = `${splitAddress[1].trim()}, ${splitAddress[2].trim()}`;
     location = `${cityAndState} - ${event.venue.name}`;

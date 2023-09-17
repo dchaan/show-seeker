@@ -26,7 +26,7 @@ const ArtistPage = () => {
         dispatch(getEvents()).then(() => setIsLoaded(true));
       }
     });
-  }, [dispatch, artistId, navigate]);
+  }, [dispatch, artistId, artist.name, navigate]);
 
   if (!isLoaded) return <div>Loading...</div>;
   const image = artist['images'].find(image => image.includes('ARTIST_PAGE'));
