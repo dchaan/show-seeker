@@ -132,3 +132,46 @@
   background-color: rgb(2, 108, 223);
   border: 1px solid transparent;
 }
+
+.homepageContentContainer {
+  padding-left: 24px;
+  padding-right: 24px;
+  margin: 0px auto;
+  max-width: 1296px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.categoryContainer {
+  margin-left: -12px;
+  margin-right: -12px;
+  display: flex;
+  flex-flow: wrap;
+}
+
+.categorySub {
+  padding-right: 12px;
+  padding-left: 12px;
+  max-width: 100%;
+  display: block;
+  flex: 0 0 100%;
+}
+
+.categorySubSub {
+  padding-bottom: 88px;
+}
+
+.categoryTitleText {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-transform: none;
+  color: rgb(38, 38, 38);
+}
+
+.componentContainer {
+  width: auto;
+  margin: 0px -12px;
+  align-items: flex-start;
+  display: flex;
+}
