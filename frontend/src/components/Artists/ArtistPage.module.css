@@ -237,3 +237,11 @@
   padding: 0px 16px;
 }
 
+.noEventsContainer {
+  padding: 96px 0px 96px 96px;
+}
+
+.noEventsText {
+  font-size: 20px;
+}
+

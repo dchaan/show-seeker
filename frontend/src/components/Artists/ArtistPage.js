@@ -35,6 +35,40 @@ const ArtistPage = () => {
     backgroundImage: `url(${image})`
   }
 
+  const noEvents = () => { if (events.length) {
+    return (
+      <div className={styles.artistEventsContainer}>
+        <div className={styles.artistEventsSubContainer}>
+          <div className={styles.pageInfo}>
+            <div className={styles.eventsTitleContainer}>
+              <h2 className={styles.eventsTitle}>
+                Events - <span className={styles.resultsCount}>{events.length} results</span>
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div className={styles.eventsContainer}>
+          <div className={styles.eventsSubContainer}>
+            <div clssName={styles.eventsContent}>
+              <div className={styles.eventsList}>
+                {events.map(event => (
+                  <ArtistEventCard event={event} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className={styles.noEventsContainer}>
+        <div className={styles.noEventsText}>Sorry, there are no upcoming events.</div>
+      </div>
+    )
+  };
+};
+
   return (
     <div className={styles.artistPageContainer}>
       <div className={styles.artistHeaderContainer}>
@@ -80,28 +114,7 @@ const ArtistPage = () => {
           </nav>
         </div>
       </div>
-      <div className={styles.artistEventsContainer}>
-        <div className={styles.artistEventsSubContainer}>
-          <div className={styles.pageInfo}>
-            <div className={styles.eventsTitleContainer}>
-              <h2 className={styles.eventsTitle}>
-                Events - <span className={styles.resultsCount}>{events.length} results</span>
-              </h2>
-            </div>
-          </div>
-        </div>
-        <div className={styles.eventsContainer}>
-          <div className={styles.eventsSubContainer}>
-            <div clssName={styles.eventsContent}>
-              <div className={styles.eventsList}>
-                {events.map(event => (
-                  <ArtistEventCard event={event} />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      {noEvents()}
     </div>
   )
 };
