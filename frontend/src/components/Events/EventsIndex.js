@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./Events.module.css";
 import { getEvents } from "../../store/event";
 import EventCard from "./EventCard";
@@ -10,8 +10,6 @@ const EventsIndex = () => {
   events = Object.values(events);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  
   const [isLoaded, setIsLoaded] = useState(false);
   const [displayedEvents, setDisplayedEvents] = useState(10);
   const batchSize = 10;
@@ -69,7 +67,7 @@ const EventsIndex = () => {
           </div>
           <div className={styles.subHeaderTitle}>
             <h1 className={styles.subHeaderTitleText}>
-              <span className={styles.concertText}>Concert </span>
+              <span className={styles.concertText}>All Events </span>
               <span className={styles.ticketsText}>Tickets</span>
             </h1>
           </div>
@@ -77,7 +75,7 @@ const EventsIndex = () => {
       </div>
       <div className={styles.eventsContainer}>
         <div className={styles.eventsTitleContainer}>
-          <div className={styles.allConcertsText}>All Concert Events ({events.length})</div>
+          <div className={styles.allConcertsText}>All Events ({events.length})</div>
         </div>
         <div className={styles.filterContainer}>
           <div className={styles.filterSubContainer}>

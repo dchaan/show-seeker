@@ -9,6 +9,8 @@ import Signup from './components/Auth/SignUp';
 import Homepage from './components/Homepage/Homepage'
 import EventsIndex from './components/Events/EventsIndex';
 import EventPage from './components/Events/EventPage';
+import ConcertsIndex from './components/Concerts/ConcertsIndex';
+import SportsIndex from './components/Sports/SportsIndex';
 import ArtistsIndex from './components/Artists/ArtistsIndex';
 import ArtistPage from './components/Artists/ArtistPage';
 import VenuesIndex from './components/Venues/VenuesIndex';
@@ -37,6 +39,8 @@ function App() {
         <Route path='/signup' exact={true} element={<Signup />} />
         <Route path='/events' exact={true} element={<EventsIndex />} />
         <Route path='/events/:eventId' exact={true} element={<EventPage />} />
+        <Route path='/events/concerts' exact={true} element={<ConcertsIndex />} />
+        <Route path='/events/sports' exact={true} element={<SportsIndex />} />
         <Route path='/artists' exact={true} element={<ArtistsIndex />} />
         <Route path='artists/:artistId' exact={true} element={<ArtistPage />} />
         <Route path='/venues' exact={true} element={<VenuesIndex />} />

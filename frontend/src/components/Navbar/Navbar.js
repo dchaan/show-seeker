@@ -97,13 +97,16 @@ const Navbar = () => {
 
         <div className={styles.headerLinksContainer}>
           <span className={styles.headerLinkSpan}>
-            <NavLink className={styles.headerLink} to="/events">Sports</NavLink>
+            <NavLink className={styles.headerLink} to="/events">All Events</NavLink>
+          </span>
+          <span className={styles.headerLinkSpan}>
+            <NavLink className={styles.headerLink} to="/events/concerts">Concerts</NavLink>
+          </span>
+          <span className={styles.headerLinkSpan}>
+            <NavLink className={styles.headerLink} to="/events/sports">Sports</NavLink>
           </span>
           <span className={styles.headerLinkSpan}>
             <NavLink className={styles.headerLink} to="/artists">Artists</NavLink>
-          </span>
-          <span className={styles.headerLinkSpan}>
-            <NavLink className={styles.headerLink} to="/genres">Genres</NavLink>
           </span>
         </div>
         <div className={styles.headerRightContainer}>

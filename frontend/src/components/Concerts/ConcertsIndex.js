@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import styles from "./Artists.module.css";
-import { getArtists } from "../../store/artist";
-import ArtistCard from "./ArtistCard";
+import { NavLink } from "react-router-dom";
+import styles from "../Events/Events.module.css";
+import { getEvents } from "../../store/event";
+import EventCard from "../Events/EventCard";
 
-const ArtistsIndex = () => {
-  let artists = useSelector(state => state.artists.artists);
-  artists = Object.values(artists);
+const ConcertsIndex = () => {
+  let events = useSelector(state => state.events.events);
+  events = Object.values(events).filter(event => event.classification.name === 'Music');
 
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -16,29 +16,41 @@ const ArtistsIndex = () => {
   const [sortOption, setSortOption] = useState("date");
 
   useEffect(() => {
-    dispatch(getArtists()).then(() => setIsLoaded(true));
+    dispatch(getEvents()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   if (!isLoaded) return <div>Loading...</div>;
 
-  let filteredArtists = artists.filter(artist => artist.classification.name === "Music");
+  const sortEvents = () => {
+    const sortedEvents = [...events];
 
-  const sortArtists = () => {
-    const sortedArtists = [...filteredArtists];
+    if (sortOption === "date") {
+      sortedEvents.sort((a, b) => {
+        const dateA = new Date(a.start_time);
+        const dateB = new Date(b.start_time);
 
-    if (sortOption === "nameAZ") {
-      sortedArtists.sort((a, b) => {
+        if (isNaN(dateA) && !isNaN(dateB)) {
+          return 1;
+        } else if (!isNaN(dateA) && isNaN(dateB)) {
+          return -1;
+        } else if (isNaN(dateA) && isNaN(dateB)) {
+          return 0; 
+        }
+        return dateA - dateB;
+      });
+    } else if (sortOption === "nameAZ") {
+      sortedEvents.sort((a, b) => {
         return a.name.localeCompare(b.name);
       });
     } else if (sortOption === "nameZA") {
-      sortedArtists.sort((a, b) => {
+      sortedEvents.sort((a, b) => {
         return b.name.localeCompare(a.name);
       });
-    };
-    return sortedArtists;
+    }
+    return sortedEvents;
   };
 
-  const sortedArtists = sortArtists();
+  const sortedEvents = sortEvents();
 
   return (
     <div className={styles.mainContainer}>
@@ -50,34 +62,36 @@ const ArtistsIndex = () => {
                 <div className={styles.slash}>
                   /
                 </div>
-                <div className={styles.subTitle}>Artists</div>
+                <div className={styles.subTitle}>Concert Tickets</div>
               </div>
           </div>
           <div className={styles.subHeaderTitle}>
             <h1 className={styles.subHeaderTitleText}>
-              <span className={styles.artistText}>Artists</span>
+              <span className={styles.concertText}>All Concerts </span>
+              <span className={styles.ticketsText}>Tickets</span>
             </h1>
           </div>
         </div>
       </div>
-      <div className={styles.artistsContainer}>
-        <div className={styles.artistTitleContainer}>
-          <div className={styles.allArtistsText}>All Artists ({artists.length})</div>
+      <div className={styles.eventsContainer}>
+        <div className={styles.eventsTitleContainer}>
+          <div className={styles.allConcertsText}>All Concerts ({events.length})</div>
         </div>
         <div className={styles.filterContainer}>
           <div className={styles.filterSubContainer}>
             <select className={styles.filterBox} value={sortOption} onChange={e => setSortOption(e.target.value)}>
+              <option value="date">Sort By Date</option>
               <option value="nameAZ">Sort By Name A-Z</option>
               <option value="nameZA">Sort By Name Z-A</option>
             </select>
           </div>
         </div>
-        {sortedArtists.slice(0, displayedEvents).map(artist => (
-          <ArtistCard artist={artist} />
+        {sortedEvents.slice(0, displayedEvents).map(event => (
+          <EventCard event={event} />
         ))}
       </div>
       <div className={styles.loadMoreContainer}>
-        {displayedEvents < artists.length && (
+        {displayedEvents < events.length && (
           <div className={styles.loadMoreSubContainer}>
             <button className={styles.loadMoreButton} onClick={() => setDisplayedEvents(prev => prev + batchSize)}>
               Load More
@@ -89,4 +103,5 @@ const ArtistsIndex = () => {
   );
 };
 
-export default ArtistsIndex;
+export default ConcertsIndex;
+
