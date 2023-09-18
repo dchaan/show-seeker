@@ -1,5 +1,5 @@
 .cardContainer {
-  flex-basis: 25%;
+  flex-basis: 20%;
   padding: 12px;
   z-index: 0;
   display: flex;
@@ -73,4 +73,9 @@
 .image {
   width: 100%;
   height: auto;
+}
+
+.navlink {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
 }

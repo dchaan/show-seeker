@@ -14,22 +14,29 @@ const Card = ({ item }) => {
     "Arts & Theatre": arts
   };
 
-  const categoryImage = categoryImages[item.name]
+  const categories = ['Music', 'Sports', 'Film', 'Arts & Theatre', 'Miscellaneous' ]
+
+  let image = ""
+  image = (item['images']) ? 
+    item['images'].find(image => image.includes('TABLET_LANDSCAPE_LARGE'))
+    || item['images'].find(image => image.includes('SOURCE')) : categoryImages[item.name]
 
   return (
     <div className={styles.cardContainer}>
       <div className={styles.cardSubContainer}>
-        <div className={styles.gridContainer}>
-          <div className={styles.textContainer}>
-            <div className={styles.text}>
-              {item.name}
-            </div>
+        <div className={styles.textContainer}>
+          <div className={styles.text}>
+            {item.name}
           </div>
-          <div className={styles.imageContainer}>
-            <div className={styles.imageRatio}>
-              <div className={styles.imageWrapper}>
-                <img className={styles.image} src={categoryImage} alt="" />
-              </div>
+        </div>
+        <div className={styles.imageContainer}>
+          <div className={styles.imageRatio}>
+            <div className={styles.imageWrapper}>
+              {categories.includes(item.name) ? 
+                <img className={styles.image} src={image} alt="" /> : 
+                  <NavLink className={styles.navlink} to={`/artists/${item.id}`}>
+                    <img className={styles.image} src={image} alt="" />
+                  </NavLink>}
             </div>
           </div>
         </div>

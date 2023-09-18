@@ -77,8 +77,8 @@ const Navbar = () => {
           <h1 className={styles.headerTitleText}><i>ShowSeeker</i></h1>
         </Link>
 
-        {/* {window.location.pathname !== '/' && ( */}
-        {/* <div className={styles.searchBarContainer}>
+        {window.location.pathname !== '/' && (
+        <div className={styles.searchBarContainer}>
           <div className={styles.searchBar}>
             <form className={styles.searchForm}>
               <div className={styles.searchIconContainer}>
@@ -92,8 +92,8 @@ const Navbar = () => {
               />
             </form>
           </div>
-        </div> */}
-        {/* )} */}
+        </div>
+        )}
 
         <div className={styles.headerLinksContainer}>
           <span className={styles.headerLinkSpan}>

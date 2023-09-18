@@ -174,4 +174,5 @@
   margin: 0px -12px;
   align-items: flex-start;
   display: flex;
+  flex-flow: wrap;
 }
