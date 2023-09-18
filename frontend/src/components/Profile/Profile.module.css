@@ -1,9 +1,7 @@
 .profileContainer {
   margin: 0px auto 24px;
   width: 100%;
-  padding-left: 16px;
-  padding-right: 16px;
-  padding-top: 60px;
+  padding: 80px 16px 142px 16px;
   box-sizing: border-box;
   flex: 1 0 auto;
   max-width: 1296px;
