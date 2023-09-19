@@ -37,7 +37,5 @@ class User(db.Model, UserMixin):
       'first_name': self.first_name,
       'last_name': self.last_name,
       'email': self.email,
-      'favorites': [favorite.to_obj() for favorite in self.favorites] if self.favorites else [],
-      'purchases': [purchase.to_obj() for purchase in self.purchases] if self.purchases else []
     }
 

@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
-from app.models import Artist
+from flask_login import login_required, current_user
+from app.models import Artist, db
 
 artist_routes = Blueprint('artists', __name__)
 
@@ -24,3 +25,39 @@ def get_artist_by_id(artist_id):
     return jsonify(formatted_artist)
   else:
     return jsonify({'message': 'Artist not found'}), 404
+  
+@artist_routes.route('/<artist_id>/favorite', methods=['POST'])
+@login_required
+def favorite_artist(artist_id):
+  user = current_user
+  artist = Artist.query.get(artist_id)
+
+  if not artist:
+    return jsonify({'error': 'Artist not found'}), 404
+  
+  if artist in user.favorites:
+    return jsonify({'message': 'Artist is already in favorites'})
+
+  user.favorites.append(artist)
+  artist.favorited_by.append(user)
+
+  db.session.commit()
+
+  return jsonify({'message': 'Artist favorited successfully'})
+
+def unfavorite_artist(artist_id):
+  user = current_user
+  artist = Artist.query.get(artist_id)
+
+  if not artist:
+    return jsonify({'error': 'Artist not found'}), 404
+
+  if artist not in user.favorites:
+    return jsonify({'message': 'Artist is not in favorites'})
+
+  user.favorites.remove(artist)
+  artist.favorited_by.remove(user)
+  
+  db.session.commit()
+
+  return jsonify({'message': 'Artist removed from favorites successfully'})
