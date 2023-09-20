@@ -60,7 +60,7 @@ const EventPage = () => {
     location = `${event.venue.name}, ${cityAndState}`
   };
 
-  let seatmap = event.seatmap;
+  let seatmap = event.seatmap || ""
   seatmap = seatmap.replace('https', 'http').replace(/"/g, '');
 
   const priceArray = JSON.parse(event.price_range);
