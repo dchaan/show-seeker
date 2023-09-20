@@ -14,6 +14,8 @@ import SportsIndex from './components/Sports/SportsIndex';
 import ArtistsIndex from './components/Artists/ArtistsIndex';
 import ArtistPage from './components/Artists/ArtistPage';
 import VenuesIndex from './components/Venues/VenuesIndex';
+import ArtsAndTheatreIndex from './components/ArtsAndTheatre/ArtsAndTheatreIndex';
+import FamilyIndex from './components/Family/FamilyIndex';
 import Profile from './components/Profile/Profile';
 import Favorites from './components/Profile/Favorites';
 import GenresIndex from './components/Genres/GenresIndex';
@@ -44,6 +46,8 @@ function App() {
         <Route path='/events/sports' exact={true} element={<SportsIndex />} />
         <Route path='/artists' exact={true} element={<ArtistsIndex />} />
         <Route path='artists/:artistId' exact={true} element={<ArtistPage />} />
+        <Route path='/events/arts&theatre' exact={true} element={<ArtsAndTheatreIndex />} />
+        <Route path='/events/family' exact={true} element={<FamilyIndex />} />
         <Route path='/venues' exact={true} element={<VenuesIndex />} />
         <Route path='/genres' exact={true} element={<GenresIndex />} />
         <Route path='/users/:userId/profile' exact={true} element={<Profile />} />

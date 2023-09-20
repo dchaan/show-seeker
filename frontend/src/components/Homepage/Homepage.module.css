@@ -134,8 +134,7 @@
 }
 
 .homepageContentContainer {
-  padding-left: 24px;
-  padding-right: 24px;
+  padding: 60px 24px 0px 24px;
   margin: 0px auto;
   max-width: 1296px;
   width: 100%;
@@ -161,12 +160,37 @@
   padding-bottom: 88px;
 }
 
+.categoryTitleContainer {
+  padding-top: 0px;
+  padding-bottom: 24px;
+  width: 87%;
+}
+
+.subTitleContainer {
+  align-items: flex-end;
+  display: flex;
+  flex: 1 1 100%;
+  flex-flow: row;
+}
+
 .categoryTitleText {
   font-size: 24px;
   font-weight: 600;
   line-height: 1.5;
   text-transform: none;
   color: rgb(38, 38, 38);
+  display: flex;
+  flex: 1 1 auto;
+  flex-flow: row;
+}
+
+.navlink {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-decoration: none;
+  color: rgb(2, 108, 223);
+
 }
 
 .componentContainer {
