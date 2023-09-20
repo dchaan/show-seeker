@@ -1,0 +1,210 @@
+.modalContainer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  background: rgba(0,0,0,.75);
+}
+
+.headerContainer {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  position: relative;
+  text-align: left;
+  box-shadow: none;
+  padding: 0 !important;
+  background-color: rgb(255, 255, 255);
+  white-space: normal;
+}
+
+.titleContainer {
+  position: relative;
+  background-color: #026cdf;
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 600;
+  text-align: left;
+}
+
+.titleText {
+  padding: 8px 56px 8px 56px;
+  font-size: 1.8rem;
+  line-height: 1.2;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  font-weight: 400;
+}
+
+.close {
+  background-color: #026cdf;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  padding: 0 0;
+  padding-right: 10px;
+  text-align: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 100%;
+  display: inline-block;
+  font-size: 44px;
+}
+
+.ol {
+  padding: 0 15px 0 15px;
+  display: flex;
+  border: 1px solid #ebebeb;
+  margin: 0;
+}
+
+.li {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  float: left;
+  list-style-type: none;
+  font-size: 0.9rem;
+}
+
+.navlink {
+  text-decoration: none;
+  color: #727272;
+  font-weight: 400;
+  line-height: 4.9rem;
+  list-style-type: none;
+}
+
+.span {
+  text-decoration: none;
+  color: #727272;
+  white-space: nowrap;
+  font-weight: 400;
+  line-height: 4.9rem;
+  list-style-type: none;
+}
+
+.slash {
+  color: #727272;
+  padding-left: 4px;
+  padding-right: 4px;
+  font-weight: 400;
+}
+
+.contentContainer {
+  max-height: 718px;
+  background-color: rgb(255, 255, 255);
+  overflow-y: auto;
+  line-height: 1.5;
+  padding: 0 !important;
+}
+
+.contentSubContainer {
+  max-height: 80vh;
+  padding: 0;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  color: #262626;
+  background-color: #fff;
+  overflow-y: auto;
+}
+
+.contentInfoContainer {
+  padding: 0px 20px 20px 20px;
+  max-height: 60vh;
+  margin-bottom: 5px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  color: #262626;
+}
+
+.eventTitleContainer {
+  font-size: 1.4rem;
+  line-height: 1.4;
+}
+
+.eventTitle {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #262626;
+}
+
+.sectionContainer {
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.venueContainer {
+  padding: 20px 0;
+  border-top: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
+}
+
+.venueInfo {
+  display: flex;
+}
+
+.venueInfoTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
+  padding-right: 20px;
+  line-height: 1.4;
+}
+
+.venueInfoData {
+  font-size: 1.2rem;
+  line-height: 1.7;
+}
+
+.sectionTitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.text {
+  font-size: 1rem;
+  margin: 0 0 1em;
+}
+
+.imageContainer {
+  max-width: 140px;
+  justify-content: center;
+}
+
+.image {
+  max-width: 140px;
+  min-width: 140px;
+  min-height: 100px;
+}
+
+.artistName {
+  color: #262626;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+
+
+
+
+
+
+

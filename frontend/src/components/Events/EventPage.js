@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { getEvent } from "../../store/event";
 import styles from "./EventPage.module.css";
+import EventInfoModal from "./EventInfoModal.js";
 
 const EventPage = () => {
   const dispatch = useDispatch();
@@ -96,6 +97,9 @@ const EventPage = () => {
                 <button className={styles.eventNameMoreInfo} onClick={openEventInfoModal}>
                   More Info
                 </button>
+                {eventInfoModal && (
+                  <EventInfoModal event={event} onClose={closeEventInfoModal} />
+                )}
               </div>
               <div className={styles.eventDetailsContainer}>
                 <div className={styles.eventDate}>{formattedDate}</div>
