@@ -8,7 +8,6 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const user = useSelector(state => state.session.user);
-  
   useEffect(() => {
     if (!user) navigate('/');
   });
@@ -66,7 +65,7 @@ const Profile = () => {
                 <NavLink className={styles.sideListLink} to={`/users/${user.id}/purchases`}>My Tickets</NavLink>
               </li>
               <li className={styles.sideListItem}>
-                <NavLink className={styles.sideListLink} to={`/users/${user.id}/favorites`}>Favorites</NavLink>
+                <NavLink className={styles.sideListLink} to={`/users/${user.id}/favorites`}>My Favorites</NavLink>
               </li>
             </ul>
           </div>

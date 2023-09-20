@@ -3,17 +3,21 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate, NavLink } from "react-router-dom";
 import { getArtist } from "../../store/artist";
 import { getEvents } from "../../store/event";
+import { setFavorite, removeFavorite, getFavorites } from "../../store/user"
 import ArtistEventCard from "./ArtistEventCard";
 import styles from "./ArtistPage.module.css";
 
 const ArtistPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const { artistId } = useParams();
+  const user = useSelector(state => state.session.user)
   const artist = useSelector(state => ( state.artists.artist ));
-  const [isLoaded, setIsLoaded] = useState(false);
-  
+  const favorites = useSelector(state => state.favorites.favorites);
+
   let events = useSelector(state => state.events.events)
+  const [isLoaded, setIsLoaded] = useState(false);  
   events = Object.values(events)
   events = events.filter(event => event.artist.id === parseInt(artistId))
 
@@ -23,10 +27,11 @@ const ArtistPage = () => {
         navigate('/');
         setIsLoaded(true);
       } else {
-        dispatch(getEvents()).then(() => setIsLoaded(true));
+        dispatch(getEvents());
+        dispatch(getFavorites(user.id)).then(() => setIsLoaded(true));
       }
     });
-  }, [dispatch, artistId, artist.name, navigate]);
+  }, [dispatch, artistId, user, navigate]);
 
   if (!isLoaded) return <div>Loading...</div>;
   const image = artist['images'].find(image => image.includes('ARTIST_PAGE'));
@@ -34,6 +39,20 @@ const ArtistPage = () => {
   const divStyle = {
     backgroundImage: `url(${image})`
   }
+
+  const handleFavoriteClick = () => {
+    dispatch(setFavorite(artist));
+  };
+
+  const handleUnfavoriteClick = () => {
+    dispatch(removeFavorite(artist));
+  };
+
+  const isArtistFavorited = (artistId, favorites) => {
+    return favorites.some(favorite => favorite.id === artistId);
+  };
+
+  const isFavorited = isArtistFavorited(artist.id, favorites);
 
   const noEvents = () => { if (events.length) {
     return (
@@ -99,6 +118,16 @@ const ArtistPage = () => {
             <div className={styles.artistTitleContent}>
               <p className={styles.genre}>{artist.genre.name}</p>
               <h1 className={styles.artistName}>{artist.name}</h1>
+              <div className={styles.favoriteContainer}>
+                {isFavorited ? 
+                  <button className={styles.favoriteButton} onClick={handleFavoriteClick}>
+                    Unfavorite
+                  </button> :
+                  <button className={styles.favoriteButton} onClick={handleFavoriteClick}>
+                    Favorite
+                  </button>
+                }
+              </div>
             </div>
           </div>
         </div>

@@ -15,6 +15,7 @@ import ArtistsIndex from './components/Artists/ArtistsIndex';
 import ArtistPage from './components/Artists/ArtistPage';
 import VenuesIndex from './components/Venues/VenuesIndex';
 import Profile from './components/Profile/Profile';
+import Favorites from './components/Profile/Favorites';
 import GenresIndex from './components/Genres/GenresIndex';
 import { authenticate } from './store/session';
 
@@ -46,6 +47,7 @@ function App() {
         <Route path='/venues' exact={true} element={<VenuesIndex />} />
         <Route path='/genres' exact={true} element={<GenresIndex />} />
         <Route path='/users/:userId/profile' exact={true} element={<Profile />} />
+        <Route path='/users/:userId/favorites' exact={true} element={<Favorites />} />
         <Route path='/' exact={true} element={<Homepage />} />
       </Routes>
       <Footer />

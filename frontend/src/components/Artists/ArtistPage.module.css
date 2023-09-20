@@ -93,7 +93,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
 }
 
 .genre {
@@ -106,6 +105,29 @@
   display: inline;
   margin: 0px 12px 0px 0px;
   font-weight: 900;
+}
+
+.favoriteContainer {
+  display: block;
+  margin-top: 8px;
+}
+
+.favoriteButton {
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 4px;
+  position: relative;
+  border: 1px solid transparent;
+  padding: 8px 24px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(2, 77, 223);
+  display: inline-block;
+  width: auto;
+  min-height: 44px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
 }
 
 .barContainer {

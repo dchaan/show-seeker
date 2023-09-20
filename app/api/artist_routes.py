@@ -26,7 +26,7 @@ def get_artist_by_id(artist_id):
   else:
     return jsonify({'message': 'Artist not found'}), 404
   
-@artist_routes.route('/<artist_id>/favorite', methods=['POST'])
+@artist_routes.route('/<artist_id>/favorite', methods=['GET'])
 @login_required
 def favorite_artist(artist_id):
   user = current_user
@@ -43,8 +43,10 @@ def favorite_artist(artist_id):
 
   db.session.commit()
 
-  return jsonify({'message': 'Artist favorited successfully'})
+  return jsonify(artist.to_dict())
 
+@artist_routes.route('/<artist_id>/unfavorite', methods=['DELETE'])
+@login_required
 def unfavorite_artist(artist_id):
   user = current_user
   artist = Artist.query.get(artist_id)
@@ -60,4 +62,4 @@ def unfavorite_artist(artist_id):
   
   db.session.commit()
 
-  return jsonify({'message': 'Artist removed from favorites successfully'})
+  return jsonify(artist.to_dict())
