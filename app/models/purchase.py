@@ -7,6 +7,7 @@ class Purchase(db.Model):
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
   event_id = db.Column(db.Integer, db.ForeignKey('events.id'), nullable=False)
   purchase_date = db.Column(db.DateTime, nullable=False)
+  quantity = db.Column(db.Integer, nullable=False)
 
   user = db.relationship('User', back_populates='purchases')
   event = db.relationship('Event', back_populates='purchases')
