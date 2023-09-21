@@ -31,9 +31,6 @@ def get_artist_by_id(artist_id):
 def favorite_artist(artist_id):
   user = current_user
   artist = Artist.query.get(artist_id)
-
-  if not artist:
-    return jsonify({'error': 'Artist not found'}), 404
   
   if artist in user.favorites:
     return jsonify({'message': 'Artist is already in favorites'})
@@ -51,15 +48,9 @@ def unfavorite_artist(artist_id):
   user = current_user
   artist = Artist.query.get(artist_id)
 
-  if not artist:
-    return jsonify({'error': 'Artist not found'}), 404
-
-  if artist not in user.favorites:
+  if artist in user.favorites:
+    user.favorites.remove(artist)
+    db.session.commit()
+    return jsonify(artist.to_dict())
+  else:
     return jsonify({'message': 'Artist is not in favorites'})
-
-  user.favorites.remove(artist)
-  artist.favorited_by.remove(user)
-  
-  db.session.commit()
-
-  return jsonify(artist.to_dict())

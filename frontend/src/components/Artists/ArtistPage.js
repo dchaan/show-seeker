@@ -53,6 +53,7 @@ const ArtistPage = () => {
   };
 
   const isFavorited = isArtistFavorited(artist.id, favorites);
+  const favoriteButtonText = isFavorited ? "Unfavorite" : "Favorite";
 
   const noEvents = () => { if (events.length) {
     return (
@@ -119,14 +120,9 @@ const ArtistPage = () => {
               <p className={styles.genre}>{artist.genre.name}</p>
               <h1 className={styles.artistName}>{artist.name}</h1>
               <div className={styles.favoriteContainer}>
-                {isFavorited ? 
-                  <button className={styles.favoriteButton} onClick={handleFavoriteClick}>
-                    Unfavorite
-                  </button> :
-                  <button className={styles.favoriteButton} onClick={handleFavoriteClick}>
-                    Favorite
-                  </button>
-                }
+                <button className={styles.favoriteButton} onClick={isFavorited ? handleUnfavoriteClick : handleFavoriteClick}>
+                  {favoriteButtonText}
+                </button>
               </div>
             </div>
           </div>
