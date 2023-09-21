@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate, NavLink } from "react-router-dom";
 import { getArtist } from "../../store/artist";
 import { getEvents } from "../../store/event";
-import { setFavorite, removeFavorite, getFavorites } from "../../store/user"
+import { setFavorite, removeFavorite, getFavorites } from "../../store/favorites"
 import ArtistEventCard from "./ArtistEventCard";
 import styles from "./ArtistPage.module.css";
 

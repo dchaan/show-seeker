@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, NavLink, useParams } from "react-router-dom";
-import { getFavorites } from "../../store/user";
+import { getFavorites } from "../../store/favorites";
 import styles from "./Favorites.module.css";
 import FavoritesCard from "./FavoritesCard";
-import Card from "../Homepage/Card";
 
 const Favorites = () => {
   const dispatch = useDispatch();

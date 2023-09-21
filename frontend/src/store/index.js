@@ -7,7 +7,8 @@ import genresReducer from './genre';
 import eventsReducer from './event';
 import artistsReducer from './artist';
 import venuesReducer from './venue';
-import usersReducer from './user';
+import favoritesReducer from './favorites';
+import purchasesReducer from './purchases';
 
 const rootReducer = combineReducers({
   session,
@@ -16,7 +17,8 @@ const rootReducer = combineReducers({
   venues: venuesReducer,
   classifications: classificationReducer,
   genres: genresReducer,
-  favorites: usersReducer
+  favorites: favoritesReducer,
+  purchases: purchasesReducer
 });
 
 let enhancer;

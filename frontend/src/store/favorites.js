@@ -56,7 +56,7 @@ export const removeFavorite = artist => async (dispatch) => {
   dispatch(_removeFavorite(unfavoritedArtist));
 };
 
-const usersReducer = (state = {}, action) => {
+const favoritesReducer = (state = {}, action) => {
   Object.freeze(state);
   switch(action.type) {
     case GET_FAVORITES:
@@ -79,4 +79,4 @@ const usersReducer = (state = {}, action) => {
   };
 };
 
-export default usersReducer;
+export default favoritesReducer;

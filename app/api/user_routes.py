@@ -45,13 +45,11 @@ def get_purchase_by_ids(user_id, purchase_id):
 @user_routes.route('/<int:user_id>/purchases', methods=['POST'])
 @login_required
 def create_purchase(user_id):
-  print(user_id)
   data = request.get_json()
   event_id = data.get('event_id')
   quantity = data.get('quantity')
   date = datetime.now()
   event = Event.query.get(event_id)
-  print("HELLOOOOO")
 
   if event is not None:
     purchase = Purchase(user_id=user_id, event_id=event_id, quantity=quantity, purchase_date=date)

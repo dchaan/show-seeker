@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { removeFavorite } from "../../store/user"
+import { removeFavorite } from "../../store/favorites"
 import styles from "./FavoritesCard.module.css";
 
 
