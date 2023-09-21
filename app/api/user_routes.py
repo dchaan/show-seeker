@@ -63,3 +63,16 @@ def create_purchase(user_id):
 
   else:
     return jsonify({'error': 'Event not found'}), 404
+  
+@user_routes.route('/<int:user_id>/purchases/<int:purchase_id>', methods=['DELETE'])
+@login_required
+def delete_purchase(user_id, purchase_id):
+  purchase = Purchase.query.filter_by(id=purchase_id, user_id=user_id).first()
+
+  if purchase is None:
+    return jsonify({'error': 'Purchase not found'}), 404
+
+  db.session.delete(purchase)
+  db.session.commit()
+
+  return jsonify({'message': 'Purchase deleted successfully'})
