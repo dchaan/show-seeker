@@ -38,7 +38,7 @@ const Navbar = () => {
       return (
         <>
           <span className={styles.headerLinkSpan}>
-            <button className={styles.myAccountButton} onClick={openMenu}><p className={styles.myAccountText}>My Account</p></button>
+            <button className={styles.myAccountButton} onClick={openMenu}><p className={styles.myAccountText}>{currentUser.first_name}</p></button>
           </span>
           {showMenu && (
             <div className={styles.accountMenuContainer}>
