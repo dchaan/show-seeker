@@ -1,0 +1,57 @@
+.cardContainer {
+  display: flex;
+  margin-right: -8px;
+  margin-left: -8px;
+}
+
+.eventInfo {
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  padding-right: 8px;
+  padding-left: 8px;
+}
+
+.date {
+  display: block;
+  color: rgb(100, 100, 100);
+  font-weight: bold;
+}
+
+.event {
+  margin-top: 16px;
+  margin-bottom: 0px;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.venue {
+  margin-top: 4px;
+}
+
+.orderInfo {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  align-items: flex-end;
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-right: 8px;
+  padding-left: 8px;
+  border-top: none;
+}
+
+.deleteButton {
+  text-align: center;
+  font-weight: 600;
+  line-height: 36px;
+  margin-bottom: 4px;
+  margin-top: 10px;
+  max-height: 36px;
+  padding: 0px 12px;
+  border-radius: 2px;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  background-color: rgb(235, 0, 0);
+  border: 1px solid transparent;
+}

@@ -20,6 +20,7 @@ import Profile from './components/Profile/Profile';
 import Favorites from './components/Profile/Favorites';
 import GenresIndex from './components/Genres/GenresIndex';
 import { authenticate } from './store/session';
+import Purchases from './components/Profile/Purchases';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -52,6 +53,7 @@ function App() {
         <Route path='/genres' exact={true} element={<GenresIndex />} />
         <Route path='/users/:userId/profile' exact={true} element={<Profile />} />
         <Route path='/users/:userId/favorites' exact={true} element={<Favorites />} />
+        <Route path='/users/:userId/purchases' exact={true} element={<Purchases />} />
         <Route path='/' exact={true} element={<Homepage />} />
       </Routes>
       <Footer />

@@ -16,5 +16,8 @@ class Purchase(db.Model):
     return {
       'id': self.id,
       'purchase_date': self.purchase_date,
-      'quantity': self.quantity
+      'quantity': self.quantity,
+      'event': self.event.name,
+      'event_date': self.event.start_time,
+      'venue': self.event.venue.name if self.event.venue else None,
     }
