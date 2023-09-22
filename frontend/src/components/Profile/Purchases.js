@@ -47,20 +47,20 @@ const Purchases = () => {
       <div className={styles.sidebarContainer}>
         <nav className={styles.navContainer}>
           <div className={styles.linkContainer}>
-            <button className={styles.linkButton} to={`/user/${userId.userId}/purchases`}>
+            <NavLink className={styles.linkButton} to={`/users/${userId.userId}/purchases`}>
               <div className={styles.iconContainer}>
                 <img className={styles.icon} src={tickets} alt="" />
               </div>
               <span className={styles.myTicketsText}>My Tickets</span>
-            </button>
+            </NavLink>
           </div>
           <div className={styles.linkContainer}>
-            <button className={styles.linkButton} to={`/user/${userId.userId}/profile`}>
+            <NavLink className={styles.linkButton} to={`/users/${userId.userId}/profile`}>
               <div className={styles.iconContainer}>
                 <img className={styles.icon} src={profile} alt="" />
               </div>
               <span className={styles.myTicketsText}>My Profile</span>
-            </button>
+            </NavLink>
           </div>
           <div className={styles.linkContainer}>
             <button className={styles.linkButton} onClick={onLogout}>
