@@ -15,6 +15,7 @@ class Purchase(db.Model):
   def to_dict(self):
     return {
       'id': self.id,
+      "user_id": self.user_id,
       'purchase_date': self.purchase_date,
       'quantity': self.quantity,
       'event': self.event.name,

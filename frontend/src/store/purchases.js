@@ -52,6 +52,7 @@ export const deletePurchase = purchase => async (dispatch) => {
   const response = await fetch (`/api/user/${purchase.user_id}/purchases/${purchase.id}`, {
     method: "DELETE"
   });
+  debugger
 
   if (!response.ok) {
     console.log("An error occurred");
