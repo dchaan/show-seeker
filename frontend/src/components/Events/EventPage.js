@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getEvent } from "../../store/event";
 import styles from "./EventPage.module.css";
 import EventInfoModal from "./EventInfoModal.js";
+import PurchaseModal from "./PurchaseModal";
 
 const EventPage = () => {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ const EventPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [importantInfoModal, setImportantInfoModal] = useState(false);
   const [eventInfoModal, setEventInfoModal] = useState(false);
+  const [purchaseModal, setPurchaseModal] = useState(false);
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   
   useEffect(() => {
@@ -33,15 +35,23 @@ const EventPage = () => {
 
   const openEventInfoModal = () => {
     setEventInfoModal(true);
-  }
+  };
 
   const closeEventInfoModal = () => {
     setEventInfoModal(false);
-  }
+  };
+
+  const openPurchaseModal = () => {
+    setPurchaseModal(true);
+  };
+
+  const closePurchaseModal = () => {
+    setPurchaseModal(false);
+  };
 
   const handleQuantityChange = e => {
     setSelectedQuantity(parseInt(e.target.value));
-  }
+  };
 
   const image = event['images'].find(image => image.includes('EVENT_DETAIL_PAGE'));
   const date = new Date(event.start_time);
@@ -160,44 +170,54 @@ const EventPage = () => {
             </div>
             <div className={styles.priceTicketSubContainer}>
               <ul className={styles.ticketListContainer}>
-                <li className={styles.ticketContainer}>
-                  <div className={styles.ticketContent}>
-                    <div className={styles.ticketSplit}>
-                      <div className={styles.ticketSplitLeft}>
-                        <span className={styles.ticketType}>
-                          General Admission Tickets
-                        </span>
-                        <span className={styles.ticketSub}>
-                          General Admission
-                        </span>
-                      </div>
-                      <div className={styles.ticketSplitRight}>
-                        <button className={styles.priceButton}>
-                          ${minPrice}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li className={styles.ticketContainer}>
-                  <div className={styles.ticketContent}>
-                    <div className={styles.ticketSplit}>
-                      <div className={styles.ticketSplitLeft}>
-                        <span className={styles.ticketType}>
-                          Premium VIP Tickets
-                        </span>
-                        <span className={styles.ticketSub}>
-                          VIP Admission
-                        </span>
-                      </div>
-                      <div className={styles.ticketSplitRight}>
-                        <button className={styles.priceButton}>
-                          ${maxPrice}
-                        </button>
+                <button className={styles.ticketButton} onClick={openPurchaseModal}>
+                  {purchaseModal && (
+                    <PurchaseModal onClose={closePurchaseModal} quantity={selectedQuantity} />
+                  )}
+                  <li className={styles.ticketContainer}>
+                    <div className={styles.ticketContent}>
+                      <div className={styles.ticketSplit}>
+                        <div className={styles.ticketSplitLeft}>
+                          <span className={styles.ticketType}>
+                            General Admission Tickets
+                          </span>
+                          <span className={styles.ticketSub}>
+                            General Admission
+                          </span>
+                        </div>
+                        <div className={styles.ticketSplitRight}>
+                          <button className={styles.priceButton}>
+                            ${minPrice}
+                          </button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </li>
+                  </li>
+                </button>
+                <button className={styles.ticketButton} onClick={openPurchaseModal}>
+                  {purchaseModal && (
+                    <PurchaseModal onClose={closePurchaseModal} quantity={selectedQuantity} />
+                  )}
+                  <li className={styles.ticketContainer}>
+                    <div className={styles.ticketContent}>
+                      <div className={styles.ticketSplit}>
+                        <div className={styles.ticketSplitLeft}>
+                          <span className={styles.ticketType}>
+                            Premium VIP Tickets
+                          </span>
+                          <span className={styles.ticketSub}>
+                            VIP Admission
+                          </span>
+                        </div>
+                        <div className={styles.ticketSplitRight}>
+                          <button className={styles.priceButton}>
+                            ${maxPrice}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </button>
               </ul>
             </div>
           </div>

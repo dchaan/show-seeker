@@ -330,7 +330,6 @@
 }
 
 .ticketListContainer {
-  border-bottom: 1px solid #ebebeb;
   margin: 0;
   position: relative;
   padding: 0 15px;
@@ -405,4 +404,9 @@
   cursor: pointer;
 }
 
-
+.ticketButton {
+  border: none;
+  background-color: transparent;
+  width: 100%;
+  cursor: pointer;
+}

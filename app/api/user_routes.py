@@ -28,7 +28,7 @@ def user_favorites(id):
 
 @user_routes.route('/<int:id>/purchases', methods=['GET'])
 @login_required
-def user_favorites(id):
+def user_purchases(id):
   purchases = Purchase.query.filter_by(user_id=id).all()
   
   return [purchase.to_dict() for purchase in purchases]
@@ -53,7 +53,6 @@ def create_purchase(user_id):
 
   if event is not None:
     purchase = Purchase(user_id=user_id, event_id=event_id, quantity=quantity, purchase_date=date)
-    print(purchase)
     db.session.add(purchase)
     db.session.commit()
 

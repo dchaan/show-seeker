@@ -27,6 +27,7 @@ export const getPurchases = userId => async (dispatch) => {
 
   const purchases = await response.json();
   dispatch(_getPurchases(purchases));
+  return purchases;
 };
 
 export const newPurchase = purchaseData => async (dispatch) => {
@@ -60,7 +61,7 @@ export const deletePurchase = purchase => async (dispatch) => {
   dispatch(_deletePurchase(purchase));
 };
 
-const purchasesReducer = (state = {}, action) => {
+const purchasesReducer = (state = { purchases: [] }, action) => {
   Object.freeze(state);
   switch(action.type) {
     case GET_PURCHASES:
