@@ -18,6 +18,7 @@ alembic = "*"
 jinja2 = "*"
 psycopg2-binary = "*"
 requests = "*"
+unidecode = "*"
 
 [dev-packages]
 

@@ -1,20 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import styles from "./Homepage.module.css";
-import searchIcon from "../../assets/search-icon.png";
-import Card from "./Card";
+import { NavLink, useNavigate } from "react-router-dom";
 import { getClassifications } from "../../store/classification";
 import { getArtists } from "../../store/artist";
 import { getEvents } from "../../store/event";
+import Card from "./Card";
+import searchIcon from "../../assets/search-icon.png";
+import styles from "./Homepage.module.css";
 
 const Homepage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const classifications = useSelector(state => state.classifications.classifications);
   const filteredClassifications = Object.values(classifications).filter(classification => classification.name !== "Undefined" && classification.name !== "Miscellaneous");
   const artists = useSelector(state => state.artists.artists);
   const filteredArtists = Object.values(artists);
-  const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [searchQuery, setSearchQuery] = useState(""); // State for the search query
 
   useEffect(() => {
     dispatch(getClassifications());
@@ -23,6 +25,12 @@ const Homepage = () => {
   }, [dispatch]);
 
   if (!isLoaded) return <div>Loading...</div>
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    await dispatch(getEvents(searchQuery));
+    navigate(`/events?query=${encodeURIComponent(searchQuery)}`);
+  }
 
   const concerts = filteredArtists.filter(artist => artist.classification.name === "Music");
   const sports = filteredArtists.filter(artist => artist.classification.name === "Sports");
@@ -38,21 +46,24 @@ const Homepage = () => {
               <h2 className={styles.subHeaderTitle}>Let's Make Live Happen</h2>
               <p className={styles.subHeaderSubText}>Shop millions of live events and discover can't miss concerts, games, theater and more.</p>
             </div>
-            <div className={styles.searchContainer}>
-              <div className={styles.searchBar}>
-                <div className={styles.searchIconContainer}>
-                  <img className={styles.searchIcon} src={searchIcon} alt="" />
-                </div>
-                <input className={styles.searchInput}
-                  type="text"
-                  placeholder="Search for artists, venues, and events"
-                  value=""
-                />
-                <div className={styles.searchButtonContainer}>
-                  <button className={styles.searchButton}>Search</button>
+            <form onSubmit={handleSearch}>
+              <div className={styles.searchContainer}>
+                <div className={styles.searchBar}>
+                    <div className={styles.searchIconContainer}>
+                      <img className={styles.searchIcon} src={searchIcon} alt="" />
+                    </div>
+                    <input className={styles.searchInput}
+                      type="text"
+                      placeholder="Search for artists, venues, and events"
+                      value={searchQuery}
+                      onChange={e => setSearchQuery(e.target.value)}
+                    />
+                    <div className={styles.searchButtonContainer}>
+                      <button className={styles.searchButton} type="submit">Search</button>
+                    </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>

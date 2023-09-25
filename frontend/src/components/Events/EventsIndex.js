@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import styles from "./Events.module.css";
 import { getEvents } from "../../store/event";
 import EventCard from "./EventCard";
@@ -14,9 +14,13 @@ const EventsIndex = () => {
   const batchSize = 10;
   const [sortOption, setSortOption] = useState("date");
 
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const searchQuery = queryParams.get("query");
+
   useEffect(() => {
-    dispatch(getEvents()).then(() => setIsLoaded(true));
-  }, [dispatch]);
+    dispatch(getEvents(searchQuery)).then(() => setIsLoaded(true));
+  }, [dispatch, searchQuery]);
 
   if (!isLoaded) return <div>Loading...</div>;
 
@@ -61,7 +65,7 @@ const EventsIndex = () => {
                 <div className={styles.slash}>
                   /
                 </div>
-                <div className={styles.subTitle}>Concert Tickets</div>
+                <div className={styles.subTitle}>All Events Tickets</div>
               </div>
           </div>
           <div className={styles.subHeaderTitle}>
@@ -74,7 +78,10 @@ const EventsIndex = () => {
       </div>
       <div className={styles.eventsContainer}>
         <div className={styles.eventsTitleContainer}>
-          <div className={styles.allConcertsText}>All Events ({events.length})</div>
+          {searchQuery ? 
+            <div className={styles.allConcertsText}>{events.length} Results for "{searchQuery}"</div> :
+            <div className={styles.allConcertsText}>All Events ({events.length})</div>
+          }
         </div>
         <div className={styles.filterContainer}>
           <div className={styles.filterSubContainer}>
