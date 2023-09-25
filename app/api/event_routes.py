@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
-from app.models import Event
+from app.models import Event, Venue, Classification, Genre
+from sqlalchemy import or_
 
 event_routes = Blueprint('events', __name__)
 
@@ -8,7 +9,19 @@ def get_events():
   query = request.args.get('query')
 
   if query:
-    events = Event.query.filter(Event.name.ilike(f'%{query}')).all()
+    events = Event.query \
+      .join(Venue, Event.venue) \
+      .join(Genre, Event.genre) \
+      .join(Classification, Event.classification) \
+      .filter(
+        or_(
+          Event.name.ilike(f'%{query}%'),
+          Venue.name.ilike(f'%{query}%'),
+          Genre.name.ilike(f'%{query}%'),
+          Classification.name.ilike(f'%{query}%')
+        )
+      ) \
+      .all()
   else:
     events = Event.query.all()
 

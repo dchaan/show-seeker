@@ -2,15 +2,16 @@ import React, { useState, useEffect } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/session";
+import { getEvents } from "../../store/event"
 import HeaderSearchIcon from "../../assets/header-search-icon.png"
 import styles from "./Navbar.module.css"
 
 const Navbar = () => {
   const dispatch = useDispatch();
-  const [showMenu, setShowMenu] = useState(false);
-  
-  const currentUser = useSelector(state => state.session.user);
   const navigate = useNavigate();
+  const user = useSelector(state => state.session.user);
+  const [showMenu, setShowMenu] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const onLogout = async (e) => {
     await dispatch(logout()).then(navigate('/'));
@@ -20,6 +21,12 @@ const Navbar = () => {
     if (showMenu) return;
     setShowMenu(true);
   };
+
+  const handleSearch = async(e) => {
+    e.preventDefault();
+    await dispatch(getEvents(searchQuery));
+    navigate(`/events?query=${encodeURIComponent(searchQuery)}`);
+  }
 
   useEffect(() => {
     if (!showMenu) return;
@@ -34,23 +41,23 @@ const Navbar = () => {
   }, [showMenu]);
 
   const myAccount = () => {
-    if (currentUser) {
+    if (user) {
       return (
         <>
           <span className={styles.headerLinkSpan}>
-            <button className={styles.myAccountButton} onClick={openMenu}><p className={styles.myAccountText}>{currentUser.first_name}</p></button>
+            <button className={styles.myAccountButton} onClick={openMenu}><p className={styles.myAccountText}>{user.first_name}</p></button>
           </span>
           {showMenu && (
             <div className={styles.accountMenuContainer}>
               <div className={styles.accountLinksContainer}>
-                <NavLink className={styles.accountLink} to={`/users/${currentUser.id}/profile`}>My Account</NavLink>
-                <NavLink className={styles.accountLink} to={`/users/${currentUser.id}/purchases`}>My Tickets</NavLink>
-                <NavLink className={styles.accountLink} to={`/users/${currentUser.id}/favorites`}>My Favorites</NavLink>
+                <NavLink className={styles.accountLink} to={`/users/${user.id}/profile`}>My Account</NavLink>
+                <NavLink className={styles.accountLink} to={`/users/${user.id}/purchases`}>My Tickets</NavLink>
+                <NavLink className={styles.accountLink} to={`/users/${user.id}/favorites`}>My Favorites</NavLink>
               </div>
               <div className={styles.logoutContainer}>
                 <button className={styles.logoutButtonContainer} onClick={onLogout}>
                   Not&nbsp;
-                  <span className={styles.name}>{currentUser.first_name}</span>
+                  <span className={styles.name}>{user.first_name}</span>
                   ?&nbsp;
                   <span className={styles.signout}>
                     Sign Out
@@ -80,15 +87,15 @@ const Navbar = () => {
         {window.location.pathname !== "/" && (
         <div className={styles.searchBarContainer}>
           <div className={styles.searchBar}>
-            <form className={styles.searchForm}>
+            <form className={styles.searchForm} onSubmit={handleSearch}>
               <div className={styles.searchIconContainer}>
                 <img className={styles.searchIcon} src={HeaderSearchIcon} alt="" />
               </div>
               <input className={styles.searchInput}
                 type="text"
                 placeholder="Find millions of live experiences"
-                value={""}
-                onChange={""}
+                value={searchQuery}
+                onChange={e => setSearchQuery(e.target.value)}
               />
             </form>
           </div>
