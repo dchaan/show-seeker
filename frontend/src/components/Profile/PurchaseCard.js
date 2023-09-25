@@ -11,10 +11,9 @@ const PurchaseCard = ({ purchase }) => {
     setSellModal(true);
   };
 
-  const closeSellModal = () => {
-    console.log("Button clicked")
+  const closeSellModal = e => {
+    e.stopPropagation();
     setSellModal(false);
-    console.log(sellModal)
   };
 
   return (

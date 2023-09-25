@@ -45,7 +45,8 @@ const EventPage = () => {
     setPurchaseModal(true);
   };
 
-  const closePurchaseModal = () => {
+  const closePurchaseModal = e => {
+    e.stopPropagation();
     setPurchaseModal(false);
   };
 
