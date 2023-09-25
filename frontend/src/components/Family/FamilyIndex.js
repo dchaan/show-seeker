@@ -7,7 +7,7 @@ import EventCard from "../Events/EventCard";
 
 const FamilyIndex = () => {
   let events = useSelector(state => state.events.events);
-  events = Object.values(events).filter(event => event.classification.name === "Family");
+  events = Object.values(events).filter(event => event.classification.name === "Miscellaneous");
 
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);

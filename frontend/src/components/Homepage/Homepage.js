@@ -156,7 +156,7 @@ const Homepage = () => {
                     <h3 className={styles.categoryTitleText}>
                       Family
                     </h3>
-                    <NavLink className={styles.navlink} to={`/events/concerts`}>
+                    <NavLink className={styles.navlink} to={`/events/family`}>
                       See All Family
                     </NavLink>
                   </div>

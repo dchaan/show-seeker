@@ -1,5 +1,6 @@
 .mainContainer {
   padding-bottom: 120px;
+  min-height: 620px;
 }
 
 .subHeader {
