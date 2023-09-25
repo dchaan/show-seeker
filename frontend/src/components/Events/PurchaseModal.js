@@ -14,8 +14,9 @@ const PurchaseModal = ({ onClose, quantity }) => {
     "quantity": quantity
   };
 
-  const handlePurchase = () => {
+  const handlePurchase = e => {
     dispatch(newPurchase(purchaseData));
+    onClose(e);
   };
 
   return (

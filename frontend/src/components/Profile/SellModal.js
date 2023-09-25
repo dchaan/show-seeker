@@ -5,8 +5,9 @@ import styles from "./SellModal.module.css";
 const SellModal = ({ onClose, purchase }) => {
   const dispatch = useDispatch();
 
-  const handlePurchase = () => {
+  const handlePurchase = e => {
     dispatch(deletePurchase(purchase));
+    onClose(e);
   };
 
   return (
