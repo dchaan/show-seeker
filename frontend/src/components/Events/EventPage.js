@@ -10,7 +10,7 @@ const EventPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { eventId } = useParams();
-  const event = useSelector((state) => ( state.events.event ));
+  const event = useSelector(state => state.events.event);
   const [isLoaded, setIsLoaded] = useState(false);
   const [importantInfoModal, setImportantInfoModal] = useState(false);
   const [eventInfoModal, setEventInfoModal] = useState(false);
@@ -53,26 +53,26 @@ const EventPage = () => {
     setSelectedQuantity(parseInt(e.target.value));
   };
 
-  const image = event['images'].find(image => image.includes('EVENT_DETAIL_PAGE'));
+  const image = event.images.find(image => image.includes("EVENT_DETAIL_PAGE"));
   const date = new Date(event.start_time);
-  const formattedDate = date.toLocaleDateString('en-US', {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    timeZoneName: 'short'
+  const formattedDate = date.toLocaleDateString("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZoneName: "short"
   });
 
-  let location = 'Venue'
+  let location = "Venue"
   if (event.venue && event.venue.address) {
-    const splitAddress = event.venue.address.split(',')
+    const splitAddress = event.venue.address.split(",")
     const cityAndState = `${splitAddress[1].trim()}, ${splitAddress[2].trim()}`;
     location = `${event.venue.name}, ${cityAndState}`
   };
 
   let seatmap = event.seatmap || ""
-  seatmap = seatmap.replace('https', 'http').replace(/"/g, '');
+  seatmap = seatmap.replace("https", "http").replace(/"/g, "");
 
   const priceArray = JSON.parse(event.price_range);
   let minPrice = 0;
@@ -87,7 +87,7 @@ const EventPage = () => {
       return event.venue.general_info;
     } else if (event.accessibility) {
       return event.accessibility;
-    }
+    };
     return '';
   };
 
@@ -151,7 +151,7 @@ const EventPage = () => {
                 <select className={styles.ticketDropdown }value={selectedQuantity} onChange={handleQuantityChange}>
                   {[1, 2, 3, 4, 5, 6].map((quantity) => (
                     <option key={quantity} value={quantity}>
-                      {quantity} Ticket{quantity !== 1 ? 's' : ''}
+                      {quantity} Ticket{quantity !== 1 ? "s" : ""}
                     </option>
                   ))}
                 </select>

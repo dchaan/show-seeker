@@ -8,7 +8,6 @@ import EventCard from "./EventCard";
 const EventsIndex = () => {
   let events = useSelector(state => state.events.events);
   events = Object.values(events);
-
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const [displayedEvents, setDisplayedEvents] = useState(10);

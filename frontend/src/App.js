@@ -1,26 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import ProtectedRoute from './components/Auth/ProtectedRoute';
-import Navbar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer';
-import Login from './components/Auth/Login';
-import Signup from './components/Auth/SignUp';
-import Homepage from './components/Homepage/Homepage'
-import EventsIndex from './components/Events/EventsIndex';
-import EventPage from './components/Events/EventPage';
-import ConcertsIndex from './components/Concerts/ConcertsIndex';
-import SportsIndex from './components/Sports/SportsIndex';
-import ArtistsIndex from './components/Artists/ArtistsIndex';
-import ArtistPage from './components/Artists/ArtistPage';
-import VenuesIndex from './components/Venues/VenuesIndex';
-import ArtsAndTheatreIndex from './components/ArtsAndTheatre/ArtsAndTheatreIndex';
-import FamilyIndex from './components/Family/FamilyIndex';
-import Profile from './components/Profile/Profile';
-import Favorites from './components/Profile/Favorites';
-import GenresIndex from './components/Genres/GenresIndex';
-import { authenticate } from './store/session';
-import Purchases from './components/Profile/Purchases';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import ProtectedRoute from "./components/Auth/ProtectedRoute";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import Login from "./components/Auth/Login";
+import Signup from "./components/Auth/SignUp";
+import Homepage from "./components/Homepage/Homepage"
+import EventsIndex from "./components/Events/EventsIndex";
+import EventPage from "./components/Events/EventPage";
+import ConcertsIndex from "./components/Concerts/ConcertsIndex";
+import SportsIndex from "./components/Sports/SportsIndex";
+import ArtistsIndex from "./components/Artists/ArtistsIndex";
+import ArtistPage from "./components/Artists/ArtistPage";
+import VenuesIndex from "./components/Venues/VenuesIndex";
+import ArtsAndTheatreIndex from "./components/ArtsAndTheatre/ArtsAndTheatreIndex";
+import FamilyIndex from "./components/Family/FamilyIndex";
+import Profile from "./components/Profile/Profile";
+import Favorites from "./components/Profile/Favorites";
+import GenresIndex from "./components/Genres/GenresIndex";
+import { authenticate } from "./store/session";
+import Purchases from "./components/Profile/Purchases";
 
 function App() {
   const [loaded, setLoaded] = useState(false);

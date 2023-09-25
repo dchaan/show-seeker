@@ -8,7 +8,6 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
-
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,7 +16,7 @@ const Login = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) setErrors(data);
-    navigate('/');
+    navigate("/");
   };
 
   const inputEmail = async (e) => {
@@ -28,7 +27,7 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  if (user) return <Navigate to='/' />;
+  if (user) return <Navigate to="/" />;
 
   const enabled_submit = email && password;
 
@@ -53,7 +52,7 @@ const Login = () => {
                     value={email} 
                     onChange={inputEmail} 
                   />
-                  {errors && <p className={styles.errors}>{errors['email']}</p>}
+                  {errors && <p className={styles.errors}>{errors.email}</p>}
                 </div>
               </div>
               <div className={styles.authFieldContainer}>
@@ -65,7 +64,7 @@ const Login = () => {
                     value={password} 
                     onChange={inputPassword} 
                   />
-                  {errors && <p className={styles.errors}>{errors['password']}</p>}
+                  {errors && <p className={styles.errors}>{errors.password}</p>}
                 </div>
               </div>
               <div className={styles.authSmallContainer}>

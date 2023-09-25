@@ -10,7 +10,7 @@ import { getEvents } from "../../store/event";
 
 const Homepage = () => {
   const classifications = useSelector(state => state.classifications.classifications);
-  const filteredClassifications = Object.values(classifications).filter(classification => classification['name'] !== 'Undefined' && classification['name'] !== 'Miscellaneous');
+  const filteredClassifications = Object.values(classifications).filter(classification => classification.name !== "Undefined" && classification.name !== "Miscellaneous");
   const artists = useSelector(state => state.artists.artists);
   const filteredArtists = Object.values(artists);
   const dispatch = useDispatch();
@@ -24,10 +24,10 @@ const Homepage = () => {
 
   if (!isLoaded) return <div>Loading...</div>
 
-  const concerts = filteredArtists.filter(artist => artist.classification.name === 'Music');
-  const sports = filteredArtists.filter(artist => artist.classification.name === 'Sports');
-  const arts = filteredArtists.filter(artist => artist.classification.name === 'Arts & Theatre');
-  const family = filteredArtists.filter(artist => artist.classification.name === 'Miscellaneous');
+  const concerts = filteredArtists.filter(artist => artist.classification.name === "Music");
+  const sports = filteredArtists.filter(artist => artist.classification.name === "Sports");
+  const arts = filteredArtists.filter(artist => artist.classification.name === "Arts & Theatre");
+  const family = filteredArtists.filter(artist => artist.classification.name === "Miscellaneous");
 
   return (
     <div className={styles.indexContainer}>

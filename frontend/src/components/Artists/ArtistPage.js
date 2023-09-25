@@ -15,16 +15,15 @@ const ArtistPage = () => {
   const user = useSelector(state => state.session.user)
   const artist = useSelector(state => ( state.artists.artist ));
   const favorites = useSelector(state => state.favorites.favorites);
-
   let events = useSelector(state => state.events.events)
   const [isLoaded, setIsLoaded] = useState(false);  
-  events = Object.values(events)
-  events = events.filter(event => event.artist.id === parseInt(artistId))
+  events = Object.values(events);
+  events = events.filter(event => event.artist.id === parseInt(artistId));
 
   useEffect(() => {
     dispatch(getArtist(artistId)).then((res) => {
       if (res.errors) {
-        navigate('/');
+        navigate("/");
         setIsLoaded(true);
       } else {
         dispatch(getEvents());
@@ -34,11 +33,11 @@ const ArtistPage = () => {
   }, [dispatch, artistId, user, navigate]);
 
   if (!isLoaded) return <div>Loading...</div>;
-  const image = artist['images'].find(image => image.includes('ARTIST_PAGE'));
+  const image = artist.images.find(image => image.includes("ARTIST_PAGE"));
 
   const divStyle = {
     backgroundImage: `url(${image})`
-  }
+  };
 
   const handleFavoriteClick = () => {
     dispatch(setFavorite(artist));
@@ -85,7 +84,7 @@ const ArtistPage = () => {
       <div className={styles.noEventsContainer}>
         <div className={styles.noEventsText}>Sorry, there are no upcoming events.</div>
       </div>
-    )
+    );
   };
 };
 
@@ -141,7 +140,7 @@ const ArtistPage = () => {
       </div>
       {noEvents()}
     </div>
-  )
+  );
 };
 
 export default ArtistPage;

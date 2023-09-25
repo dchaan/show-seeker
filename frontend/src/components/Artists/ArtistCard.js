@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 import styles from "./ArtistCard.module.css"
 
 const ArtistCard = ({ artist }) => {
-  const image = artist['images'].find(image => image.includes('TABLET_LANDSCAPE_LARGE'));
-  const altImage = artist['images'].find(image => image.includes('SOURCE'));
+  const image = artist.images.find(image => image.includes("TABLET_LANDSCAPE_LARGE"));
+  const altImage = artist.images.find(image => image.includes("SOURCE"));
 
   return (
     <div className={styles.artistsInfoContainer}>

@@ -5,8 +5,8 @@ import styles from "./FavoritesCard.module.css";
 
 
 const FavoritesCard = ({ artist }) => {
-  const image = artist['images'].find(image => image.includes('TABLET_LANDSCAPE_LARGE'));
-  const altImage = artist['images'].find(image => image.includes('SOURCE'));
+  const image = artist.images.find(image => image.includes("TABLET_LANDSCAPE_LARGE"));
+  const altImage = artist.images.find(image => image.includes("SOURCE"));
   const dispatch = useDispatch();
 
   const handleUnfavorite = () => {
@@ -35,7 +35,7 @@ const FavoritesCard = ({ artist }) => {
         <div className={styles.buttonText}>Unfavorite</div>
       </button>
     </div>
-  )
+  );
 };
 
 export default FavoritesCard;

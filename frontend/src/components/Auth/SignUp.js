@@ -5,10 +5,10 @@ import { signup } from '../../store/session';
 import styles from './Auth.module.css';
 
 const Signup = () => {
-  const [first_name, setFirstName] = useState('');
-  const [last_name, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [first_name, setFirstName] = useState("");
+  const [last_name, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [errors, setSerrors] = useState([]);
 
   const user = useSelector(state => state.session.user);
@@ -20,7 +20,7 @@ const Signup = () => {
     if (data) setSerrors(data);
   };
 
-  if (user) return <Navigate to='/' />;
+  if (user) return <Navigate to="/" />;
 
   const enabled_submit = first_name && last_name && email && password;
 
@@ -48,7 +48,7 @@ const Signup = () => {
                     required={true}
                     onChange={(e) => setEmail(e.target.value)} 
                   />
-                  {errors && <p className={styles.errors}>{errors["email"]}</p>}
+                  {errors && <p className={styles.errors}>{errors.email}</p>}
                 </div>
               </div>
               <div className={styles.authFieldContainer}>
@@ -62,7 +62,7 @@ const Signup = () => {
                     required={true}
                     onChange={(e) => setPassword(e.target.value)} 
                   />
-                  {errors && <p className={styles.errors}>{errors["password"]}</p>}
+                  {errors && <p className={styles.errors}>{errors.password}</p>}
                 </div>
               </div>
               <div className={styles.authFirstLastName}>
@@ -78,7 +78,7 @@ const Signup = () => {
                         required={true}
                         onChange={(e) => setFirstName(e.target.value)} 
                       />
-                      {errors && <p className={styles.errors}>{errors["first_name"]}</p>}
+                      {errors && <p className={styles.errors}>{errors.first_name}</p>}
                     </div>
                   </div>
                 </div>
@@ -93,7 +93,7 @@ const Signup = () => {
                           value={last_name}
                           onChange={(e) => setLastName(e.target.value)}
                         />
-                        {errors && <p className={styles.errors}>{errors["last_name"]}</p>}
+                        {errors && <p className={styles.errors}>{errors.last_name}</p>}
                       </div>
                     </div>
                   </div>

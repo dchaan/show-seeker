@@ -3,19 +3,19 @@ import styles from "./EventCard.module.css";
 
 const EventCard = ({ event }) => {
   const date = new Date(event.start_time);
-  const formattedDate = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-  const formattedDayAndTime = date.toLocaleString('en-US', {
-    weekday: 'short',
-    hour: 'numeric',
-    minute: 'numeric',
+  const formattedDate = date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  const formattedDayAndTime = date.toLocaleString("en-US", {
+    weekday: "short",
+    hour: "numeric",
+    minute: "numeric",
     hour12: true,
-    timeZoneName: 'short',
+    timeZoneName: "short",
   });
 
-  const image = event['images'].find(image => image.includes('TABLET_LANDSCAPE_LARGE'));
-  const altImage = event['images'].find(image => image.includes('SOURCE'));
+  const image = event.images.find(image => image.includes("TABLET_LANDSCAPE_LARGE"));
+  const altImage = event.images.find(image => image.includes("SOURCE"));
   
-  let location = 'Venue';
+  let location = "Venue";
   if (event.venue && event.venue.address) {
     const splitAddress = event.venue.address.split(',');
     const cityAndState = `${splitAddress[1].trim()}, ${splitAddress[2].trim()}`;

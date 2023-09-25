@@ -7,7 +7,7 @@ import EventCard from "../Events/EventCard";
 
 const FamilyIndex = () => {
   let events = useSelector(state => state.events.events);
-  events = Object.values(events).filter(event => event.classification.name === 'Family');
+  events = Object.values(events).filter(event => event.classification.name === "Family");
 
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -35,7 +35,7 @@ const FamilyIndex = () => {
           return -1;
         } else if (isNaN(dateA) && isNaN(dateB)) {
           return 0; 
-        }
+        };
         return dateA - dateB;
       });
     } else if (sortOption === "nameAZ") {
@@ -46,7 +46,7 @@ const FamilyIndex = () => {
       sortedEvents.sort((a, b) => {
         return b.name.localeCompare(a.name);
       });
-    }
+    };
     return sortedEvents;
   };
 

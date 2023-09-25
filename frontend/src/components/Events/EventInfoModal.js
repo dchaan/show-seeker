@@ -5,24 +5,24 @@ const EventInfoModal = ({ event, onClose }) => {
   const { name, artist, genre, classification, venue, start_time, ticket_limit, accessibility} = event;
 
   const date = new Date(start_time);
-  const formattedDate = date.toLocaleDateString('en-US', {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    timeZoneName: 'short'
+  const formattedDate = date.toLocaleDateString("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZoneName: "short"
   });
 
-  let location = 'Venue'
+  let location = "Venue"
   if (venue && venue.address) {
-    const splitAddress = venue.address.split(',')
+    const splitAddress = venue.address.split(",")
     const cityAndState = `${splitAddress[1].trim()}, ${splitAddress[2].trim()}`;
     location = `${venue.name}, ${cityAndState}`
   };
 
-  const image = artist['images'].find(image => image.includes('CUSTOM'));
-  const altImage = artist['images'].find(image => image.includes('SOURCE'));
+  const image = artist.images.find(image => image.includes("CUSTOM"));
+  const altImage = artist.images.find(image => image.includes("SOURCE"));
   console.log(image)
   return (
     <div className={styles.modalContainer}>
@@ -33,7 +33,7 @@ const EventInfoModal = ({ event, onClose }) => {
         </div>
         <ol className={styles.ol}>
           <li className={styles.li}>
-            <NavLink className={styles.navlink} to={'/'}>
+            <NavLink className={styles.navlink} to={"/"}>
               ShowSeeker
             </NavLink>
             <span className={styles.slash}>/</span>

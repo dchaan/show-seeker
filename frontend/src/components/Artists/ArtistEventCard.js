@@ -3,14 +3,14 @@ import styles from "./ArtistEventCard.module.css";
 
 const ArtistEventCard = ({ event }) => {
   const date = new Date(event.start_time);
-  const month = date.toLocaleString('en-US', { month: 'short' });
+  const month = date.toLocaleString("en-US", { month: "short" });
   const day = date.getDate();
-  const weekday = date.toLocaleString('en-US', { weekday: 'short' });
-  const time = date.toLocaleTimeString('en-US', { hour12: true, hour: '2-digit', minute: '2-digit' });
+  const weekday = date.toLocaleString("en-US", { weekday: "short" });
+  const time = date.toLocaleTimeString("en-US", { hour12: true, hour: "2-digit", minute: "2-digit" });
 
-  let location = 'Venue'
+  let location = "Venue"
   if (event.venue && event.venue.address) {
-    const splitAddress = event.venue.address.split(',');
+    const splitAddress = event.venue.address.split(",");
     const cityAndState = `${splitAddress[1].trim()}, ${splitAddress[2].trim()}`;
     location = `${cityAndState} - ${event.venue.name}`;
   };

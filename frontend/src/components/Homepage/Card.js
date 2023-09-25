@@ -14,12 +14,12 @@ const Card = ({ item }) => {
     "Arts & Theatre": arts
   };
 
-  const categories = ['Music', 'Sports', 'Film', 'Arts & Theatre', 'Miscellaneous' ]
+  const categories = ["Music", "Sports", "Film", "Arts & Theatre", "Miscellaneous" ]
 
   let image = ""
-  image = (item['images']) ? 
-    item['images'].find(image => image.includes('TABLET_LANDSCAPE_LARGE'))
-    || item['images'].find(image => image.includes('SOURCE')) : categoryImages[item.name]
+  image = (item.images) ? 
+    item.images.find(image => image.includes("TABLET_LANDSCAPE_LARGE"))
+    || item.images.find(image => image.includes("SOURCE")) : categoryImages[item.name]
 
   let name = item.name
   if (item.name === "Music") {

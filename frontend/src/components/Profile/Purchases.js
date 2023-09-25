@@ -13,8 +13,8 @@ const Purchases = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userId = useParams();
-  const user = useSelector(state => state.session.user)
-  
+  const user = useSelector(state => state.session.user);
+
   const purchases = useSelector(state => state.purchases.purchases);
   const sortedPurchases = purchases.sort((a, b) => {
     const dateA = new Date(a.purchase_date);
@@ -29,10 +29,11 @@ const Purchases = () => {
   }, [dispatch, userId]);
 
   const onLogout = async (e) => {
-    await dispatch(logout()).then(navigate('/'));
-  }
+    await dispatch(logout()).then(navigate("/"));
+  };
 
   if (!isLoaded) return <div>Loading...</div>;
+
   return (
     <div className={styles.purchasesContainer}>
       <div className={styles.headerContainer}></div>
@@ -77,7 +78,7 @@ const Purchases = () => {
           <nav className={styles.homeNavContainer}>
             <ol className={styles.navOL}>
               <li className={styles.navLI}>
-                <NavLink className={styles.navlink} to={'/'}>Home</NavLink>
+                <NavLink className={styles.navlink} to={"/"}>Home</NavLink>
                 <span className={styles.slash}>/</span>
               </li>
               <li className={styles.navLI}>
@@ -100,7 +101,7 @@ const Purchases = () => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default Purchases;

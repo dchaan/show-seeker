@@ -8,7 +8,6 @@ import ArtistCard from "./ArtistCard";
 const ArtistsIndex = () => {
   let artists = useSelector(state => state.artists.artists);
   artists = Object.values(artists);
-
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const [displayedEvents, setDisplayedEvents] = useState(10);

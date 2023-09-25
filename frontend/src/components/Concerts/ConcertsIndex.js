@@ -7,8 +7,7 @@ import EventCard from "../Events/EventCard";
 
 const ConcertsIndex = () => {
   let events = useSelector(state => state.events.events);
-  events = Object.values(events).filter(event => event.classification.name === 'Music');
-
+  events = Object.values(events).filter(event => event.classification.name === "Music");
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   const [displayedEvents, setDisplayedEvents] = useState(10);
@@ -46,7 +45,7 @@ const ConcertsIndex = () => {
       sortedEvents.sort((a, b) => {
         return b.name.localeCompare(a.name);
       });
-    }
+    };
     return sortedEvents;
   };
 

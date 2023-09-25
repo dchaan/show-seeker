@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../store/session';
-import HeaderSearchIcon from '../../assets/header-search-icon.png'
-import styles from './Navbar.module.css'
+import React, { useState, useEffect } from "react";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../store/session";
+import HeaderSearchIcon from "../../assets/header-search-icon.png"
+import styles from "./Navbar.module.css"
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -14,19 +14,19 @@ const Navbar = () => {
 
   const onLogout = async (e) => {
     await dispatch(logout()).then(navigate('/'));
-  }
+  };
 
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
-  }
+  };
 
   useEffect(() => {
     if (!showMenu) return;
 
     const closeMenu = () => {
       setShowMenu(false);
-    }
+    };
 
     document.addEventListener("click", closeMenu);
 
@@ -66,9 +66,9 @@ const Navbar = () => {
         <span className={styles.headerLinkSpan}>
           <NavLink className={styles.headerLink} to="/login">Sign In</NavLink>
         </span>
-      )
-    }
-  }
+      );
+    };
+  };
 
   return (
     <nav className={styles.headerContainer}>
@@ -77,7 +77,7 @@ const Navbar = () => {
           <h1 className={styles.headerTitleText}><i>ShowSeeker</i></h1>
         </Link>
 
-        {window.location.pathname !== '/' && (
+        {window.location.pathname !== "/" && (
         <div className={styles.searchBarContainer}>
           <div className={styles.searchBar}>
             <form className={styles.searchForm}>
@@ -128,4 +128,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar
+export default Navbar;

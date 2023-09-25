@@ -1,15 +1,14 @@
 import { useNavigate, NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import styles from "./Profile.module.css";
 
 const Profile = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const user = useSelector(state => state.session.user);
+
   useEffect(() => {
-    if (!user) navigate('/');
+    if (!user) navigate("/");
   });
 
   return (
