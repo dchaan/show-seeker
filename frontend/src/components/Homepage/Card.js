@@ -25,7 +25,7 @@ const Card = ({ item }) => {
   if (item.name === "Music") {
     name = "Concerts"
   } else if (item.name === "Film") {
-    name = "Film"
+    name = "Family"
   } else if (item.name === "Arts & Theatre") {
     name = "Arts&Theatre"
   }
