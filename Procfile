@@ -1,1 +1,1 @@
-web: pipenv run flask run
+web: venv/bin/gunicorn app:app
