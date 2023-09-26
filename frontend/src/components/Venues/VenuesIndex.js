@@ -19,7 +19,6 @@ const VenuesIndex = () => {
 
   return (
     <div className={styles.venuesIndexContainer}>
-      {console.log(venues)}
     </div>
   );
 };

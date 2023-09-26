@@ -19,7 +19,6 @@ const GenresIndex = () => {
 
   return (
     <div className={styles.genresIndexContainer}>
-      {console.log(genres)}
     </div>
   )
 };

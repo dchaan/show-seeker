@@ -23,7 +23,7 @@ const EventInfoModal = ({ event, onClose }) => {
 
   const image = artist.images.find(image => image.includes("CUSTOM"));
   const altImage = artist.images.find(image => image.includes("SOURCE"));
-  console.log(image)
+
   return (
     <div className={styles.modalContainer}>
       <div className={styles.headerContainer}>
