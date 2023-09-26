@@ -19,6 +19,7 @@ jinja2 = "*"
 psycopg2-binary = "*"
 requests = "*"
 unidecode = "*"
+gunicorn = "*"
 
 [dev-packages]
 
