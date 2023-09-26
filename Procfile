@@ -1,1 +1,1 @@
-web: venv/bin/gunicorn app:app
+web: .venv/bin/gunicorn app:app
