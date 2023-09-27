@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./Artists.module.css";
 import { getArtists } from "../../store/artist";
 import ArtistCard from "./ArtistCard";

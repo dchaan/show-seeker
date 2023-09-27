@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deletePurchase } from "../../store/purchases";
 import styles from "./SellModal.module.css";
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getFavorites } from "../../store/favorites";
 import styles from "./Favorites.module.css";
 import FavoritesCard from "./FavoritesCard";

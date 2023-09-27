@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import ProtectedRoute from "./components/Auth/ProtectedRoute";
+// import ProtectedRoute from "./components/Auth/ProtectedRoute";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import Login from "./components/Auth/Login";
