@@ -11,6 +11,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.2",
     "react-router-dom": "^6.15.0",
+    "react-scripts": "^4.0.3",
     "redux": "^4.2.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.2",
@@ -40,8 +41,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://127.0.0.1:8000",
-  "devDependencies": {
-    "react-scripts": "^5.0.1"
-  }
+  "proxy": "http://127.0.0.1:8000"
 }
