@@ -3,7 +3,7 @@ blinker==1.6.2
 certifi==2023.7.22
 charset-normalizer==3.2.0
 click==8.1.7
-Flask==2.3.3
+Flask==2.2.5
 Flask-Cors==4.0.0
 Flask-Login==0.6.2
 Flask-Migrate==4.0.5
