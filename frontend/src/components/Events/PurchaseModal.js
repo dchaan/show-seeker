@@ -1,23 +1,37 @@
 import { useSelector, useDispatch } from "react-redux";
 import { newPurchase } from "../../store/purchases";
 import styles from "./PurchaseModal.module.css";
+import { useNavigate } from "react-router-dom";
 
 const PurchaseModal = ({ onClose, quantity }) => {
   const user = useSelector(state => state.session.user);
   const event = useSelector(state => state.events.event);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const purchaseData = {
-    "user_id": user.id,
     "event_id": event.id,
     "quantity": quantity
   };
 
   const handlePurchase = e => {
-    dispatch(newPurchase(purchaseData));
-    onClose(e);
+    if (user) {
+      purchaseData.user_id = user.id;
+      dispatch(newPurchase(purchaseData));
+      onClose(e);
+    } else {
+      navigate("/login");
+    };
   };
+
+  let text = "Are you sure you want to purchese {quantity} tickets for {event.name}?"
+  let buttonText = "Yes, purchase tickets."
+
+  if (!user) {
+    text = "Please sign in to purchase tickets"
+    buttonText = "Sign In"
+  }
 
   return (
     <div className={styles.modalContainer}>
@@ -28,12 +42,12 @@ const PurchaseModal = ({ onClose, quantity }) => {
         </div>
         <div className={styles.textContainer}>
           <p className={styles.text}>
-            Are you sure you want to purchese {quantity} tickets for {event.name}?
+            {text}
           </p>
         </div>
         <div className={styles.confirmButtonContainer}>
           <button className={styles.button} onClick={handlePurchase}>
-            Yes, purchase tickets
+            {buttonText}
           </button>
         </div>
       </div>

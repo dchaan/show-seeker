@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useNavigate, NavLink } from "react-router-dom";
+import { useParams, useNavigate, NavLink, Navigate } from "react-router-dom";
 import { getArtist } from "../../store/artist";
 import { getEvents } from "../../store/event";
 import { setFavorite, removeFavorite, getFavorites } from "../../store/favorites"
@@ -27,7 +27,8 @@ const ArtistPage = () => {
         setIsLoaded(true);
       } else {
         dispatch(getEvents());
-        dispatch(getFavorites(user.id)).then(() => setIsLoaded(true));
+        if (user) dispatch(getFavorites(user.id));
+        setIsLoaded(true);
       }
     });
   }, [dispatch, artistId, user, navigate]);
@@ -40,14 +41,18 @@ const ArtistPage = () => {
   };
 
   const handleFavoriteClick = () => {
-    dispatch(setFavorite(artist));
+    if (user) {
+      dispatch(setFavorite(artist));
+    } else {
+      navigate("/login");
+    };
   };
 
   const handleUnfavoriteClick = () => {
     dispatch(removeFavorite(artist));
   };
 
-  const isArtistFavorited = (artistId, favorites) => {
+  const isArtistFavorited = (artistId, favorites = []) => {
     return favorites.some(favorite => favorite.id === artistId);
   };
 
