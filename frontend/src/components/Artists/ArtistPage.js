@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams, useNavigate, NavLink, Navigate } from "react-router-dom";
+import { useParams, useNavigate, NavLink } from "react-router-dom";
 import { getArtist } from "../../store/artist";
 import { getEvents } from "../../store/event";
 import { setFavorite, removeFavorite, getFavorites } from "../../store/favorites"
