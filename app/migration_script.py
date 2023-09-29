@@ -4,12 +4,10 @@ from ticketmaster_api import (
   get_classifications_from_api,
   get_genres_from_classifications,
   get_venues_from_api,
-  get_events_by_venue_id_from_api,
   format_event,
   format_artist,
   format_classification,
   format_venue,
-  format_genre
 )
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
@@ -19,12 +17,10 @@ from models.artist import Artist
 from models.classification import Classification
 from models.genre import Genre
 from models.venue import Venue
-from __init__ import create_app
+from __init__ import app
 
 TICKETMASTER_API_KEY = 'Ozt84Egp8jUR5jrMtj8Uo5S9FnN37ATE'
 BASE_URL = 'https://app.ticketmaster.com/discovery/v2/'
-
-app = create_app()
 
 with app.app_context():
   engine = create_engine('postgresql://postgres:password@localhost/showseeker')
@@ -35,8 +31,7 @@ with app.app_context():
     try:
       events = get_events_from_api(total_to_fetch=500)
       formatted_events = [format_event(event) for event in events]
-      print(len(events))
-      print(len(formatted_events))
+
       with db_session.begin():
         db_session.bulk_insert_mappings(Event, formatted_events)
         db_session.commit()
@@ -49,8 +44,7 @@ with app.app_context():
     try:
       artists = get_artists_from_api(total_to_fetch=500)
       formatted_artists = [format_artist(artist) for artist in artists]
-      print(len(artists))
-      print(len(formatted_artists))
+
       with db_session.begin():
         db_session.bulk_insert_mappings(Artist, formatted_artists)
         db_session.commit()
@@ -64,8 +58,6 @@ with app.app_context():
       venues = get_venues_from_api(total_to_fetch=500)
       formatted_venues = [format_venue(venue) for venue in venues]
 
-      print(len(venues))
-      print(len(formatted_venues))
       with db_session.begin():
         db_session.bulk_insert_mappings(Venue, formatted_venues)
         db_session.commit()
@@ -92,7 +84,7 @@ with app.app_context():
 
     try:
       genres = get_genres_from_classifications(classifications)
-      print(len(genres))
+
       with db_session.begin():
         db_session.bulk_insert_mappings(Genre, genres)
         db_session.commit()

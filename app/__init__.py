@@ -1,8 +1,8 @@
 import os
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, redirect
 from flask_cors import CORS
 from flask_migrate import Migrate
-from flask_wtf.csrf import CSRFProtect, generate_csrf
+from flask_wtf.csrf import generate_csrf
 from flask_login import LoginManager
 from app.config import Config
 from app.models import db, User
@@ -57,7 +57,6 @@ def api_help():
     app.view_functions[rule.endpoint].__doc__]
     for rule in app.url_map.iter_rules() if rule.endpoint != 'static'}
   return route_list
-
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
