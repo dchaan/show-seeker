@@ -7,6 +7,8 @@ from flask_login import LoginManager
 from app.config import Config
 from app.models import db, User
 from app.api import api
+from app.seeds import seed_commands
+
 
 app = Flask(__name__, static_folder='../frontend/build', static_url_path='/')
 
@@ -16,6 +18,8 @@ login.login_view = 'auth.unauthorized'
 @login.user_loader
 def load_user(id):
   return User.query.get(int(id))
+
+app.cli.add_command(seed_commands)
 
 app.config.from_object(Config)
 
