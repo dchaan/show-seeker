@@ -12,7 +12,7 @@ const Homepage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const classifications = useSelector(state => state.classifications.classifications);
-  const filteredClassifications = Object.values(classifications).filter(classification => classification.name !== "Undefined" && classification.name !== "Miscellaneous");
+  const filteredClassifications = Object.values(classifications).filter(classification => classification.name !== "Undefined" && classification.name !== "Miscellaneous").slice(0,4);
   const artists = useSelector(state => state.artists.artists);
   const filteredArtists = Object.values(artists);
   const [isLoaded, setIsLoaded] = useState(false);
