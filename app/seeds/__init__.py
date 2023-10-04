@@ -12,9 +12,9 @@ seed_commands = AppGroup('seed')
 # Creates the `flask seed all` command
 @seed_commands.command('all')
 def seed():
+  seed_events()
   seed_classifications()
   seed_genres()
-  seed_events()
   seed_artists()
   seed_venues()
   update_events_associations()
@@ -26,6 +26,6 @@ def seed():
 def undo():
   undo_venues()
   undo_artists()
-  undo_events()
   undo_genres()
   undo_classifications()
+  undo_events()
