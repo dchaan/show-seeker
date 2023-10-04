@@ -1,9 +1,15 @@
 from sqlalchemy import text
-from app.models import Venue, db
-from app.ticketmaster_api import get_venues_from_api, format_venue
+from app.models import Venue, Event, db
+from app.ticketmaster_api import get_venues_from_api, get_venue_by_id_from_api, format_venue
 
 def seed_venues():
-  venues = get_venues_from_api(total_to_fetch=500)
+  venues = []
+  events = Event.query.all()
+
+  for event in events:
+    venue = get_venue_by_id_from_api(event.venue_api_id)
+    venues.append(venue)
+    
   formatted_venues = [format_venue(venue) for venue in venues]
 
   for formatted_venue in formatted_venues:
