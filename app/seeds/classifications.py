@@ -1,3 +1,4 @@
+from sqlalchemy import text
 from app.models import Classification, db
 from app.ticketmaster_api import get_classifications_from_api, format_classification
 
@@ -17,5 +18,5 @@ def seed_classifications():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_classifications():
-  db.session.execute('TRUNCATE classifications RESTART IDENTITY CASCADE;')
+  db.session.execute(text('TRUNCATE classifications RESTART IDENTITY CASCADE;'))
   db.session.commit()

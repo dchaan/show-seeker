@@ -1,3 +1,4 @@
+from sqlalchemy import text
 from app.models import Event, Artist, Classification, Genre, Venue, db
 from app.ticketmaster_api import get_events_from_api, format_event
 
@@ -45,5 +46,5 @@ def update_events_associations():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_events():
-  db.session.execute('TRUNCATE events RESTART IDENTITY CASCADE;')
+  db.session.execute(text('TRUNCATE events RESTART IDENTITY CASCADE;'))
   db.session.commit()

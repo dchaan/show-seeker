@@ -1,3 +1,4 @@
+from sqlalchemy import text
 from app.models import Artist, Classification, Genre, db
 from app.ticketmaster_api import get_artists_from_api, format_artist
 
@@ -35,5 +36,5 @@ def update_artists_associations():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_artists():
-  db.session.execute('TRUNCATE artists RESTART IDENTITY CASCADE;')
+  db.session.execute(text('TRUNCATE artists RESTART IDENTITY CASCADE;'))
   db.session.commit()

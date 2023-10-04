@@ -1,3 +1,4 @@
+from sqlalchemy import text
 from app.models import Genre, Classification, db
 from app.ticketmaster_api import get_classifications_from_api ,get_genres_from_classifications
 
@@ -29,5 +30,5 @@ def update_genres_associations():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_genres():
-  db.session.execute('TRUNCATE genres RESTART IDENTITY CASCADE;')
+  db.session.execute(text('TRUNCATE genres RESTART IDENTITY CASCADE;'))
   db.session.commit()

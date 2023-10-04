@@ -1,3 +1,4 @@
+from sqlalchemy import text
 from app.models import Venue, db
 from app.ticketmaster_api import get_venues_from_api, format_venue
 
@@ -17,5 +18,5 @@ def seed_venues():
 # resets the auto incrementing primary key, CASCADE deletes any
 # dependent entities
 def undo_venues():
-  db.session.execute('TRUNCATE venues RESTART IDENTITY CASCADE;')
+  db.session.execute(text('TRUNCATE venues RESTART IDENTITY CASCADE;'))
   db.session.commit()
