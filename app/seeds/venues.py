@@ -8,13 +8,10 @@ def seed_venues():
 
   for event in events:
     venue = get_venue_by_id_from_api(event.venue_api_id)
-    venues.append(venue)
-    
-  formatted_venues = [format_venue(venue) for venue in venues]
+    venues.append(format_venue(venue))
 
-  for formatted_venue in formatted_venues:
-    venue = Venue(**formatted_venue)
-    db.session.add(venue)
+  for venue in venues:
+    db.session.add(Venue(**venue))
 
   db.session.commit()
 

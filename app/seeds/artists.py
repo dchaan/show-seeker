@@ -7,13 +7,10 @@ def seed_artists():
   events = Event.query.all()
   for event in events:
     artist = get_artist_by_id_from_api(event.artist_api_id)
-    artists.append(artist)
-  
-  formatted_artists = [format_artist(artist) for artist in artists]
+    artists.append(format_artist(artist))
 
-  for formatted_artist in formatted_artists:
-    artist = Artist(**formatted_artist)
-    db.session.add(artist)
+  for artist in artists:
+    db.session.add(Artist(**artist))
 
   db.session.commit()
 
