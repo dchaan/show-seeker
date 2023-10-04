@@ -20,7 +20,7 @@ const EventInfoModal = ({ event, onClose }) => {
     const cityAndState = `${splitAddress[1].trim()}, ${splitAddress[2].trim()}`;
     location = `${venue.name}, ${cityAndState}`
   };
-
+  console.log(artist.images)
   const image = artist.images.find(image => image.includes("CUSTOM"));
   const altImage = artist.images.find(image => image.includes("SOURCE"));
 
