@@ -21,6 +21,7 @@ def format_event(event):
 
   event_data = {
     'name': event['name'],
+    'api_id': event['id'],
     'start_time': event['dates']['start'].get('dateTime', None),
     'promoter': event.get('promoter', {}).get('description', None),
     'price_range': serialized_price_range,

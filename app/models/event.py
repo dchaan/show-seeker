@@ -4,7 +4,7 @@ class Event(db.Model):
   __tablename__ = 'events'
 
   id = db.Column(db.Integer, primary_key=True)
-  api_id = db.Column(db.String(255), nullable=False)
+  api_id = db.Column(db.String(255))
   name = db.Column(db.String(255), nullable=False)
   classification_id = db.Column(db.Integer, db.ForeignKey('classifications.id'))
   classification_api_id = db.Column(db.String(255))

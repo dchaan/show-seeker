@@ -4,7 +4,7 @@ class Venue(db.Model):
   __tablename__ = 'venues'
 
   id = db.Column(db.Integer, primary_key=True)
-  api_id = db.Column(db.String(255), nullable=False)
+  api_id = db.Column(db.String(255))
   name = db.Column(db.String(255), nullable=False)
   address = db.Column(db.String(255), nullable=False)
   box_office_info = db.Column(db.Text)
