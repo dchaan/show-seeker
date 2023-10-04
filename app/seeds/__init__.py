@@ -1,7 +1,7 @@
 from flask.cli import AppGroup
 from .artists import seed_artists, undo_artists
 from .classifications import seed_classifications, undo_classifications
-from .events import seed_events, undo_events
+from .events import seed_events, undo_events, update_events_associations
 from .genres import seed_genres, undo_genres
 from .venues import seed_venues, undo_venues
 
@@ -17,6 +17,7 @@ def seed():
   seed_artists()
   seed_venues()
   seed_events()
+  update_events_associations()
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')

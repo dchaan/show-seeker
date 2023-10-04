@@ -44,10 +44,10 @@ class Event(db.Model):
       'url': self.url,
       'images': images,
       'purchases': [purchase.to_dict() for purchase in self.purchases] if self.purchases else [],
-      # 'venue': self.venue.to_dict() if self.venue else {},
-      # 'artist': self.artist.to_dict() if self.artist else {},
-      # 'genre': self.genre.to_dict() if self.genre else {},
-      # 'classification': self.classification.to_dict() if self.classification else {}
+      'venue': self.venue.to_dict() if self.venue else {},
+      'artist': self.artist.to_dict() if self.artist else {},
+      'genre': self.genre.to_dict() if self.genre else {},
+      'classification': self.classification.to_dict() if self.classification else {}
     }
 
 
