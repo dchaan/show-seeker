@@ -3,6 +3,7 @@ from app.models.artist import Artist
 from app.models.classification import Classification
 from app.models.genre import Genre
 from app.models.venue import Venue
+from .ticketmaster import get_artist_by_id_from_api, get_venue_by_id_from_api
 
 def format_event(event):
   attractions = event['_embedded'].get('attractions', [])
@@ -11,6 +12,8 @@ def format_event(event):
   classification_api_id = event['classifications'][0]['segment']['id']
   genre_api_id = event['classifications'][0]['genre']['id']
   
+  artist = get_artist_by_id_from_api(artist_api_id)
+  venue = get_venue_by_id_from_api(venue_api_id)
   # artist = Artist.query.filter_by(name=artist_name).first()
   # venue = Venue.query.filter_by(name=venue_name).first()
   # classification = Classification.query.filter_by(name=classification_name).first()
@@ -33,7 +36,9 @@ def format_event(event):
     'artist_api_id': artist_api_id,
     'venue_api_id': venue_api_id,
     'classification_api_id': classification_api_id,
-    'genre_api_id': genre_api_id
+    'genre_api_id': genre_api_id,
+    'artist': format_artist(artist),
+    'venue': format_venue(venue)
   }
   return event_data
 
