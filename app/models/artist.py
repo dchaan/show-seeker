@@ -18,6 +18,7 @@ class Artist(db.Model):
   genre = db.relationship('Genre', back_populates='artists')
   classification = db.relationship('Classification', back_populates='artists')
   favorited_by = db.relationship('User', secondary=user_favorites, back_populates='favorites')
+  reviews = db.relationship('Review', back_populates='artist')
 
   def to_dict(self):
     images = self.images.strip('{}').split(',') if self.images else []
@@ -29,5 +30,6 @@ class Artist(db.Model):
       'external_links': self.external_links if self.external_links else [],
       'images': images,
       'classification': self.classification.to_dict() if self.classification else {},
-      'genre': self.genre.to_dict() if self.genre else {}
+      'genre': self.genre.to_dict() if self.genre else {},
+      'reviews': [review.to_dict() for review in self.reviews] if self.reviews else []
     }
