@@ -37,8 +37,8 @@ def format_event(event):
     'venue_api_id': venue_api_id,
     'classification_api_id': classification_api_id,
     'genre_api_id': genre_api_id,
-    'artist_api': artist,
-    'venue_api': venue
+    'artist': artist,
+    'venue': venue
   }
   return event_data
 
