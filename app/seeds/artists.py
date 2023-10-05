@@ -3,7 +3,7 @@ from app.models import Artist, Classification, Genre, db
 from app.ticketmaster_api import get_artists_from_api, format_artist
 
 def seed_artists():
-  artists = get_artists_from_api(total_to_fetch=5000)
+  artists = get_artists_from_api(total_to_fetch=1500)
   formatted_artists = [format_artist(artist) for artist in artists]
 
   for formatted_artist in formatted_artists:
