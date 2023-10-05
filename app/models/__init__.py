@@ -6,3 +6,4 @@ from .classification import Classification
 from .genre import Genre
 from .venue import Venue
 from .purchase import Purchase
+from .review import Review
