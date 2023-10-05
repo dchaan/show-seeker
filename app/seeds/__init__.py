@@ -17,8 +17,8 @@ def seed():
   seed_artists()
   seed_venues()
   seed_events()
-  update_events_associations()
-  update_artists_associations()
+  # update_events_associations()
+  # update_artists_associations()
   update_genres_associations()
 
 # Creates the `flask seed undo` command
