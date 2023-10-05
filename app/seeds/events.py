@@ -17,8 +17,7 @@ def update_events_associations():
 
   for event in events:
     artist = get_artist_by_id_from_api(event.artist_api_id)
-    formatted_artist = format_artist(artist)
-    event.artist = formatted_artist
+    event.artist = artist
 
   # artist_dict = {artist.api_id: artist for artist in Artist.query.all()}
   # classification_dict = {classification.api_id: classification for classification in Classification.query.all()}
