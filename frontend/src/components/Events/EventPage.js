@@ -25,6 +25,10 @@ const EventPage = () => {
 
   if (!isLoaded) return <div>Loading...</div>;
 
+  console.log(event.artist)
+  console.log(event.venue)
+  console.log(event.genre)
+
   const openImportantInfoModal = () => {
     setImportantInfoModal(true);
   };
