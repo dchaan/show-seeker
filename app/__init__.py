@@ -9,7 +9,6 @@ from app.models import db, User
 from app.api import api
 from app.seeds import seed_commands
 
-
 app = Flask(__name__, static_folder='../frontend/build', static_url_path='/')
 
 login = LoginManager(app)
@@ -20,14 +19,10 @@ def load_user(id):
   return User.query.get(int(id))
 
 app.cli.add_command(seed_commands)
-
 app.config.from_object(Config)
-
 app.register_blueprint(api, url_prefix='/api')
-
 db.init_app(app)
 Migrate(app, db)
-
 CORS(app)
 
 @app.before_request
