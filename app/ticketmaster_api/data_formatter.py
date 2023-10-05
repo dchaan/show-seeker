@@ -35,7 +35,8 @@ def format_artist(artist):
     'genre_api_id': artist['classifications'][0]['genre']['id'],
     'classification_api_id': artist['classifications'][0]['segment']['id'],
     'external_links': [],
-    'images': [image['url'] for image in artist['images']] if 'images' in artist else []
+    'images': [image['url'] for image in artist['images']] if 'images' in artist else [],
+    'reviews': artist.reviews
   }
   
   links = artist.get('externalLinks', {})
