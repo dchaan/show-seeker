@@ -19,7 +19,7 @@ const SellModal = ({ onClose, purchase }) => {
         </div>
         <div className={styles.textContainer}>
           <p className={styles.text}>
-            Are you sure you want to sell tickets for {purchase.event}?
+            Are you sure you want to sell your tickets for {purchase.event}?
           </p>
         </div>
         <div className={styles.confirmButtonContainer}>

@@ -19,13 +19,14 @@ const PurchaseModal = ({ onClose, quantity }) => {
     if (user) {
       purchaseData.user_id = user.id;
       dispatch(newPurchase(purchaseData));
-      onClose(e);
+      navigate(`/users/${user.id}/purchases`)
     } else {
       navigate("/login");
     };
   };
-
-  let text = "Are you sure you want to purchese {quantity} tickets for {event.name}?"
+  console.log(quantity)
+  const ticket = quantity === 1 ? "ticket" : "tickets"
+  let text = `Are you sure you want to purchese ${quantity} ${ticket} for ${event.name}?`
   let buttonText = "Yes, purchase tickets."
 
   if (!user) {
