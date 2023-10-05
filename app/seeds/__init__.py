@@ -14,18 +14,18 @@ seed_commands = AppGroup('seed')
 def seed():
   seed_classifications()
   seed_genres()
-  seed_events()
   seed_artists()
   seed_venues()
+  seed_events()
   update_events_associations()
-  # update_artists_associations()
+  update_artists_associations()
   update_genres_associations()
 
 # Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
+  undo_events()
   undo_venues()
   undo_artists()
-  undo_events()
   undo_genres()
   undo_classifications()

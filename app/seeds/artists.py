@@ -1,16 +1,14 @@
 from sqlalchemy import text
-from app.models import Artist, Event,Classification, Genre, db
-from app.ticketmaster_api import get_artists_from_api, get_artist_by_id_from_api, format_artist
+from app.models import Artist, Classification, Genre, db
+from app.ticketmaster_api import get_artists_from_api, format_artist
 
 def seed_artists():
-  artists = []
-  events = Event.query.all()
-  for event in events:
-    artist = event.artist
-    artists.append(artist)
+  artists = get_artists_from_api(total_to_fetch=1000)
+  formatted_artists = [format_artist(artist) for artist in artists]
 
-  for artist in artists:
-    db.session.add(Artist(**artist))
+  for formatted_artist in formatted_artists:
+    artist = Artist(**formatted_artist)
+    db.session.add(artist)
 
   db.session.commit()
 
