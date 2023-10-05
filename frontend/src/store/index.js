@@ -9,6 +9,7 @@ import artistsReducer from './artist';
 import venuesReducer from './venue';
 import favoritesReducer from './favorites';
 import purchasesReducer from './purchases';
+import reviewsReducer from './reviews';
 
 const rootReducer = combineReducers({
   session,
@@ -18,7 +19,8 @@ const rootReducer = combineReducers({
   classifications: classificationReducer,
   genres: genresReducer,
   favorites: favoritesReducer,
-  purchases: purchasesReducer
+  purchases: purchasesReducer,
+  reviews: reviewsReducer
 });
 
 let enhancer;
