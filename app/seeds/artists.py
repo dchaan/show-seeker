@@ -6,8 +6,8 @@ def seed_artists():
   artists = []
   events = Event.query.all()
   for event in events:
-    artist = get_artist_by_id_from_api(event.artist_api_id)
-    artists.append(format_artist(artist))
+    artist = event.artist
+    artists.append(artist)
 
   for artist in artists:
     db.session.add(Artist(**artist))
