@@ -19,6 +19,7 @@ const ArtistPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);  
   events = Object.values(events);
   events = events.filter(event => event.artist.id === parseInt(artistId));
+  events.sort((a,b) => new Date(a.start_time) - new Date(b.start_time));
 
   useEffect(() => {
     dispatch(getArtist(artistId)).then((res) => {
@@ -59,26 +60,17 @@ const ArtistPage = () => {
   const isFavorited = isArtistFavorited(artist.id, favorites);
   const favoriteButtonText = isFavorited ? "Unfavorite" : "Favorite";
 
+
+
   const noEvents = () => { if (events.length) {
     return (
-      <div className={styles.artistEventsContainer}>
-        <div className={styles.artistEventsSubContainer}>
-          <div className={styles.pageInfo}>
-            <div className={styles.eventsTitleContainer}>
-              <h2 className={styles.eventsTitle}>
-                Events - <span className={styles.resultsCount}>{events.length} results</span>
-              </h2>
-            </div>
-          </div>
-        </div>
-        <div className={styles.eventsContainer}>
-          <div className={styles.eventsSubContainer}>
-            <div clssName={styles.eventsContent}>
-              <div className={styles.eventsList}>
-                {events.map(event => (
-                  <ArtistEventCard event={event} />
-                ))}
-              </div>
+      <div className={styles.eventsContainer}>
+        <div className={styles.eventsSubContainer}>
+          <div clssName={styles.eventsContent}>
+            <div className={styles.eventsList}>
+              {events.map(event => (
+                <ArtistEventCard event={event} />
+              ))}
             </div>
           </div>
         </div>
@@ -87,7 +79,13 @@ const ArtistPage = () => {
   } else {
     return (
       <div className={styles.noEventsContainer}>
-        <div className={styles.noEventsText}>Sorry, there are no upcoming events.</div>
+        <div className={styles.noEventsSub}>
+          <div className={styles.noEventsSubSub}>
+            <div className={styles.noEventsTextContainer}>
+              <div className={styles.noEventsText}>Sorry, there are no upcoming events.</div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   };
@@ -143,7 +141,18 @@ const ArtistPage = () => {
           </nav>
         </div>
       </div>
-      {noEvents()}
+      <div className={styles.artistEventsContainer}>
+        <div className={styles.artistEventsSubContainer}>
+          <div className={styles.pageInfo}>
+            <div className={styles.eventsTitleContainer}>
+              <h2 className={styles.eventsTitle}>
+                Events - <span className={styles.resultsCount}>{events.length} results</span>
+              </h2>
+            </div>
+          </div>
+        </div>
+        {noEvents()}
+      </div>
     </div>
   );
 };
