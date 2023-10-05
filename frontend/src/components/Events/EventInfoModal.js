@@ -20,7 +20,7 @@ const EventInfoModal = ({ event, onClose }) => {
     const cityAndState = `${splitAddress[1].trim()}, ${splitAddress[2].trim()}`;
     location = `${venue.name}, ${cityAndState}`
   };
-  console.log(artist)
+
   const image = artist.images.find(image => image.includes("CUSTOM"));
   const altImage = artist.images.find(image => image.includes("SOURCE"));
 
@@ -79,8 +79,14 @@ const EventInfoModal = ({ event, onClose }) => {
               <div className={styles.sectionContainer}>
                 <h3 className={styles.sectionTitle}>Lineup</h3>
                   <div className={styles.imageContainer}>
-                    <img className={styles.image} src={image} alt={altImage} />
-                    <div className={styles.artistName}>{artist.name}</div>
+                    {artist ? (
+                      <NavLink className={styles.artistLink} to={`/artists/${artist.id}`}>
+                        <img className={styles.image} src={image} alt={altImage} />
+                      <div className={styles.artistName}>{artist.name}</div>
+                    </NavLink>
+                    ) : (
+                      ""
+                    )}
                   </div>
               </div>
               <div className={styles.sectionContainer}>
