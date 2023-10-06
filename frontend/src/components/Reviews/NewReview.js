@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate, NavLink } from "react-router-dom";
 import { newReview } from "../../store/reviews";
-import styles from "./NewReview.module.css";
 import { getArtist } from "../../store/artist";
+import { Rating } from 'react-simple-star-rating'
+import styles from "./NewReview.module.css";
 
 const NewReview = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { artistId } = useParams();
   const artist = useSelector(state => ( state.artists.artist ));
-  const [rating, setRating] = useState("");
+  const [rating, setRating] = useState(0);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [errors, setSerrors] = useState([]);
@@ -20,6 +21,9 @@ const NewReview = () => {
     dispatch(getArtist(artistId)).then(setIsLoaded(true));
   }, [dispatch, artistId]);
 
+  const handleRating = rate => {
+    setRating(rate);
+  };
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,11 +32,11 @@ const NewReview = () => {
       "rating": rating,
       "title": title,
       "body": body,
-      "artist_id": artistId
+      "artist_id": artist.id,
     };
     
     await(dispatch(newReview(reviewData)));
-    navigate(`artists/${artistId}`)
+    navigate(`/artists/${artistId}`)
   };
   
   if (!isLoaded) return <div>Loading...</div>;
@@ -88,12 +92,17 @@ const NewReview = () => {
           <NavLink className={styles.backToEvents} to={`/artists/${artistId}`}>{"<"} Back to events</NavLink>
           <div className={styles.formContainer}>
             <div className={styles.formSub}>
-              <form className={styles.form}>
+              <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.ratingContainer}>
                   <div className={styles.title}>
                     <h2 className={styles.titleText}>
                       1. Select Your Rating
                     </h2>
+                  </div>
+                  <div className={styles.starsContainer}>
+                    <Rating
+                      onClick={handleRating}
+                    />
                   </div>
                 </div>
                 <div className={styles.reviewContentContainer}>

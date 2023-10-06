@@ -21,6 +21,5 @@ class Review(db.Model):
       'title': self.title,
       'body': self.body,
       'date': self.date,
-      'user': self.user.to_obj(),
-      'artist': self.artist.to_obj()
+      'user': self.user.to_dict()
     }

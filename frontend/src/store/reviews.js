@@ -12,7 +12,7 @@ const _newReview = review => ({
 });
 
 export const getReviews = artistId => async (dispatch) => {
-  const response = await fetch(`/api/artist/${artistId}/reviews`);
+  const response = await fetch(`/api/artists/${artistId}/reviews`);
 
   if (!response.ok) {
     console.log("An error occurred");
@@ -25,7 +25,7 @@ export const getReviews = artistId => async (dispatch) => {
 };
 
 export const newReview = reviewData => async (dispatch) => {
-  const response = await fetch(`/api/artist/${reviewData.artist_id}/reviews/new`, {
+  const response = await fetch(`/api/artists/${reviewData.artist_id}/reviews/new`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json"
@@ -40,7 +40,6 @@ export const newReview = reviewData => async (dispatch) => {
 
   const review = await response.json();
   dispatch(_newReview(review));
-  return review;
 };
 
 const reviewsReducer = (state = { reviews: [] }, action) => {

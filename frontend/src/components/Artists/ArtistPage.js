@@ -6,6 +6,7 @@ import { getEvents } from "../../store/event";
 import { setFavorite, removeFavorite, getFavorites } from "../../store/favorites"
 import ArtistEventCard from "./ArtistEventCard";
 import styles from "./ArtistPage.module.css";
+import ReviewsIndex from "../Reviews/ReviewsIndex";
 
 const ArtistPage = () => {
   const dispatch = useDispatch();
@@ -153,6 +154,7 @@ const ArtistPage = () => {
         </div>
         {noEvents()}
       </div>
+      < ReviewsIndex artist={artist} />
       <NavLink to={`/artists/${artistId}/reviews/new`}>Write a Review</NavLink>
     </div>
   );

@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import Artist, Review, db
@@ -57,22 +57,24 @@ def unfavorite_artist(artist_id):
   else:
     return jsonify({'message': 'Artist is not in favorites'})
   
-@artist_routes.route('/artist_id/reviews', methods=['GET'])
+@artist_routes.route('/<artist_id>/reviews', methods=['GET'])
 def get_reviews(artist_id):
   artist = Artist.query.get(artist_id)
   reviews = artist.reviews
 
   if reviews:
-    return {'reviews': [review.to_dict() for review in reviews]}
+    return [review.to_dict() for review in reviews]
   else:
     return jsonify({'message': 'Error getting reviews'})
   
-@artist_routes.route('/artist_id/reviews/new', methods=['POST'])
+@artist_routes.route('/<artist_id>/reviews/new', methods=['POST'])
 @login_required
-def create_review():
+def create_review(artist_id):
   user = current_user
   form = ReviewForm()
   form['csrf_token'].data = request.cookies['csrf_token']
+  print(form)
+  print("HELLO")
 
   review = Review(
     rating=form.data['rating'],
@@ -80,8 +82,11 @@ def create_review():
     body=form.data['body'],
     date=datetime.now(),
     artist_id=form.data['artist_id'],
-    user_id=user.id
+    user=user
   )
+  print("HELLO")
+  print(review.to_dict())
+  print("BYE")
 
   db.session.add(review)
   db.session.commit()
