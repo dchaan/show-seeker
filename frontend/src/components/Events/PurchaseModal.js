@@ -24,7 +24,7 @@ const PurchaseModal = ({ onClose, quantity }) => {
       navigate("/login");
     };
   };
-  console.log(quantity)
+
   const ticket = quantity === 1 ? "ticket" : "tickets"
   let text = `Are you sure you want to purchese ${quantity} ${ticket} for ${event.name}?`
   let buttonText = "Yes, purchase tickets."

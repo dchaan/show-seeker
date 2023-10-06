@@ -21,6 +21,7 @@ import Favorites from "./components/Profile/Favorites";
 import GenresIndex from "./components/Genres/GenresIndex";
 import { authenticate } from "./store/session";
 import Purchases from "./components/Profile/Purchases";
+import NewReview from "./components/Reviews/NewReview";
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -46,7 +47,8 @@ function App() {
         <Route path='/events/concerts' exact={true} element={<ConcertsIndex />} />
         <Route path='/events/sports' exact={true} element={<SportsIndex />} />
         <Route path='/artists' exact={true} element={<ArtistsIndex />} />
-        <Route path='artists/:artistId' exact={true} element={<ArtistPage />} />
+        <Route path='/artists/:artistId' exact={true} element={<ArtistPage />} />
+        <Route path='artists/:artistId/reviews/new' exact={true} element={<NewReview />} />
         <Route path='/events/arts&theatre' exact={true} element={<ArtsAndTheatreIndex />} />
         <Route path='/events/family' exact={true} element={<FamilyIndex />} />
         <Route path='/venues' exact={true} element={<VenuesIndex />} />

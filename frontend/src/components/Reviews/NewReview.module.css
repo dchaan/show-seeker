@@ -1,0 +1,270 @@
+.reviewContainer {
+  padding-top: 60px;
+}
+
+.artistHeaderContainer {
+  padding: 80px 96px 26px 96px;
+  position: relative;
+  justify-content: center;
+  min-height: 260px;
+  overflow: hidden;
+  color: rgb(255, 255, 255);
+  text-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px;
+}
+
+.backgroundImg {
+  position: absolute;
+  inset: 0px;
+  display: block;
+  width: calc(100% + 100px);
+  height: calc(100% + 100px);
+  background-color: transparent;
+  background-position: center center;
+  background-size: cover;
+  transform: translate(-50px, -50px);
+  filter: blur(12px);
+}
+
+.artistHeaderContent {
+  height: 100%;
+  width: 100%;
+  max-width: 1248px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.navOL {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  line-height: 1;
+}
+
+.navLI {
+  position: relative;
+  display: flex;
+  align-items: center;
+  display: inline-block;
+  padding: 4px 0px;
+}
+
+.navlink {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.navlink:hover {
+  text-decoration: underline;
+}
+
+.slash {
+  padding-right: 4px;
+  padding-left: 4px;
+}
+
+.artistTitleContainer {
+  flex-direction: row;
+  align-items: flex-end;
+  display: flex;
+  -webkit-box-flex: 1;
+  flex-grow: 1;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.artistImage {
+  width: 235px;
+  margin-right: 24px;
+  margin-bottom: 0px;
+  position: relative;
+  border-radius: 4px;
+}
+
+.artistTitleContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.artistText {
+  font-size: 48px;
+  display: inline;
+  margin: 0px;
+}
+
+.writeAReview {
+  display: block;
+  font-weight: 400;
+}
+
+.reviewFormContainer {
+  padding: 40px 96px 80px 96px;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  border-top: none;
+  background-color: rgb(246, 246, 246);
+}
+
+.reviewFormSub {
+  width: 100%;
+  max-width: 1248px;
+}
+
+.backToEvents {
+  display: inline-flex;
+  -webkit-box-align: center;
+  align-items: center;
+  border: 0px;
+  background-color: transparent;
+  color: rgb(2, 77, 223);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.formContainer {
+  margin-top: 24px;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.formSub {
+  margin-right: 0px;
+  margin-left: 0px;
+  padding: 0px 32px;
+  border-radius: 4px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(18, 18, 18, 0.18) 0px 3px 12px 0px;
+}
+
+.form {
+  position: relative;
+}
+
+.ratingContainer {
+  padding: 32px 0px;
+  border-bottom: 1px solid rgb(191, 191, 191);
+}
+
+.ratingTitle {
+  padding-top: 12px;
+  margin: 0px;
+}
+
+.ratingText {
+  margin: 0px;
+  font-weight: 700;
+  font-size: 23px;
+}
+
+.reviewContentContainer {
+  padding: 32px 0px;
+}
+
+.reviewTitleContainer {
+  margin-top: 24px;
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+}
+
+.label {
+  font-size: 14px;
+  display: block;
+}
+
+.titleContainer {
+  width: 50%;
+  margin-top: 8px;
+  position: relative;
+}
+
+.titleContainerSub {
+  position: relative;
+  padding-right: 32px;
+}
+
+.titleInput {
+  margin: 0px;
+  padding: 0px 16px;
+  border: 1px solid rgb(153, 153, 153);
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  width: 100%;
+  border-radius: 2px;
+  background-color: rgb(255, 255, 255);
+  appearance: none;
+  height: 44px;
+}
+
+.charMax {
+  margin-top: 4px;
+  color: rgb(100, 100, 100);
+  font-size: 14px;
+  text-align: right;
+}
+
+.reviewBodyContainer {
+  margin-top: 24px;
+}
+
+.reviewBodySub {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+}
+
+.bodyContainer {
+  margin-top: 8px;
+  position: relative;
+  padding-right: 32px;
+}
+
+.body {
+  margin: 0px;
+  border: 1px solid rgb(153, 153, 153);
+  padding: 16px;
+  width: 100%;
+  border-radius: 2px;
+  background-color: rgb(255, 255, 255);
+  resize: vertical;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  height: 200px;
+}
+
+.buttonContainer {
+  padding-bottom: 32px;
+  text-align: right;
+}
+
+.button {
+  border: 1px solid transparent;
+  padding: 8px 24px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(2, 77, 223);
+  display: inline-block;
+  width: 100%;
+  min-height: 44px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  white-space: nowrap;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  width: auto;
+}

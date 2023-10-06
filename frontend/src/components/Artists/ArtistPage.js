@@ -153,6 +153,7 @@ const ArtistPage = () => {
         </div>
         {noEvents()}
       </div>
+      <NavLink to={`/artists/${artistId}/reviews/new`}>Write a Review</NavLink>
     </div>
   );
 };
