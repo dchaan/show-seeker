@@ -65,7 +65,7 @@ def get_reviews(artist_id):
   if reviews:
     return [review.to_dict() for review in reviews]
   else:
-    return jsonify({'message': 'Error getting reviews'})
+    return []
   
 @artist_routes.route('/<artist_id>/reviews/new', methods=['POST'])
 @login_required

@@ -20,7 +20,7 @@ const ReviewsIndex = ({ artist }) => {
 
   const handleAvgRating = () => {
     let sumRatings = 0;
-    if (Array.isArray(reviews)) {
+    if (reviews.length) {
       reviews.map(review => (
         sumRatings += review.rating
       ));
@@ -33,7 +33,7 @@ const ReviewsIndex = ({ artist }) => {
   const avgRating = handleAvgRating();
 
   const handleReviews = () => { 
-    return Array.isArray(reviews) ? (
+    return reviews.length ? (
       <div className={styles.reviewsContainer}>
         <ul className={styles.ul}>
           {reviews.map(review => (
@@ -78,7 +78,7 @@ const ReviewsIndex = ({ artist }) => {
         {handleReviews()}
       </div>
     </div>
-  )
+  );
 };
 
 export default ReviewsIndex;
