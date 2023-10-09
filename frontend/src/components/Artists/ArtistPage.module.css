@@ -184,6 +184,7 @@
 
 .artistEventsContainer {
   padding: 40px 96px 80px 96px;
+  justify-content: center;
 }
 
 .artistEventsSubContainer {
@@ -220,7 +221,7 @@
 }
 
 .resultsCount {
-  font-weight: 200;
+  font-weight: normal;
 }
 
 .eventsContainer {

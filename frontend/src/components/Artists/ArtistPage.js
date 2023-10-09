@@ -11,13 +11,12 @@ import ReviewsIndex from "../Reviews/ReviewsIndex";
 const ArtistPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const { artistId } = useParams();
-  const user = useSelector(state => state.session.user)
+  const user = useSelector(state => state.session.user);
   const artist = useSelector(state => ( state.artists.artist ));
   const favorites = useSelector(state => state.favorites.favorites);
-  let events = useSelector(state => state.events.events)
-  const [isLoaded, setIsLoaded] = useState(false);  
+  const [isLoaded, setIsLoaded] = useState(false);
+  let events = useSelector(state => state.events.events);
   events = Object.values(events);
   events = events.filter(event => event.artist.id === parseInt(artistId));
   events.sort((a,b) => new Date(a.start_time) - new Date(b.start_time));
@@ -31,7 +30,7 @@ const ArtistPage = () => {
         dispatch(getEvents());
         if (user) dispatch(getFavorites(user.id));
         setIsLoaded(true);
-      }
+      };
     });
   }, [dispatch, artistId, user, navigate]);
 
@@ -43,11 +42,7 @@ const ArtistPage = () => {
   };
 
   const handleFavoriteClick = () => {
-    if (user) {
-      dispatch(setFavorite(artist));
-    } else {
-      navigate("/login");
-    };
+    user ? dispatch(setFavorite(artist)) : navigate("/login")
   };
 
   const handleUnfavoriteClick = () => {
@@ -61,10 +56,8 @@ const ArtistPage = () => {
   const isFavorited = isArtistFavorited(artist.id, favorites);
   const favoriteButtonText = isFavorited ? "Unfavorite" : "Favorite";
 
-
-
-  const noEvents = () => { if (events.length) {
-    return (
+  const handleEvents = () => { 
+    return events.length ? (
       <div className={styles.eventsContainer}>
         <div className={styles.eventsSubContainer}>
           <div clssName={styles.eventsContent}>
@@ -76,21 +69,18 @@ const ArtistPage = () => {
           </div>
         </div>
       </div>
-    );
-  } else {
-    return (
-      <div className={styles.noEventsContainer}>
-        <div className={styles.noEventsSub}>
-          <div className={styles.noEventsSubSub}>
-            <div className={styles.noEventsTextContainer}>
-              <div className={styles.noEventsText}>Sorry, there are no upcoming events.</div>
+      ) : (
+        <div className={styles.noEventsContainer}>
+          <div className={styles.noEventsSub}>
+            <div className={styles.noEventsSubSub}>
+              <div className={styles.noEventsTextContainer}>
+                <div className={styles.noEventsText}>Sorry, there are no upcoming events.</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      )
   };
-};
 
   return (
     <div className={styles.artistPageContainer}>
@@ -152,10 +142,9 @@ const ArtistPage = () => {
             </div>
           </div>
         </div>
-        {noEvents()}
+        {handleEvents()}
       </div>
       < ReviewsIndex artist={artist} />
-      <NavLink to={`/artists/${artistId}/reviews/new`}>Write a Review</NavLink>
     </div>
   );
 };

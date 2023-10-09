@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate, NavLink } from "react-router-dom";
 import { newReview } from "../../store/reviews";
 import { getArtist } from "../../store/artist";
-import { Rating } from 'react-simple-star-rating'
+import { Rating } from "react-simple-star-rating";
 import styles from "./NewReview.module.css";
 
 const NewReview = () => {

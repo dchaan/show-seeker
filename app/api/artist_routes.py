@@ -73,8 +73,6 @@ def create_review(artist_id):
   user = current_user
   form = ReviewForm()
   form['csrf_token'].data = request.cookies['csrf_token']
-  print(form)
-  print("HELLO")
 
   review = Review(
     rating=form.data['rating'],
