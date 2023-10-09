@@ -14,7 +14,6 @@ const NewReview = () => {
   const [rating, setRating] = useState(0);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [errors, setSerrors] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);  
 
   useEffect(() => {

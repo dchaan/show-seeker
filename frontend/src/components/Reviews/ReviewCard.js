@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import styles from "./ReviewCard.module.css";
 
