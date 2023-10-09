@@ -10,7 +10,7 @@ const ArtistsIndex = () => {
   artists = Object.values(artists);
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [displayedEvents, setDisplayedEvents] = useState(10);
+  const [displayedArtists, setDisplayedArtists] = useState(10);
   const batchSize = 10;
   const [sortOption, setSortOption] = useState("date");
 
@@ -71,14 +71,14 @@ const ArtistsIndex = () => {
             </select>
           </div>
         </div>
-        {sortedArtists.slice(0, displayedEvents).map(artist => (
+        {sortedArtists.slice(0, displayedArtists).map(artist => (
           <ArtistCard artist={artist} />
         ))}
       </div>
       <div className={styles.loadMoreContainer}>
-        {displayedEvents < artists.length && (
+        {displayedArtists < artists.length && (
           <div className={styles.loadMoreSubContainer}>
-            <button className={styles.loadMoreButton} onClick={() => setDisplayedEvents(prev => prev + batchSize)}>
+            <button className={styles.loadMoreButton} onClick={() => setDisplayedArtists(prev => prev + batchSize)}>
               Load More
             </button>
           </div>
