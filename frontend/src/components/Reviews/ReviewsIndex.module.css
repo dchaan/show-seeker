@@ -27,6 +27,16 @@
   text-transform: uppercase;
 }
 
+.reviewsTitle:before {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  display: block;
+  width: 40px;
+  border-bottom: 4px solid currentcolor;
+  content: "";
+}
+
 .resultsCount {
   font-weight: normal;
 }

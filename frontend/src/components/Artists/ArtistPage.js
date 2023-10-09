@@ -127,6 +127,7 @@ const ArtistPage = () => {
             <div className={styles.barContentContainer}>
               <ul className={styles.barUL}>
                 <li className={styles.barLI}>Events</li>
+                <li className={styles.barLI}>Reviews</li>
               </ul>
             </div>
           </nav>

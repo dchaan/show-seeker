@@ -172,8 +172,7 @@
   position: relative;
   display: block;
   padding: 20px 20px 16px;
-  border-bottom: 4px solid rgb(18, 18, 18);
-  color: rgb(18, 18, 18);
+  color: rgb(100, 100, 100);
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 0.15em;
@@ -218,6 +217,16 @@
   font-size: 20px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
+}
+
+.eventsTitle:before {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  display: block;
+  width: 40px;
+  border-bottom: 4px solid currentcolor;
+  content: "";
 }
 
 .resultsCount {
