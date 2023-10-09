@@ -6,10 +6,11 @@ import { getEvents } from "../../store/event";
 import EventCard from "./EventCard";
 
 const EventsIndex = () => {
+  const dispatch = useDispatch();
   let events = useSelector(state => state.events.events);
   events = Object.values(events);
-  const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+
   const [displayedEvents, setDisplayedEvents] = useState(10);
   const batchSize = 10;
   const [sortOption, setSortOption] = useState("date");

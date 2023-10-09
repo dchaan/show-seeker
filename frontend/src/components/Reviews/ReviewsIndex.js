@@ -9,7 +9,15 @@ import ReviewCard from "./ReviewCard";
 const ReviewsIndex = ({ artist }) => {
   const dispatch = useDispatch();
   const reviews = useSelector(state => state.reviews.reviews);
-  const [isLoaded, setIsLoaded] = useState(false);  
+  const [displayedReviews, setDisplayedReviews] = useState(10);
+  const batchSize = 10;
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const sortedReviews = reviews.sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return dateB - dateA;
+  });
 
   useEffect(() => {
     dispatch(getReviews(artist.id));
@@ -34,14 +42,28 @@ const ReviewsIndex = ({ artist }) => {
 
   const handleReviews = () => { 
     return reviews.length ? (
-      <div className={styles.reviewsContainer}>
-        <ul className={styles.ul}>
-          {reviews.map(review => (
-            <li className={styles.li}>
-              <ReviewCard review={review} />
-            </li>
-          ))}
-        </ul>
+      <div>
+        <div className={styles.reviewsContainer}>
+          <ul className={styles.ul}>
+            {sortedReviews.slice(0, displayedReviews).map(review => (
+              <li className={styles.li}>
+                <ReviewCard review={review} />
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className={styles.loadMoreContainer}>
+          <div className={styles.loadMoreCountContainer}>
+            <div className={styles.loadMoreCount}>Loaded {sortedReviews.slice(0, displayedReviews).length} of {reviews.length} reviews</div>
+          </div>
+          {displayedReviews < sortedReviews.length && (
+            <div className={styles.loadMoreSubContainer}>
+              <button className={styles.loadMoreButton} onClick={() => setDisplayedReviews(prev => prev + batchSize)}>
+                More Reviews
+              </button>
+            </div>
+          )}
+        </div>
       </div>
     ) : (
       <div className={styles.noReviewsContainer}>

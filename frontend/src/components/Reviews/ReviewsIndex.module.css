@@ -151,3 +151,52 @@
   font-weight: bold;
   font-size: 18px;
 }
+
+.loadMoreContainer {
+  margin-top: 24px;
+  padding-top: 24px;
+}
+
+.loadMoreCountContainer {
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+}
+
+.loadMoreCount {
+  margin-bottom: 8px;
+  color: rgb(100, 100, 100);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.loadMoreSubContainer {
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.loadMoreButton {
+  max-width: 340px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 1px solid rgb(2, 77, 223);
+  padding: 8px 16px 8px 24px;
+  color: rgb(2, 77, 223);
+  background-color: transparent;
+  display: inline-block;
+  width: 100%;
+  min-height: 44px;
+  font-weight: 600;
+  font-size: 16px;
+  white-space: nowrap;
+  text-align: center;
+  text-decoration: none;
+}
+
+.loadMoreButton:hover {
+  background-color: rgb(2, 77, 223);
+  color: rgb(255, 255, 255);
+}
