@@ -71,7 +71,7 @@
 .ol {
   padding: 0 15px 0 15px;
   display: flex;
-  border: 1px solid #ebebeb;
+  border-bottom: 1px solid #ebebeb;
   margin: 0;
 }
 
