@@ -5,12 +5,13 @@ import { login } from '../../store/session';
 import styles from './Auth.module.css';
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  const user = useSelector(state => state.session.user);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
-  const user = useSelector(state => state.session.user);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const onLogin = async (e) => {
     e.preventDefault();

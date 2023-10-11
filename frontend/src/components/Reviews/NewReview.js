@@ -9,12 +9,14 @@ import styles from "./NewReview.module.css";
 const NewReview = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { artistId } = useParams();
-  const artist = useSelector(state => ( state.artists.artist ));
+  
   const [rating, setRating] = useState(0);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-  const [isLoaded, setIsLoaded] = useState(false);  
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  const { artistId } = useParams();
+  const artist = useSelector(state => ( state.artists.artist ));
 
   useEffect(() => {
     dispatch(getArtist(artistId)).then(setIsLoaded(true));

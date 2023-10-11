@@ -11,17 +11,24 @@ import styles from "./Homepage.module.css";
 const Homepage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const classifications = useSelector(state => state.classifications.classifications);
-  const filteredClassifications = Object.values(classifications).filter(classification => classification.name !== "Undefined" && classification.name !== "Miscellaneous").slice(0,4);
-  const artists = useSelector(state => state.artists.artists);
-  const filteredArtists = Object.values(artists);
   const [isLoaded, setIsLoaded] = useState(false);
   const [searchQuery, setSearchQuery] = useState(""); // State for the search query
+
+  const classifications = useSelector(state => state.classifications.classifications);
+  const filteredClassifications = Object.values(classifications).filter(classification => classification.name !== "Undefined" && classification.name !== "Miscellaneous").slice(0,4);
+  
+  const artists = useSelector(state => state.artists.artists);
+  const filteredArtists = Object.values(artists);
+
+  const concerts = filteredArtists.filter(artist => artist.classification.name === "Music");
+  const sports = filteredArtists.filter(artist => artist.classification.name === "Sports");
+  const arts = filteredArtists.filter(artist => artist.classification.name === "Arts & Theatre");
+  const family = filteredArtists.filter(artist => artist.classification.name === "Miscellaneous");
 
   useEffect(() => {
     dispatch(getClassifications());
     dispatch(getArtists());
-    dispatch(getEvents()).then(() => setIsLoaded(true));
+    setIsLoaded(true);
   }, [dispatch]);
 
   if (!isLoaded) return <div>Loading...</div>
@@ -31,11 +38,6 @@ const Homepage = () => {
     await dispatch(getEvents(searchQuery));
     navigate(`/events?query=${encodeURIComponent(searchQuery)}`);
   }
-
-  const concerts = filteredArtists.filter(artist => artist.classification.name === "Music");
-  const sports = filteredArtists.filter(artist => artist.classification.name === "Sports");
-  const arts = filteredArtists.filter(artist => artist.classification.name === "Arts & Theatre");
-  const family = filteredArtists.filter(artist => artist.classification.name === "Miscellaneous");
 
   return (
     <div className={styles.indexContainer}>

@@ -6,7 +6,6 @@ import arts from "../../assets/arts.jpg";
 import styles from "./Card.module.css";
 
 const Card = ({ item }) => {
-
   const categoryImages = {
     "Music": music,
     "Sports": sports,

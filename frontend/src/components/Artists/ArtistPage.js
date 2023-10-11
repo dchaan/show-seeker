@@ -11,11 +11,12 @@ import ReviewsIndex from "../Reviews/ReviewsIndex";
 const ArtistPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const { artistId } = useParams();
   const user = useSelector(state => state.session.user);
   const artist = useSelector(state => ( state.artists.artist ));
   const favorites = useSelector(state => state.favorites.favorites);
-  const [isLoaded, setIsLoaded] = useState(false);
   let events = useSelector(state => state.events.events);
   events = Object.values(events);
   events = events.filter(event => event.artist.id === parseInt(artistId));

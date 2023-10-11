@@ -1,43 +1,38 @@
+import { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "./Artists.module.css";
 import { getArtists } from "../../store/artist";
 import ArtistCard from "./ArtistCard";
 
 const ArtistsIndex = () => {
-  let artists = useSelector(state => state.artists.artists);
-  artists = Object.values(artists);
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+
+  let artists = useSelector(state => state.artists.artists);
+  artists = Object.values(artists);
+  
   const [displayedArtists, setDisplayedArtists] = useState(10);
   const batchSize = 10;
   const [sortOption, setSortOption] = useState("date");
 
   useEffect(() => {
-    dispatch(getArtists()).then(() => setIsLoaded(true));
+    dispatch(getArtists("music")).then(() => setIsLoaded(true));
   }, [dispatch]);
 
-  if (!isLoaded) return <div>Loading...</div>;
-
-  let filteredArtists = artists.filter(artist => artist.classification.name === "Music");
-
-  const sortArtists = () => {
-    const sortedArtists = [...filteredArtists];
-
+  const sortedArtists = useMemo(() => {
+    const sortedArtists = [...artists];
+    
     if (sortOption === "nameAZ") {
-      sortedArtists.sort((a, b) => {
-        return a.name.localeCompare(b.name);
-      });
+      sortedArtists.sort((a, b) => a.name.localeCompare(b.name));
     } else if (sortOption === "nameZA") {
-      sortedArtists.sort((a, b) => {
-        return b.name.localeCompare(a.name);
-      });
+      sortedArtists.sort((a, b) => b.name.localeCompare(a.name));
     };
+    
     return sortedArtists;
-  };
+  }, [artists, sortOption]);
 
-  const sortedArtists = sortArtists();
+  if (!isLoaded) return <div>Loading...</div>;
 
   return (
     <div className={styles.mainContainer}>

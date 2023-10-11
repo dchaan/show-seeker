@@ -9,9 +9,11 @@ import PurchaseModal from "./PurchaseModal";
 const EventPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const { eventId } = useParams();
   const event = useSelector(state => state.events.event);
-  const [isLoaded, setIsLoaded] = useState(false);
+  
   const [importantInfoModal, setImportantInfoModal] = useState(false);
   const [eventInfoModal, setEventInfoModal] = useState(false);
   const [purchaseModal, setPurchaseModal] = useState(false);

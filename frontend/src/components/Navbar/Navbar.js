@@ -9,9 +9,11 @@ import styles from "./Navbar.module.css"
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector(state => state.session.user);
+
   const [showMenu, setShowMenu] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+
+  const user = useSelector(state => state.session.user);
 
   const onLogout = async (e) => {
     await dispatch(logout()).then(navigate('/'));
@@ -22,7 +24,7 @@ const Navbar = () => {
     setShowMenu(true);
   };
 
-  const handleSearch = async(e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
     await dispatch(getEvents(searchQuery));
     navigate(`/events?query=${encodeURIComponent(searchQuery)}`);

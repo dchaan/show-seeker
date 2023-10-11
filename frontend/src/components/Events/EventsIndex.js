@@ -1,5 +1,5 @@
+import { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import styles from "./Events.module.css";
 import { getEvents } from "../../store/event";
@@ -7,10 +7,11 @@ import EventCard from "./EventCard";
 
 const EventsIndex = () => {
   const dispatch = useDispatch();
-  let events = useSelector(state => state.events.events);
-  events = Object.values(events);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  let events = useSelector(state => state.events.events);
+  events = Object.values(events);
+  
   const [displayedEvents, setDisplayedEvents] = useState(10);
   const batchSize = 10;
   const [sortOption, setSortOption] = useState("date");
@@ -23,38 +24,21 @@ const EventsIndex = () => {
     dispatch(getEvents(searchQuery)).then(() => setIsLoaded(true));
   }, [dispatch, searchQuery]);
 
-  if (!isLoaded) return <div>Loading...</div>;
-
-  const sortEvents = () => {
-    const sortedEvents = [...events];
-
+  const sortedEvents = useMemo(() => {
+    const sorted = [...events];
+    
     if (sortOption === "date") {
-      sortedEvents.sort((a, b) => {
-        const dateA = new Date(a.start_time);
-        const dateB = new Date(b.start_time);
-
-        if (isNaN(dateA) && !isNaN(dateB)) {
-          return 1;
-        } else if (!isNaN(dateA) && isNaN(dateB)) {
-          return -1;
-        } else if (isNaN(dateA) && isNaN(dateB)) {
-          return 0; 
-        }
-        return dateA - dateB;
-      });
+      sorted.sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
     } else if (sortOption === "nameAZ") {
-      sortedEvents.sort((a, b) => {
-        return a.name.localeCompare(b.name);
-      });
+      sorted.sort((a, b) => a.name.localeCompare(b.name));
     } else if (sortOption === "nameZA") {
-      sortedEvents.sort((a, b) => {
-        return b.name.localeCompare(a.name);
-      });
-    }
-    return sortedEvents;
-  };
+      sorted.sort((a, b) => b.name.localeCompare(a.name));
+    };
+    
+    return sorted;
+  }, [events, sortOption]);
 
-  const sortedEvents = sortEvents();
+  if (!isLoaded) return <div>Loading...</div>;
 
   return (
     <div className={styles.mainContainer}>

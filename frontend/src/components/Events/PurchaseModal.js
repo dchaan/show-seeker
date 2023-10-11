@@ -4,18 +4,18 @@ import styles from "./PurchaseModal.module.css";
 import { useNavigate } from "react-router-dom";
 
 const PurchaseModal = ({ onClose, quantity }) => {
-  const user = useSelector(state => state.session.user);
-  const event = useSelector(state => state.events.event);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const user = useSelector(state => state.session.user);
+  const event = useSelector(state => state.events.event);
+  
   const purchaseData = {
     "event_id": event.id,
     "quantity": quantity
   };
 
-  const handlePurchase = e => {
+  const handlePurchase = () => {
     if (user) {
       purchaseData.user_id = user.id;
       dispatch(newPurchase(purchaseData));

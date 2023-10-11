@@ -5,6 +5,7 @@ import styles from "./Profile.module.css";
 
 const Profile = () => {
   const navigate = useNavigate();
+  
   const user = useSelector(state => state.session.user);
 
   useEffect(() => {

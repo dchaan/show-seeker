@@ -7,9 +7,10 @@ import FavoritesCard from "./FavoritesCard";
 
 const Favorites = () => {
   const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
+  
   const userId = useParams();
   const favorites = useSelector(state => state.favorites.favorites);
-  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     dispatch(getFavorites(userId.userId)).then(() => setIsLoaded(true))

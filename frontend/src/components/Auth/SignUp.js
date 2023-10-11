@@ -5,14 +5,15 @@ import { signup } from '../../store/session';
 import styles from './Auth.module.css';
 
 const Signup = () => {
+  const dispatch = useDispatch();
+  
+  const user = useSelector(state => state.session.user);
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setSerrors] = useState([]);
 
-  const user = useSelector(state => state.session.user);
-  const dispatch = useDispatch();
 
   const onSignup = async (e) => {
     e.preventDefault();

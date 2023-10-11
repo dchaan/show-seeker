@@ -28,7 +28,7 @@ const EventCard = ({ event }) => {
         <div className={styles.eventLink}>
           <div className={styles.eventLinkContainer}>
             <div className={styles.imageContainer}>
-              <img className={styles.image} src={image ? image : altImage} alt="" />
+              <img className={styles.image} src={image ? image : altImage} alt="" lazy="true" />
             </div>
             <div className={styles.dateContainer}>
               <span className={styles.date}>{formattedDate}</span>

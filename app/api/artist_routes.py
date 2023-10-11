@@ -1,8 +1,9 @@
 from datetime import datetime
 from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
-from app.models import Artist, Review, db
+from app.models import Artist, Review, Classification, db
 from app.forms import ReviewForm
+from sqlalchemy import or_
 
 artist_routes = Blueprint('artists', __name__)
 
@@ -11,7 +12,12 @@ def get_artists():
   query = request.args.get('query')
 
   if query:
-    artists = Artist.query.filter(Artist.name.ilike(f"%{query}%")).all()
+    artists = Artist.query.filter(
+      or_(
+        Artist.name.ilike(f"%{query}%"),
+        Artist.classification.has(Classification.name.ilike(f'%{query}'))
+      )
+    ).all()
   else:
     artists = Artist.query.all()
 

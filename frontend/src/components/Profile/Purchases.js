@@ -12,17 +12,13 @@ import PurchaseCard from "./PurchaseCard";
 const Purchases = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const userId = useParams();
   const user = useSelector(state => state.session.user);
 
   const purchases = useSelector(state => state.purchases.purchases);
-  const sortedPurchases = purchases.sort((a, b) => {
-    const dateA = new Date(a.purchase_date);
-    const dateB = new Date(b.purchase_date);
-    return dateB - dateA;
-  });
-
-  const [isLoaded, setIsLoaded] = useState(false);
+  const sortedPurchases = [...purchases].sort((a, b) => new Date(b.purchase_date) - new Date(a.purchase_date));
 
   useEffect(() => {
     dispatch(getPurchases(userId.userId)).then(() => setIsLoaded(true))

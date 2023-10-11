@@ -3,10 +3,10 @@ import SellModal from "./SellModal";
 import styles from "./PurchaseCard.module.css";
 
 const PurchaseCard = ({ purchase }) => {
+  const [sellModal, setSellModal] = useState(false);
   const date = new Date(purchase.event_date);
   const formattedDate = date.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
-  const [sellModal, setSellModal] = useState(false);
-
+  
   const openSellModal = () => {
     setSellModal(true);
   };

@@ -8,16 +8,14 @@ import ReviewCard from "./ReviewCard";
 
 const ReviewsIndex = ({ artist }) => {
   const dispatch = useDispatch();
-  const reviews = useSelector(state => state.reviews.reviews);
-  const [displayedReviews, setDisplayedReviews] = useState(10);
-  const batchSize = 10;
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const sortedReviews = reviews.sort((a, b) => {
-    const dateA = new Date(a.date);
-    const dateB = new Date(b.date);
-    return dateB - dateA;
-  });
+  const reviews = useSelector(state => state.reviews.reviews);
+  
+  const [displayedReviews, setDisplayedReviews] = useState(10);
+  const batchSize = 10;
+
+  const sortedReviews = [...reviews].sort((a, b) => new Date(b.date) - new Date(a.date));
 
   useEffect(() => {
     dispatch(getReviews(artist.id));
@@ -27,15 +25,12 @@ const ReviewsIndex = ({ artist }) => {
   if (!isLoaded) return <div>Loading...</div>;
 
   const handleAvgRating = () => {
-    let sumRatings = 0;
-    if (reviews.length) {
-      reviews.map(review => (
-        sumRatings += review.rating
-      ));
-      return (sumRatings / reviews.length).toFixed(1);
-    } else {
-      return sumRatings;
-    };
+    if (reviews.length === 0) {
+      return 0;
+    }
+
+    const sumRatings = reviews.reduce((total, review) => total + review.rating, 0);
+    return (sumRatings / reviews.length).toFixed(1);
   };
 
   const avgRating = handleAvgRating();
