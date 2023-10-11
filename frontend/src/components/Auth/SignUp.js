@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { signup } from '../../store/session';
 import styles from './Auth.module.css';
@@ -34,7 +34,7 @@ const Signup = () => {
         </div>
 
         <div className={styles.authMain}>
-          <p className={styles.authSubHeadText}>Already have a ShowSeeker Account? <Navigate className={styles.authLink} href="/login">Sign In</Navigate></p>
+          <p className={styles.authSubHeadText}>Already have a ShowSeeker Account? <NavLink className={styles.authLink} to="/login">Sign In</NavLink></p>
           <div className={styles.authFormContainer}>
             <form onSubmit={onSignup}>
               <div className={styles.authFieldContainer}>
