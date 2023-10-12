@@ -5,8 +5,9 @@ import { getArtist } from "../../store/artist";
 import { getEvents } from "../../store/event";
 import { setFavorite, removeFavorite, getFavorites } from "../../store/favorites"
 import ArtistEventCard from "./ArtistEventCard";
-import styles from "./ArtistPage.module.css";
 import ReviewsIndex from "../Reviews/ReviewsIndex";
+import { RotatingLines } from 'react-loader-spinner';
+import styles from "./ArtistPage.module.css";
 
 const ArtistPage = () => {
   const dispatch = useDispatch();
@@ -35,7 +36,22 @@ const ArtistPage = () => {
     });
   }, [dispatch, artistId, user, navigate]);
 
-  if (!isLoaded) return <div>Loading...</div>;
+  if (!isLoaded) {
+    return (
+      <div className={styles.artistPageContainer}>
+        <div className={styles.circle}>
+          <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="96"
+            visible={true}
+          />
+        </div>
+      </div>
+    );
+  };
+
   const image = artist.images.find(image => image.includes("ARTIST_PAGE"));
 
   const divStyle = {

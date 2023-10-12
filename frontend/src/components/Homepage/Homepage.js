@@ -6,6 +6,7 @@ import { getArtists } from "../../store/artist";
 import { getEvents } from "../../store/event";
 import Card from "./Card";
 import searchIcon from "../../assets/search-icon.png";
+import { RotatingLines } from 'react-loader-spinner';
 import styles from "./Homepage.module.css";
 
 const Homepage = () => {
@@ -27,11 +28,24 @@ const Homepage = () => {
 
   useEffect(() => {
     dispatch(getClassifications());
-    dispatch(getArtists());
-    setIsLoaded(true);
+    dispatch(getArtists()).then(() =>setIsLoaded(true));
   }, [dispatch]);
 
-  if (!isLoaded) return <div>Loading...</div>
+  if (!isLoaded) {
+    return (
+      <div className={styles.indexContainer}>
+        <div className={styles.circle}>
+          <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="96"
+            visible={true}
+          />
+        </div>
+      </div>
+    );
+  };
 
   const handleSearch = async (e) => {
     e.preventDefault();

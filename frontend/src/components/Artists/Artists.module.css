@@ -1,5 +1,6 @@
 .mainContainer {
   padding-bottom: 120px;
+  min-height: 620px;
 }
 
 .subHeader {
@@ -159,4 +160,11 @@
 
 .loadMoreButton:hover {
   background-color: rgb(211, 227, 246)
+}
+
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

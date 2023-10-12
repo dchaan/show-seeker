@@ -190,7 +190,6 @@
   line-height: 1.5;
   text-decoration: none;
   color: rgb(2, 108, 223);
-
 }
 
 .componentContainer {
@@ -199,4 +198,11 @@
   align-items: flex-start;
   display: flex;
   flex-flow: wrap;
+}
+
+.circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

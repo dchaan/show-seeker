@@ -1,9 +1,10 @@
 import { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useLocation } from "react-router-dom";
-import styles from "./Events.module.css";
 import { getEvents } from "../../store/event";
 import EventCard from "./EventCard";
+import { RotatingLines } from 'react-loader-spinner';
+import styles from "./Events.module.css";
 
 const EventsIndex = () => {
   const dispatch = useDispatch();
@@ -38,7 +39,35 @@ const EventsIndex = () => {
     return sorted;
   }, [events, sortOption]);
 
-  if (!isLoaded) return <div>Loading...</div>;
+  if (!isLoaded) {
+    return (
+      <div className={styles.mainContainer}>
+        <div className={styles.circle}>
+          <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="96"
+            visible={true}
+          />
+        </div>
+      </div>
+    );
+  };
+
+  const changeHeaderTitle = () => {
+    if (searchQuery === "Music" || searchQuery === "music") {
+      return "Concerts"
+    } else if (searchQuery === "Sports" || searchQuery === "Sports") {
+      return "Sports"
+    } else if (searchQuery === "Arts" || searchQuery === "Arts") {
+      return "Arts & Theatre"
+    } else if (searchQuery === "Family" || searchQuery === "family") {
+      return "Family"
+    }
+  };
+
+  const headerTitle = changeHeaderTitle()
 
   return (
     <div className={styles.mainContainer}>
@@ -50,12 +79,12 @@ const EventsIndex = () => {
                 <div className={styles.slash}>
                   /
                 </div>
-                <div className={styles.subTitle}>All Events Tickets</div>
+                <div className={styles.subTitle}>All {headerTitle} Tickets</div>
               </div>
           </div>
           <div className={styles.subHeaderTitle}>
             <h1 className={styles.subHeaderTitleText}>
-              <span className={styles.concertText}>All Events </span>
+              <span className={styles.concertText}>All {headerTitle} </span>
               <span className={styles.ticketsText}>Tickets</span>
             </h1>
           </div>
@@ -79,7 +108,8 @@ const EventsIndex = () => {
         </div>
         {sortedEvents.slice(0, displayedEvents).map(event => (
           <EventCard event={event} />
-        ))}
+        )) 
+      }
       </div>
       <div className={styles.loadMoreContainer}>
         {displayedEvents < events.length && (

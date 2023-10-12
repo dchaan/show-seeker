@@ -1,9 +1,10 @@
 import { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import styles from "../Events/Events.module.css";
 import { getEvents } from "../../store/event";
 import EventCard from "../Events/EventCard";
+import { RotatingLines } from 'react-loader-spinner';
+import styles from "../Events/Events.module.css";
 
 const FamilyIndex = () => {
   let events = useSelector(state => state.events.events);
@@ -33,7 +34,21 @@ const FamilyIndex = () => {
     return sorted;
   }, [events, sortOption]);
 
-  if (!isLoaded) return <div>Loading...</div>;
+  if (!isLoaded) {
+    return (
+      <div className={styles.mainContainer}>
+        <div className={styles.circle}>
+          <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="96"
+            visible={true}
+          />
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className={styles.mainContainer}>

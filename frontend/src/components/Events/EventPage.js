@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { getEvent } from "../../store/event";
-import styles from "./EventPage.module.css";
 import EventInfoModal from "./EventInfoModal.js";
 import PurchaseModal from "./PurchaseModal";
+import { RotatingLines } from 'react-loader-spinner';
+import styles from "./EventPage.module.css";
 
 const EventPage = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,21 @@ const EventPage = () => {
     });
   }, [dispatch, eventId, navigate]);
 
-  if (!isLoaded) return <div>Loading...</div>;
+  if (!isLoaded) {
+    return (
+      <div className={styles.eventPageContainer}>
+        <div className={styles.circle}>
+          <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="96"
+            visible={true}
+          />
+        </div>
+      </div>
+    );
+  };
 
   const openImportantInfoModal = () => {
     setImportantInfoModal(true);

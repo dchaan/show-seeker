@@ -1,9 +1,10 @@
 import { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import styles from "./Artists.module.css";
 import { getArtists } from "../../store/artist";
 import ArtistCard from "./ArtistCard";
+import { RotatingLines } from 'react-loader-spinner';
+import styles from "./Artists.module.css";
 
 const ArtistsIndex = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,21 @@ const ArtistsIndex = () => {
     return sortedArtists;
   }, [artists, sortOption]);
 
-  if (!isLoaded) return <div>Loading...</div>;
+  if (!isLoaded) {
+    return (
+      <div className={styles.mainContainer}>
+        <div className={styles.circle}>
+          <RotatingLines
+            strokeColor="grey"
+            strokeWidth="5"
+            animationDuration="0.75"
+            width="96"
+            visible={true}
+          />
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className={styles.mainContainer}>

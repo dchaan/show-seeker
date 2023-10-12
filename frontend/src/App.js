@@ -13,12 +13,10 @@ import ConcertsIndex from "./components/Concerts/ConcertsIndex";
 import SportsIndex from "./components/Sports/SportsIndex";
 import ArtistsIndex from "./components/Artists/ArtistsIndex";
 import ArtistPage from "./components/Artists/ArtistPage";
-import VenuesIndex from "./components/Venues/VenuesIndex";
 import ArtsAndTheatreIndex from "./components/ArtsAndTheatre/ArtsAndTheatreIndex";
 import FamilyIndex from "./components/Family/FamilyIndex";
 import Profile from "./components/Profile/Profile";
 import Favorites from "./components/Profile/Favorites";
-import GenresIndex from "./components/Genres/GenresIndex";
 import { authenticate } from "./store/session";
 import Purchases from "./components/Profile/Purchases";
 import NewReview from "./components/Reviews/NewReview";
@@ -51,8 +49,6 @@ function App() {
         <Route path='artists/:artistId/reviews/new' exact={true} element={<NewReview />} />
         <Route path='/events/arts&theatre' exact={true} element={<ArtsAndTheatreIndex />} />
         <Route path='/events/family' exact={true} element={<FamilyIndex />} />
-        <Route path='/venues' exact={true} element={<VenuesIndex />} />
-        <Route path='/genres' exact={true} element={<GenresIndex />} />
         <Route path='/users/:userId/profile' exact={true} element={<Profile />} />
         <Route path='/users/:userId/favorites' exact={true} element={<Favorites />} />
         <Route path='/users/:userId/purchases' exact={true} element={<Purchases />} />
