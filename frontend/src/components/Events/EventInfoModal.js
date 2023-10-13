@@ -21,13 +21,26 @@ const EventInfoModal = ({ event, onClose }) => {
     location = `${venue.name}, ${cityAndState}`
   };
 
-  let image = null;
-  let altImage = null;
-  if (artist) {
-    image = artist.images.find(image => image.includes("CUSTOM"));
-    altImage = artist.images.find(image => image.includes("SOURCE"));
-  }
+  const getArtistInfo = () => {
+    if (artist) {
+      const image = artist.images.find(image => image.includes("CUSTOM"));
+      const altImage = artist.images.find(image => image.includes("SOURCE"));
 
+      return (
+        <div className={styles.sectionContainer}>
+          <h3 className={styles.sectionTitle}>Lineup</h3>
+            <div className={styles.imageContainer}>
+              <NavLink className={styles.artistLink} to={`/artists/${artist.id}`}>
+                <img className={styles.image} src={image} alt={altImage} />
+                <div className={styles.artistName}>{artist.name}</div>
+              </NavLink>
+            </div>
+        </div>
+      )
+    };
+  };
+
+  const lineup = getArtistInfo();
 
   return (
     <div className={styles.modalContainer}>
@@ -73,35 +86,31 @@ const EventInfoModal = ({ event, onClose }) => {
                   </div>
                 </div>
               </div>
-              <div className={styles.sectionContainer}>
-                <h3 className={styles.sectionTitle}>Additional Info</h3>
-                <p className={styles.text}>{venue.general_info}</p>
-              </div>
-              <div className={styles.sectionContainer}>
-                <h3 className={styles.sectionTitle}>Box Office Info</h3>
-                <p className={styles.text}>{venue.box_office_info}</p>
-              </div>
-              <div className={styles.sectionContainer}>
-                <h3 className={styles.sectionTitle}>Lineup</h3>
-                  <div className={styles.imageContainer}>
-                    {artist ? (
-                      <NavLink className={styles.artistLink} to={`/artists/${artist.id}`}>
-                        <img className={styles.image} src={image} alt={altImage} />
-                      <div className={styles.artistName}>{artist.name}</div>
-                    </NavLink>
-                    ) : (
-                      ""
-                    )}
-                  </div>
-              </div>
-              <div className={styles.sectionContainer}>
-                <div className={styles.sectionTitle}>Ticket Limits</div>
-                <p className={styles.text}>{ticket_limit}</p>
-              </div>
-              <div className={styles.sectioContainer}>
-                <div className={styles.sectionTitle}>Accessible Tickets</div>
-                <p className={styles.text}>{accessibility}</p>
-              </div>
+              {venue.general_info && (
+                <div className={styles.sectionContainer}>
+                  <h3 className={styles.sectionTitle}>Additional Info</h3>
+                  <p className={styles.text}>{venue.general_info}</p>
+                </div>
+              )}
+              {venue.box_office_info && (
+                <div className={styles.sectionContainer}>
+                  <h3 className={styles.sectionTitle}>Box Office Info</h3>
+                  <p className={styles.text}>{venue.box_office_info}</p>
+                </div>
+              )}
+              {lineup}
+              {ticket_limit && (
+                <div className={styles.sectionContainer}>
+                  <div className={styles.sectionTitle}>Ticket Limits</div>
+                  <p className={styles.text}>{ticket_limit}</p>
+                </div>
+              )}
+              {accessibility && (
+                <div className={styles.sectioContainer}>
+                  <div className={styles.sectionTitle}>Accessible Tickets</div>
+                  <p className={styles.text}>{accessibility}</p>
+                </div>
+              )}
               <div className={styles.sectioContainer}>
                 <p className={styles.text}>Prices are in US $</p>
               </div>
