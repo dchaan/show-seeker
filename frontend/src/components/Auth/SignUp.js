@@ -37,6 +37,7 @@ const Signup = () => {
         <div className={styles.authMain}>
           <p className={styles.authSubHeadText}>Already have a ShowSeeker Account? <NavLink className={styles.authLink} to="/login">Sign In</NavLink></p>
           <div className={styles.authFormContainer}>
+          {!enabled_submit && (<p className={styles.errors}>All fields are required.</p>)}
             <form onSubmit={onSignup}>
               <div className={styles.authFieldContainer}>
                 <label className={styles.authFieldLabel}>Email Address</label>

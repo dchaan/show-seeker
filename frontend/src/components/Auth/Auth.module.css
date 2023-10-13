@@ -207,3 +207,13 @@
   border: 1px solid transparent;
   transition: background-color 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s;
 }
+
+.errors {
+  margin-top: 1px;
+  opacity: 1;
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: left;
+  color: rgb(217, 58, 58);
+  position: relative;
+}

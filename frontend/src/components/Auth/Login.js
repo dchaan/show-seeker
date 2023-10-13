@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Navigate, NavLink, useNavigate } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../../store/session';
 import styles from './Auth.module.css';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   
   const user = useSelector(state => state.session.user);
   const [email, setEmail] = useState('');
@@ -17,7 +16,6 @@ const Login = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) setErrors(data);
-    navigate("/");
   };
 
   const inputEmail = async (e) => {
@@ -53,7 +51,7 @@ const Login = () => {
                     value={email} 
                     onChange={inputEmail} 
                   />
-                  {errors && <p className={styles.errors}>{errors.email}</p>}
+                  <div className={styles.errors}>{errors.email}</div>
                 </div>
               </div>
               <div className={styles.authFieldContainer}>
@@ -65,7 +63,7 @@ const Login = () => {
                     value={password} 
                     onChange={inputPassword} 
                   />
-                  {errors && <p className={styles.errors}>{errors.password}</p>}
+                  <div className={styles.errors}>{errors.password}</div>
                 </div>
               </div>
               <div className={styles.authSmallContainer}>
