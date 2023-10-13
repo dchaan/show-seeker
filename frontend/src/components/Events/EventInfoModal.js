@@ -21,8 +21,13 @@ const EventInfoModal = ({ event, onClose }) => {
     location = `${venue.name}, ${cityAndState}`
   };
 
-  const image = artist.images.find(image => image.includes("CUSTOM"));
-  const altImage = artist.images.find(image => image.includes("SOURCE"));
+  let image = null;
+  let altImage = null;
+  if (artist) {
+    image = artist.images.find(image => image.includes("CUSTOM"));
+    altImage = artist.images.find(image => image.includes("SOURCE"));
+  }
+
 
   return (
     <div className={styles.modalContainer}>

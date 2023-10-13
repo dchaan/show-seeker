@@ -3,7 +3,7 @@ from app.models import Venue, db
 from app.ticketmaster_api import get_venues_from_api, format_venue
 
 def seed_venues():
-  venues = get_venues_from_api(total_to_fetch=5000)
+  venues = get_venues_from_api(total_to_fetch=10000)
   formatted_venues = [format_venue(venue) for venue in venues]
 
   for formatted_venue in formatted_venues:
