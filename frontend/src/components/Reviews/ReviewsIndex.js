@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getReviews } from "../../store/reviews";
 import star from "../../assets/star.png"
 import styles from "./ReviewsIndex.module.css"
@@ -27,17 +27,13 @@ const ReviewsIndex = ({ artist }) => {
   if (!isLoaded) return <div>Loading...</div>;
 
   const handleReviewButton = () => {
-    if (user) {
-      navigate(`/artists/${artist.id}/reviews/new`)
-    } else {
-      navigate("/login");
-    };
+    user ? navigate(`/artists/${artist.id}/reviews/new`) : navigate("/login");
   };
 
   const handleAvgRating = () => {
     if (reviews.length === 0) {
       return 0;
-    }
+    };
 
     const sumRatings = reviews.reduce((total, review) => total + review.rating, 0);
     return (sumRatings / reviews.length).toFixed(1);
