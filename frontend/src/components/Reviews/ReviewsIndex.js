@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { getReviews } from "../../store/reviews";
 import star from "../../assets/star.png"
 import styles from "./ReviewsIndex.module.css"
@@ -8,8 +8,10 @@ import ReviewCard from "./ReviewCard";
 
 const ReviewsIndex = ({ artist }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const user = useSelector(state => state.session.user);
   const reviews = useSelector(state => state.reviews.reviews);
   
   const [displayedReviews, setDisplayedReviews] = useState(10);
@@ -23,6 +25,14 @@ const ReviewsIndex = ({ artist }) => {
   }, [dispatch, artist]);
 
   if (!isLoaded) return <div>Loading...</div>;
+
+  const handleReviewButton = () => {
+    if (user) {
+      navigate(`/artists/${artist.id}/reviews/new`)
+    } else {
+      navigate("/login");
+    };
+  };
 
   const handleAvgRating = () => {
     if (reviews.length === 0) {
@@ -87,9 +97,9 @@ const ReviewsIndex = ({ artist }) => {
             </div>
           </div>
           <div className={styles.writeReviewContainer}>
-            <NavLink className={styles.writeReview} to={`/artists/${artist.id}/reviews/new`}>
+            <button className={styles.writeReview} onClick={handleReviewButton}>
               <span className={styles.writeReviewText}>Write a review</span>
-            </NavLink>
+            </button>
           </div>
         </div>
         {handleReviews()}
